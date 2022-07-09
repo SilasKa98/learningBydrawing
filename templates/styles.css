@@ -1,0 +1,98 @@
+/*general*/
+body{
+font-family: sans-serif;
+background: #91a4ad;
+}
+
+/*drawingPage*/
+ 
+ #canvas {
+    cursor: crosshair;
+ }
+
+ /*settings*/
+
+ #categoryWrapper{
+    width: 60%;
+    margin: 0 auto;
+ }
+
+ #logoutForm{
+   float: right;
+ }
+ 
+ .content{
+   width:100%;
+   display: flex;
+   justify-content: center;
+ }
+
+ #content2{
+   margin-top: 5%;
+   font-size: 19pt;
+   color: white;
+   font-weight: bold;
+ }
+
+ .category{
+   border: 1px solid black;
+   font-size: 17pt;
+   padding: 2px;
+   width: 85%;
+   margin: 14px auto;
+   background-color: rgb(107, 105, 105);
+   font-weight: lighter;
+   border: 1px solid #2196F3;
+   border-width: 0px 3px 0px 3px;
+   border-radius: 2px;
+   transition: transform 0.3s, box-shadow 0.3s;
+   cursor: pointer;
+}
+
+ .category:hover {
+   transform: scale(1.05);
+   box-shadow:
+     inset 0 -5px 20px hsla(0, 0%, 0%, 0.4), /* top light */
+     inset 0 5px 20px hsla(0, 0%, 100%, 0.4), /* bottom shadow */
+     /* multiple light sources yall */
+     1px 1px 50px hsla(0, 0%, 0%, 0.15), /* drop shadow 1 */
+     10px 10px 10px hsla(0, 0%, 0%, 0.2); /* drop shadow 2 */
+ }
+
+ .category p{
+   text-align: center;
+   font-size: 19pt;
+   color: white;
+   font-weight: bold;
+ }
+
+ h1{
+   text-align: center;
+ }
+
+ #startBtn{
+   position: fixed;
+   bottom: 10px;
+   right: 10px;
+   background: rgba(24, 136, 24);
+   cursor: pointer;
+   padding:5px;
+   font-size: 20pt;
+   transform: translate(-50%,-50%);
+   color: white;
+   text-decoration: none;
+   border: none;
+   outline: 1px solid rgb(0 0 0);
+   transition: all .7s;
+ }
+
+ #startBtn:hover{
+   text-shadow: 0 0 0px rgb(0 0 0);
+    outline-color: rgba(0,0,0,0);
+    outline-offset: 10px;
+ }
+
+ #startForm{
+   width:50%;
+ }
+
