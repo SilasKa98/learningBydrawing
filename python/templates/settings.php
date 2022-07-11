@@ -80,15 +80,22 @@ if(isset($_SESSION["idUser"])){
     <ul class="circles">
         <li></li>
         <li></li>
+        <li>3</li>
+        <li>6</li>
+        <li>A</li>
         <li></li>
         <li></li>
         <li></li>
         <li></li>
         <li></li>
         <li></li>
+        <li>B</li>
+        <li>Z</li>
         <li></li>
         <li></li>
         <li></li>
+        <li>R</li>
+        <li>u</li>
     </ul>
 </body>
 
