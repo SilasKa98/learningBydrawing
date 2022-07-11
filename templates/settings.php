@@ -10,6 +10,7 @@ if(isset($_SESSION["idUser"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="background.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="tf.min.js"></script>
     <script>
@@ -20,9 +21,10 @@ if(isset($_SESSION["idUser"])){
             for(let i=0;i<allBtns.length;i++){
                 if(allBtns[i].style.backgroundColor == "green"){         
                     let greenBtn = allBtns[i];
-                    greenBtn.style.backgroundColor = "rgb(107, 105, 105)";
+                    greenBtn.style.backgroundImage = "linear-gradient( 135deg, #43CBFF 10%, #9708CC 100%)";
                 } 
             }
+            e.style.backgroundImage = "none";
             e.style.backgroundColor = "green";
 
             document.getElementById("choosenCategory").value = clickedCategory;
@@ -44,12 +46,12 @@ if(isset($_SESSION["idUser"])){
         }
     </script>
 </head>
-<body>
+<body class="area">
     <form action="login_system/logout_script.php" method='post' id='logoutForm'>
         <input type="submit" id="logout" value="Logout"></button>
         <p id='loginUserHello'>Hallo <?=$_SESSION["idUser"] ?></p>
     </form>
-    <h1>Einstellungen</h1>
+    <h1 id="headline">Einstellungen</h1>
     <div class="content">
         <div id="categoryWrapper">
             <div class="category" onclick="highliteCategory(this)">
@@ -74,6 +76,20 @@ if(isset($_SESSION["idUser"])){
         </form>
     </div>
     <button id="startBtn" onclick="submitForm()">Übung Starten</button>
+
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
 </body>
 
 </html>
