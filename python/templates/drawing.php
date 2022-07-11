@@ -17,6 +17,7 @@
     <input type="hidden" id="selectedCategory" value="<?= $_POST["category"]?>">
     <input type="hidden" id="selectedRepeats" value="<?= $_POST["repeats"]?>">
     Zeichnen Sie ein: <div id="task"></div>
+    <img src="speaker.svg" width="50px" height="50px" id="playAudio" onclick="textToSpeech()">
     <div id="canvasWrapper"></div>
     <button id="doPredict">Predict</button>
     <button id="resetBtn">Reset</button>
@@ -213,6 +214,7 @@ $("#doPredict").click(async function () {
 });
 
 function digitsProcessResult(r){
+
     let odd = Math.max(...r);
     let number = r.indexOf(odd);
 
@@ -242,5 +244,19 @@ function digitsProcessResult(r){
     }else{
         resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+number+" anstatt einer "+drawnNumber+" gezeichnet.";
     }
+}
+
+function textToSpeech(){
+    let fetchedText = document.getElementById("task").innerHTML;
+    console.log(fetchedText);
+    let msg = new SpeechSynthesisUtterance();
+    //let voices = window.speechSynthesis.getVoices();
+    //msg.voice = voices[8]; 
+    msg.volume = 1; // From 0 to 1
+    msg.rate = 0.5; // From 0.1 to 10
+    msg.pitch = 1; // From 0 to 2
+    msg.text = "Zeichnen Sie eine "+fetchedText;
+    msg.lang = 'de';
+    speechSynthesis.speak(msg);
 }
 </script>
