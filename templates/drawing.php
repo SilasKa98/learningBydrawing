@@ -9,20 +9,14 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="tf.min.js"></script>
 </head>
-<body>
+<body onload="categoryChooser()">
     <div>
         <p>Kategorie: <?= $_POST["category"]?></p>
         <p>Anzahl der Übungen: <?= $_POST["repeats"]?></p>
     </div>
-    <div>
-        <p>Kategorie wählen</p>
-        <select id="categorie" onchange="randomChooser(this)">
-            <option>---</option>
-            <option value="digits">Zahlen</option>
-            <option value="words">Wörter</option>
-        </select>
-    </div>
-    <div id="task"></div>
+    <input type="hidden" id="selectedCategory" value="<?= $_POST["category"]?>">
+    <input type="hidden" id="selectedRepeats" value="<?= $_POST["repeats"]?>">
+    Zeichnen Sie ein: <div id="task"></div>
     <div id="canvasWrapper"></div>
     <button id="doPredict">Predict</button>
     <button id="resetBtn">Reset</button>
@@ -148,17 +142,21 @@ $("#resetBtn").click(async function () {
 
 
 
-function randomChooser(e){
-    let chosenLevel = e.value;
-    e.style.border = "none";
-    if(chosenLevel == "digits"){
-        const digits = "9";
-        var rndSel = digits[Math.floor(Math.random() * digits.length)];
-    }else{
-        const words = ["foo","bar","buz"];
-        var rndSel = words[Math.floor(Math.random()*words.length)];
+function categoryChooser(){
+    let choosenCategory = document.getElementById("selectedCategory").value;
+    switch (choosenCategory){
+    case "Formen":
+        break;
+    case "Buchstaben":
+        break;
+    case "Zahlen":
+        let data = ["Null","Eins","Zwei","Drei","Vier","Fünf","Sechs","Sieben","Acht","Neun"];
+        var rndSel = data[Math.floor(Math.random() * data.length)];
+        document.getElementById("task").innerHTML = rndSel;
+        break;
+    case "Japanisch":
+        break;
     }
-    document.getElementById("task").innerHTML = rndSel;
 }
 
 async function loadModel() {
@@ -189,8 +187,7 @@ $("#doPredict").click(async function () {
       canvas.width,
       canvas.height
     );
-    console.log(imageData)
-    console.log(canvas)
+
     //alternativly parse the canvas direct to function preprocessCanvas (works a bit worse somehow)
     // preprocess canvas
     let tensor = preprocessCanvas(imageData);
@@ -199,25 +196,51 @@ $("#doPredict").click(async function () {
     let output = model.predict(tensor).data();
     // get the model's prediction results
     let results = Array.from(predictions);
-    if(categorie.value == "digits"){
+ 
+    let choosenCategory = document.getElementById("selectedCategory").value;
+    switch (choosenCategory){
+    case "Formen":
+        break;
+    case "Buchstaben":
+        break;
+    case "Zahlen":
         digitsProcessResult(results);
+        break;
+    case "Japanisch":
+        break;
     }
-    
+
 });
 
 function digitsProcessResult(r){
-    console.log(r);
-    let max = Math.max(...r);
-    console.log(max);
-    let maxIndex = r.indexOf(max);
-    console.log(maxIndex);
+    let odd = Math.max(...r);
+    let number = r.indexOf(odd);
+
+    console.log(odd);
+    console.log(number);
 
     let resultField = document.getElementById("result");
     let taskField = document.getElementById("task");
-    if(taskField.innerHTML == maxIndex){
-        resultField.innerHTML = "Richtig ! Sehr gut, Sie haben eine "+maxIndex+" gezeichnet. <br> Die Übereinstimmung liegt bei: "+(max*100).toFixed(2)+"%";
+
+    const numberDict = {
+        "Null": 0,
+        "Eins": 1,
+        "Zwei": 2,
+        "Drei": 3,
+        "Vier": 4,
+        "Fünf": 5,
+        "Sechs": 6,
+        "Sieben": 7,
+        "Acht": 8,
+        "Neun": 9
+    }
+
+    let drawnNumber = numberDict[taskField.innerHTML];
+
+    if(drawnNumber == number){
+        resultField.innerHTML = "Richtig ! Sehr gut, Sie haben eine "+number+" gezeichnet. <br> Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
     }else{
-        resultField.innerHTML = "Falsch, Sie haben zu "+(max*100).toFixed(2)+"% eine "+maxIndex+" anstatt einer "+taskField.innerHTML+" gezeichnet.";
+        resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+number+" anstatt einer "+drawnNumber+" gezeichnet.";
     }
 }
 </script>
