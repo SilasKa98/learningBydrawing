@@ -14,7 +14,6 @@ if(isset($_SESSION["idUser"])){
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="tf.min.js"></script>
     <script>
-        
         function highliteCategory(e){
             let clickedBox = e;
             let clickedCategory = e.childNodes[1].innerHTML;
