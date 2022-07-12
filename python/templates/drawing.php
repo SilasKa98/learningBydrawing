@@ -1,4 +1,7 @@
-<?= session_start();?>
+<?php
+ session_start();
+ if(isset($_SESSION["idUser"])){
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -286,3 +289,9 @@ function textToSpeech(){
     speechSynthesis.speak(msg);
 }
 </script>
+
+<?php
+}else{
+    echo "Access denied";
+}
+?>

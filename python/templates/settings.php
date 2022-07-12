@@ -83,7 +83,7 @@ if(isset($_SESSION["idUser"])){
     <div class="content" id="content2">
         <form action="drawing.php" method="post" id="startForm">
                 <label>Anzahl der Übungen: 
-                    <input type="number" name="repeats" min="1" value="1" style="width: 4%;">
+                    <input type="number" name="repeats" min="1" value="1" style="width: 6%;">
                 </label><br><br>
                 Intelligentes Lernen: 
                 <label class="switch">
@@ -120,6 +120,8 @@ if(isset($_SESSION["idUser"])){
 </html>
 
 <?php
+}else{
+    echo "Access denied";
 }
 ?>
 
