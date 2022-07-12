@@ -82,8 +82,14 @@ if(isset($_SESSION["idUser"])){
     </div>
     <div class="content" id="content2">
         <form action="drawing.php" method="post" id="startForm">
-                <label>Anzahl der Übungen: <input type="number" name="repeats" min="1" value="1"></label><br><br>
-                <label>Nur zuvor falsch gemachtes Üben <input type="checkbox" name="falseTraining"></label><br><br>
+                <label>Anzahl der Übungen: 
+                    <input type="number" name="repeats" min="1" value="1" style="width: 4%;">
+                </label><br><br>
+                Intelligentes Lernen: 
+                <label class="switch">
+                    <input type="checkbox" name="falseTraining">
+                    <span class="slider round"></span>
+                </label><br><br>
                 <input type="hidden" id="choosenCategory" name="category">
         </form>
     </div>
