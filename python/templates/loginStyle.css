@@ -124,12 +124,12 @@ input[type=text], input[type=password] {
   #infoText{
     font-family: cursive;
     text-align: center;
-    font-size: 4vh;
+    font-size: 3vh;
     color: white;
     position: absolute;
-    left: 9%;
+    left: 10%;
     font-weight: bold;
-    top: -5%;
+    top: -1%;
     transform: rotate(-14deg);
   }
 
