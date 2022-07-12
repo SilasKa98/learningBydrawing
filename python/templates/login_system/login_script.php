@@ -29,6 +29,7 @@ if(isset($_POST["login_submit"])){
 					session_start();
 					$_SESSION["algID"] = $row["ID"];
 					$_SESSION["idUser"] = $row["user_id"];
+					$_SESSION["uuid"] = $row["uuid"];
 					
 					header("Location: ../settings.php?login=success");
 					exit();

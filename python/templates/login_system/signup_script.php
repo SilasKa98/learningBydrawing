@@ -10,7 +10,7 @@ if(isset($_POST["signup_submit"])){
 	$mail = $_POST["mail"];	
 	$pwd = $_POST["pwd"];		
 	$pwd_repeat = $_POST["pwd_repeat"];	
-
+	$uuid = uniqid();
 	
 	if(empty($username)|| empty($mail) || empty($pwd) || empty($pwd_repeat)){
 		header("Location: signup.php?error=emptyfields&user_id=".$username."&mail=".$mail);
@@ -58,7 +58,7 @@ if(isset($_POST["signup_submit"])){
 			
 			//insert if no errorchecks get triggered
 			else{
-				$sql = "INSERT into loginsystem (user_id, user_email, user_pwd) values (?,?,?);";
+				$sql = "INSERT into loginsystem (user_id, user_email, user_pwd, uuid) values (?,?,?,?);";
 				$stmt = mysqli_stmt_init($connection);
 				if(!mysqli_stmt_prepare($stmt, $sql)){
 					header("Location: signup.php?error=sqlerror");
@@ -66,7 +66,7 @@ if(isset($_POST["signup_submit"])){
 				}else{
 					$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 					
-					mysqli_stmt_bind_param($stmt, "sss", $username,$mail,$hashedPwd);
+					mysqli_stmt_bind_param($stmt, "ssss", $username,$mail,$hashedPwd,$uuid);
 					mysqli_stmt_execute($stmt);
 					header("Location: signup.php?signup=success");
 					exit();

@@ -1,3 +1,4 @@
+<?= session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +17,7 @@
     </div>
     <input type="hidden" id="selectedCategory" value="<?= $_POST["category"]?>">
     <input type="hidden" id="selectedRepeats" value="<?= $_POST["repeats"]?>">
+    <input type="hidden" id="uuid" value="<?= $_SESSION["uuid"]?>">
     Zeichnen Sie ein: <div id="task"></div>
     <img src="speaker.svg" width="50px" height="50px" id="playAudio" onclick="textToSpeech()">
     <div id="canvasWrapper"></div>
@@ -238,13 +240,37 @@ function digitsProcessResult(r){
     }
 
     let drawnNumber = numberDict[taskField.innerHTML];
-
+    let answerResult = undefined;
     if(drawnNumber == number){
         resultField.innerHTML = "Richtig ! Sehr gut, Sie haben eine "+number+" gezeichnet. <br> Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+        answerResult = 1;
     }else{
         resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+number+" anstatt einer "+drawnNumber+" gezeichnet.";
+        answerResult = 0;
     }
+    saveLearningResult(drawnNumber, answerResult);
 }
+
+function saveLearningResult(data,result){
+    let category = document.getElementById("selectedCategory").value;
+    let uuid = document.getElementById("uuid").value;
+
+    $.ajax({
+        type: "POST",
+        url: "backend.php",
+        data: {
+            data: data,
+            result: result,
+            category: category,
+            uuid: uuid
+        },
+        success: function(result, message, response) {
+			console.log(result);
+            console.log(message);
+            console.log(response);
+		}
+	});
+}   
 
 function textToSpeech(){
     let fetchedText = document.getElementById("task").innerHTML;
