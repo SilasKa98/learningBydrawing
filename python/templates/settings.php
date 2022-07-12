@@ -44,9 +44,21 @@ if(isset($_SESSION["idUser"])){
                 alert("Bitte eine Kategorie auswählen");
             }
         }
+        function backgroundRandomizer(){
+            setInterval(function () {
+                var rndChars = "abcdefghijklmnopqrstuwvxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+                let allRndChars = document.querySelectorAll(".rndChar");
+                console.log(allRndChars);
+                for(let i=0;i<allRndChars.length;i++){
+                    let rndChar= rndChars[Math.floor(Math.random() * rndChars.length)];
+                    allRndChars[i].innerHTML = rndChar
+                }
+            }, 22000);
+        }
     </script>
 </head>
-<body class="area">
+<body class="area" onload="backgroundRandomizer()">
     <form action="login_system/logout_script.php" method='post' id='logoutForm'>
         <input type="submit" id="logout" value="Logout"></button>
         <p id='loginUserHello'>Hallo <?=$_SESSION["idUser"] ?></p>
@@ -80,22 +92,22 @@ if(isset($_SESSION["idUser"])){
     <ul class="circles">
         <li></li>
         <li></li>
-        <li>3</li>
-        <li>6</li>
-        <li>A</li>
+        <li class="rndChar">a</li>
+        <li class="rndChar">4</li>
+        <li class="rndChar">F</li>
         <li></li>
         <li></li>
         <li></li>
         <li></li>
         <li></li>
         <li></li>
-        <li>B</li>
-        <li>Z</li>
+        <li class="rndChar">K</li>
+        <li class="rndChar">8</li>
         <li></li>
         <li></li>
         <li></li>
-        <li>R</li>
-        <li>u</li>
+        <li class="rndChar">u</li>
+        <li class="rndChar">L</li>
     </ul>
 </body>
 
