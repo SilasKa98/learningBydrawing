@@ -60,9 +60,9 @@ input[type=text], input[type=password] {
     text-align: center;
     font-size: 30pt;
   }
-  .container h3{
+  .container h2{
     text-align: center;
-    font-size: 20pt;
+    font-size: 23pt;
   }
 
   .container h4{
@@ -121,4 +121,20 @@ input[type=text], input[type=password] {
   }
 
 
+  #infoText{
+    font-family: cursive;
+    text-align: center;
+    font-size: 28pt;
+    color: white;
+    position: absolute;
+    left: 9%;
+    font-weight: bold;
+    top: -5%;
+    transform: rotate(-14deg);
+  }
+
+  #smallerInfo{
+    font-size: 15pt;
+    font-weight: inherit;
+  }
 
