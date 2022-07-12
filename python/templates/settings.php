@@ -87,7 +87,7 @@ if(isset($_SESSION["idUser"])){
                 </label><br><br>
                 Intelligentes Lernen: 
                 <label class="switch">
-                    <input type="checkbox" name="falseTraining">
+                    <input type="checkbox" name="intLearning">
                     <span class="slider round"></span>
                 </label><br><br>
                 <input type="hidden" id="choosenCategory" name="category">

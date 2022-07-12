@@ -1,6 +1,41 @@
 <?php
- session_start();
- if(isset($_SESSION["idUser"])){
+include 'db_connector.php';
+session_start();
+if(isset($_SESSION["idUser"])){
+
+    if(isset($_POST["intLearning"])){
+        $inteligentLearning = "on";
+    }else{
+        $inteligentLearning = "off";
+    }
+
+    $weakValues = [];
+    $sql = "select right_answers,wrong_answers,tested_value from learningresults where uuid=? and category=?;";
+    $stmt = mysqli_stmt_init($connection);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+    echo "SQL Statement failed";
+    }else{
+        mysqli_stmt_bind_param($stmt, "ss", $_SESSION["uuid"], $_POST["category"]);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        while ($row = $result->fetch_assoc()) {
+            if($row["wrong_answers"] > 0 && (($row["right_answers"] + $row["wrong_answers"]) / $row["wrong_answers"])<= 2){
+                array_push($weakValues,$row["tested_value"]);
+            }
+        }
+         //TODO lösung finden wenn weakValues kleiner als gesetzte Übungen müssen z.b. die weakValues mit normalen gefüllt werden
+         //evt. db table erstellen für alle Daten (Zahlen, buchstaben etc.) und dann daraus picken?
+        /*
+        if(count($weakValues) < $_POST["repeats"]){
+            $diff = $_POST["repeats"] - count($weakValues);
+            while($diff > 0){
+                $diff--;
+                array_push($weakValues,)
+            }
+        }*/
+        $convWeakValues = implode(",",$weakValues);
+    }
+
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +56,7 @@
     <input type="hidden" id="selectedCategory" value="<?= $_POST["category"]?>">
     <input type="hidden" id="selectedRepeats" value="<?= $_POST["repeats"]?>">
     <input type="hidden" id="uuid" value="<?= $_SESSION["uuid"]?>">
+    <input type="hidden" id="intLearning" value="<?= $inteligentLearning ?>">
     Zeichnen Sie ein: <div id="task"></div>
     <img src="media/speaker.svg" width="50px" height="50px" id="playAudio" onclick="textToSpeech()">
     <div id="canvasWrapper"></div>
@@ -150,13 +186,19 @@ $("#resetBtn").click(async function () {
 
 function categoryChooser(){
     let choosenCategory = document.getElementById("selectedCategory").value;
+    let checkIntLearning = document.getElementById("intLearning").value;
     switch (choosenCategory){
     case "Formen":
         break;
     case "Buchstaben":
         break;
     case "Zahlen":
-        let data = ["Null","Eins","Zwei","Drei","Vier","Fünf","Sechs","Sieben","Acht","Neun"];
+        if(checkIntLearning == "off"){
+            var data = ["Null","Eins","Zwei","Drei","Vier","Fünf","Sechs","Sieben","Acht","Neun"];
+        }else{
+            let weakValues = "<?php echo $convWeakValues;?>";
+            var data = weakValues.split(",");
+        }
         var rndSel = data[Math.floor(Math.random() * data.length)];
         document.getElementById("task").innerHTML = rndSel;
         break;
@@ -251,7 +293,7 @@ function digitsProcessResult(r){
         resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+number+" anstatt einer "+drawnNumber+" gezeichnet.";
         answerResult = 0;
     }
-    saveLearningResult(drawnNumber, answerResult);
+    saveLearningResult(taskField.innerHTML, answerResult);
 }
 
 function saveLearningResult(data,result){
