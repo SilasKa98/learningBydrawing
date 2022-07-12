@@ -9,9 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="tf.min.js"></script>
+    <script src="externScripts/tf.min.js"></script>
 </head>
 <body onload="categoryChooser()">
     <div>
@@ -22,7 +22,7 @@
     <input type="hidden" id="selectedRepeats" value="<?= $_POST["repeats"]?>">
     <input type="hidden" id="uuid" value="<?= $_SESSION["uuid"]?>">
     Zeichnen Sie ein: <div id="task"></div>
-    <img src="speaker.svg" width="50px" height="50px" id="playAudio" onclick="textToSpeech()">
+    <img src="media/speaker.svg" width="50px" height="50px" id="playAudio" onclick="textToSpeech()">
     <div id="canvasWrapper"></div>
     <button id="doPredict">Predict</button>
     <button id="resetBtn">Reset</button>

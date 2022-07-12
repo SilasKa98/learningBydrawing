@@ -9,10 +9,10 @@ if(isset($_SESSION["idUser"])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="background.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/background.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="tf.min.js"></script>
+    <script src="externScripts/tf.min.js"></script>
     <script>
         function highliteCategory(e){
             let clickedBox = e;
