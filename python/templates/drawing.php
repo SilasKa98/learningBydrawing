@@ -257,7 +257,6 @@ function preprocessCanvas(image) {
 }
 
 $("#doPredict").click(async function () {
-
     // get image data from canvas
     const imageData = context.getImageData(
       0,
@@ -275,7 +274,7 @@ $("#doPredict").click(async function () {
     // get the model's prediction results
     let results = Array.from(predictions);
  
-    //call the result method for the correct model (maybe can be done in one result function)
+    //call the result method for the correct model (maybe can be done in one result function) 
     let choosenCategory = document.getElementById("selectedCategory").value;
     switch (choosenCategory){
     case "Formen":
@@ -288,6 +287,7 @@ $("#doPredict").click(async function () {
     case "Japanisch":
         break;
     }
+    saveDrawnImage(choosenCategory);
 
 });
 
@@ -336,6 +336,7 @@ function saveLearningResult(data,result){
         url: "backend.php",
         data: {
             data: data,
+            method: "learningResults",
             result: result,
             category: category,
             uuid: uuid
@@ -347,6 +348,26 @@ function saveLearningResult(data,result){
 		}
 	});
 }   
+
+
+function saveDrawnImage(cat){
+    var dataURL = canvas.toDataURL();
+    $.ajax({
+        type: "POST",
+        url: "backend.php",
+        data: {
+            category: cat,
+            method: "saveDrawing",
+            imgBase64: dataURL,
+            date: new Date().toDateString()
+        },
+        success: function(result, message, response) {
+			console.log(result);
+            console.log(message);
+            console.log(response);
+		}
+	});
+}
 
 function textToSpeech(){
     let fetchedText = document.getElementById("task").innerHTML;
