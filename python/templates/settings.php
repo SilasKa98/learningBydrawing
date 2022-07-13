@@ -66,6 +66,7 @@ if(isset($_SESSION["idUser"])){
     <h1 id="headline">Einstellungen</h1>
     <div class="content">
         <div id="categoryWrapper">
+            <!--Later fetch the categorys from the database here: corresponding table is "datasets"-->
             <div class="category" onclick="highliteCategory(this)">
                 <p>Formen</p>
             </div>
@@ -95,6 +96,7 @@ if(isset($_SESSION["idUser"])){
     </div>
     <button id="startBtn" onclick="submitForm()">Übung Starten</button>
 
+    <!--for the Background animation-->
     <ul class="circles">
         <li></li>
         <li></li>

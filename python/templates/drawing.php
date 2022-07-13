@@ -78,7 +78,7 @@ if(isset($_SESSION["idUser"])){
     <div id="canvasWrapper"></div>
     <button id="doPredict">Predict</button>
     <button id="resetBtn">Reset</button>
-    <button id="next" onclick="categoryChooser()">next</button>
+    <button id="next" onclick="categoryChooser()" style="display:none;">next</button>
     <div id="result"></div>
 </body>
 </html>
@@ -203,6 +203,9 @@ function categoryChooser(){
     let selectedRepeats = parseInt(document.getElementById("selectedRepeats").value);
     let checkIntLearning = document.getElementById("intLearning").value;
 
+    //hide the next button again till the next predict is done
+    document.getElementById("next").style.display = "none";
+    
     //display the currentRun and the selectedRepeat for the user
     document.getElementById("repeatsDisp").innerHTML = currentRun+"/"+selectedRepeats;
     if(selectedRepeats>=currentRun){
@@ -287,17 +290,15 @@ $("#doPredict").click(async function () {
     case "Japanisch":
         break;
     }
+    //call function to save the drawn image
     saveDrawnImage(choosenCategory);
-
+    document.getElementById("next").style.display = "inline";
 });
 
 function digitsProcessResult(r){
 
     let odd = Math.max(...r);
     let number = r.indexOf(odd);
-
-    console.log(odd);
-    console.log(number);
 
     let resultField = document.getElementById("result");
     let taskField = document.getElementById("task");
