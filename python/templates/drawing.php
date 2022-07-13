@@ -3,6 +3,20 @@ include 'db_connector.php';
 session_start();
 if(isset($_SESSION["idUser"])){
 
+    //get dataset of the choosen category
+    $sql = "select * from datasets where category=?;";
+    $stmt = mysqli_stmt_init($connection);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+    echo "SQL Statement failed";
+    }else{
+        mysqli_stmt_bind_param($stmt, "s",$_POST["category"]);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        while ($row = $result->fetch_assoc()) {
+            $dataset = $row["data"];
+        }
+    }
+
     if(isset($_POST["intLearning"])){
         $inteligentLearning = "on";
     }else{
@@ -23,19 +37,19 @@ if(isset($_SESSION["idUser"])){
                 array_push($weakValues,$row["tested_value"]);
             }
         }
-         //TODO lösung finden wenn weakValues kleiner als gesetzte Übungen müssen z.b. die weakValues mit normalen gefüllt werden
-         //evt. db table erstellen für alle Daten (Zahlen, buchstaben etc.) und dann daraus picken?
-        /*
+        //Random take numbers from the dataset if the total number of values for intelligent learning is too less
+        $datasetArr = explode(",",$dataset);
         if(count($weakValues) < $_POST["repeats"]){
             $diff = $_POST["repeats"] - count($weakValues);
             while($diff > 0){
                 $diff--;
-                array_push($weakValues,)
+                $rndChoosenKey = array_rand($datasetArr, 1);
+                array_push($weakValues,$datasetArr[$rndChoosenKey]);
             }
-        }*/
+        }
         $convWeakValues = implode(",",$weakValues);
     }
-
+    echo "all: ".$convWeakValues;
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,21 +66,25 @@ if(isset($_SESSION["idUser"])){
     <div>
         <p>Kategorie: <?= $_POST["category"]?></p>
         <p>Anzahl der Übungen: <?= $_POST["repeats"]?></p>
+        <p>Intelligentes lernen: <?= $inteligentLearning?></p>
+        <p id="displayCurrentRepeat">Durchlauf:<span id="repeatsDisp"></span></p>
     </div>
     <input type="hidden" id="selectedCategory" value="<?= $_POST["category"]?>">
     <input type="hidden" id="selectedRepeats" value="<?= $_POST["repeats"]?>">
     <input type="hidden" id="uuid" value="<?= $_SESSION["uuid"]?>">
     <input type="hidden" id="intLearning" value="<?= $inteligentLearning ?>">
-    Zeichnen Sie ein: <div id="task"></div>
+    Zeichnen Sie eine: <div id="task"></div>
     <img src="media/speaker.svg" width="50px" height="50px" id="playAudio" onclick="textToSpeech()">
     <div id="canvasWrapper"></div>
     <button id="doPredict">Predict</button>
     <button id="resetBtn">Reset</button>
+    <button id="next" onclick="categoryChooser()">next</button>
     <div id="result"></div>
 </body>
 </html>
 <script>
- 
+
+var currentRun = 1;
 var canvasWidth = 150;
 var canvasHeight = 150;
 var canvasStrokeStyle = "white";
@@ -79,7 +97,6 @@ var clickX = new Array();
 var clickY = new Array();
 var clickD = new Array();
 var drawing;
-var categorie = document.getElementById("categorie");
 
 
 // Create the canvas
@@ -140,8 +157,6 @@ function addUserGesture(x, y, dragging) {
         clickX.push(x);
         clickY.push(y);
         clickD.push(dragging);
-    }else{
-        categorie.style.border = "2px solid red";
     }
 }
 
@@ -167,14 +182,13 @@ function drawOnCanvas() {
 }
 
 // clear the canvas and the categorie selection
-$("#resetBtn").click(async function () {
+$("#next").click(async function () {
     context.clearRect(0, 0, canvasWidth, canvasHeight);
     clickX = new Array();
     clickY = new Array();
     clickD = new Array();
-    categorie.selectedIndex = 0;
-    document.getElementById("result").innerHTML = "";
-    document.getElementById("task").innerHTML = "";
+    //document.getElementById("result").innerHTML = "";
+    //document.getElementById("task").innerHTML = "";
 });
 
 //---------------------------------------------------------//
@@ -185,25 +199,40 @@ $("#resetBtn").click(async function () {
 
 
 function categoryChooser(){
-    let choosenCategory = document.getElementById("selectedCategory").value;
+    let selectedCategory = document.getElementById("selectedCategory").value;
+    let selectedRepeats = parseInt(document.getElementById("selectedRepeats").value);
     let checkIntLearning = document.getElementById("intLearning").value;
-    switch (choosenCategory){
-    case "Formen":
-        break;
-    case "Buchstaben":
-        break;
-    case "Zahlen":
-        if(checkIntLearning == "off"){
-            var data = ["Null","Eins","Zwei","Drei","Vier","Fünf","Sechs","Sieben","Acht","Neun"];
-        }else{
-            let weakValues = "<?php echo $convWeakValues;?>";
-            var data = weakValues.split(",");
+
+    //display the currentRun and the selectedRepeat for the user
+    document.getElementById("repeatsDisp").innerHTML = currentRun+"/"+selectedRepeats;
+    if(selectedRepeats>=currentRun){
+        console.log("true");
+        switch (selectedCategory){
+            case "Formen":
+                break;
+            case "Buchstaben":
+                break;
+            case "Zahlen":
+                if(checkIntLearning == "off"){
+                    let allValues = "<?php echo $dataset;?>";
+                    var data = allValues.split(",");
+                    var learningSelection = data[Math.floor(Math.random() * data.length)];
+                }else{
+                    let weakValues = "<?php echo $convWeakValues;?>";
+                    var data = weakValues.split(",");
+                    var learningSelection = data[currentRun-1];
+                }
+                document.getElementById("task").innerHTML = learningSelection;
+                break;
+            case "Japanisch":
+                break;
         }
-        var rndSel = data[Math.floor(Math.random() * data.length)];
-        document.getElementById("task").innerHTML = rndSel;
-        break;
-    case "Japanisch":
-        break;
+        currentRun++;
+    }else{
+        //alert placeholder --> maybe add some stats showcase and call the setting page later with another button
+        alert("Übung abgeschlossen sehr gut !");
+        window.location.href = "settings.php"
+        
     }
 }
 
@@ -228,6 +257,7 @@ function preprocessCanvas(image) {
 }
 
 $("#doPredict").click(async function () {
+
     // get image data from canvas
     const imageData = context.getImageData(
       0,
@@ -245,6 +275,7 @@ $("#doPredict").click(async function () {
     // get the model's prediction results
     let results = Array.from(predictions);
  
+    //call the result method for the correct model (maybe can be done in one result function)
     let choosenCategory = document.getElementById("selectedCategory").value;
     switch (choosenCategory){
     case "Formen":
