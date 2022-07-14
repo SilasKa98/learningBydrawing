@@ -1,0 +1,151 @@
+
+/*
+#canvasWrapper{
+    width: fit-content;
+    position: absolute;
+    top: 24%;
+    left: 37%;
+}
+
+#infoDisplay{
+    width: fit-content;
+    position: absolute;
+    top: 30%;
+    left: 8%;
+}
+
+#taskWrapper{
+    width: fit-content;
+    position: absolute;
+    top: 53%;
+    left: 8%;
+}
+
+#playAudio{
+    margin-bottom: -5px;
+}
+
+#task{
+    font-weight: bold;
+}
+
+#canvas{
+    width: 90%;
+}
+
+#doPredict{
+
+}
+*/
+
+body{
+    font-family: sans-serif;
+}
+
+#wrapper1{
+    float: left;
+    margin-right: 10%;
+    margin-left: 4%;
+    padding: 5%;
+    margin-top: 5%;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+    background-color: rgb(235 235 235);
+    border-radius: 15px;
+}
+
+#canvas{
+    cursor: crosshair;
+}
+
+#pieChartWrapper{
+    float: right;
+    margin-right: 4%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-top: 7%;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+    background-color: rgb(235 235 235);
+    border-radius: 15px;
+    display: none;
+}
+
+#pieChartWrapper h2{
+    text-align: center;
+}
+
+#contentWrapper{
+    width: 100%;
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#infoDisplay{
+    margin-bottom: 100%;
+}
+
+#headline{
+    color: white;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-align: center;
+}
+
+#canvasWrapper{
+    float: left;
+    margin-top: 5%;
+}
+
+#task{
+    font-weight: bold;
+    font-size: 17pt;
+}
+
+#taskWrapper{
+    padding: 9%;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    border-radius: 9px;
+    width: 100%;
+    text-align: center;
+    margin-left: -16px;
+    background: white;
+}
+
+
+#btnWrapper button{
+    float: right;
+    margin-left: 3%;
+    background-color: #414141;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#btnWrapper button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    padding: 7px 12px;
+}
+
+#result{
+    text-align: center;
+    margin-top: 3%;
+    font-size: 16pt;
+}
+
+#playAudio{
+    cursor: pointer;
+    margin-bottom: -5px;
+}

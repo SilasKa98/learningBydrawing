@@ -49,7 +49,6 @@ if(isset($_SESSION["idUser"])){
         }
         $convWeakValues = implode(",",$weakValues);
     }
-    echo "all: ".$convWeakValues;
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,37 +57,71 @@ if(isset($_SESSION["idUser"])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/drawingStyle.css">
+    <link rel="stylesheet" href="styles/background.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <!--<script src="externScripts/tf.min.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
 </head>
-<body onload="categoryChooser()">
-    <div>
-        <p>Kategorie: <?= $_POST["category"]?></p>
-        <p>Anzahl der Übungen: <?= $_POST["repeats"]?></p>
-        <p>Intelligentes lernen: <?= $inteligentLearning?></p>
-        <p id="displayCurrentRepeat">Durchlauf:<span id="repeatsDisp"></span></p>
+<body class="area" onload="categoryChooser()">
+    <h1 id="headline"><?= $_POST["category"]?> lernen</h1>
+    <div id="contentWrapper">
+        <div id="wrapper1">
+            <div id="infoDisplay">
+                <p>Kategorie: <?= $_POST["category"]?></p>
+                <p>Anzahl der Übungen: <?= $_POST["repeats"]?></p>
+                <p>Intelligentes lernen: <?= $inteligentLearning?></p>
+                <p id="displayCurrentRepeat">Durchlauf:<span id="repeatsDisp"></span></p>
+            </div>
+            <input type="hidden" id="selectedCategory" value="<?= $_POST["category"]?>">
+            <input type="hidden" id="selectedRepeats" value="<?= $_POST["repeats"]?>">
+            <input type="hidden" id="uuid" value="<?= $_SESSION["uuid"]?>">
+            <input type="hidden" id="intLearning" value="<?= $inteligentLearning ?>">
+            <div id="taskWrapper">
+                <p>Zeichnen Sie eine: <img src="media/speaker.svg" width="20px" height="20px" id="playAudio" onclick="textToSpeech()"></p> 
+                <div id="task"></div>
+            </div>
+        </div>
+        <div id="canvasWrapper">
+            <div id="btnWrapper">
+                <button id="next" onclick="categoryChooser()" style="display:none;">Nächste Übung</button>
+                <button id="doPredict">Zeichnung Überprüfen</button>
+                <button id="resetBtn">Zeichenfeld leeren</button>
+            </div>
+        </div>
+        <div id="pieChartWrapper">
+            <h2>Übung Abgeschlossen</h2>
+            <canvas id="pieChartCanvas" style="width:400px;max-width:400px;display:none;"></canvas>
+            <a href="settings.php" id="endTraining" style="display:none;">Übung Beenden</a>
+            <a href="#" id="redoTraining" style="display:none;" onclick="location.reload()">Übung Wiederholen</a>
+        </div>
     </div>
-    <input type="hidden" id="selectedCategory" value="<?= $_POST["category"]?>">
-    <input type="hidden" id="selectedRepeats" value="<?= $_POST["repeats"]?>">
-    <input type="hidden" id="uuid" value="<?= $_SESSION["uuid"]?>">
-    <input type="hidden" id="intLearning" value="<?= $inteligentLearning ?>">
-    Zeichnen Sie eine: <div id="task"></div>
-    <img src="media/speaker.svg" width="50px" height="50px" id="playAudio" onclick="textToSpeech()">
-    <div id="canvasWrapper"></div>
-    <button id="doPredict">Predict</button>
-    <button id="resetBtn">Reset</button>
-    <button id="next" onclick="categoryChooser()" style="display:none;">next</button>
     <div id="result"></div>
 
     <!--downscale attempt-->
     <!--<canvas id="small" width="150px" height="150px" style="background-color:black; color: white;"></canvas> -->
-    <div id="pieChartWrapper">
-        <canvas id="pieChartCanvas" style="width:100%;max-width:600px;display:none;"></canvas>
-        <a href="settings.php" id="endTraining" style="display:none;">Übung Beenden</a>
-    </div>
+
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li class="rndChar">a</li>
+        <li class="rndChar">4</li>
+        <li class="rndChar">F</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="rndChar">K</li>
+        <li class="rndChar">8</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="rndChar">u</li>
+        <li class="rndChar">L</li>
+    </ul>
 </body>
 </html>
 <script>
@@ -117,7 +150,7 @@ canvas.setAttribute("width", canvasWidth);
 canvas.setAttribute("height", canvasHeight);
 canvas.setAttribute("id", canvasId);
 canvas.style.backgroundColor = canvasBackgroundColor;
-canvasBox.appendChild(canvas);
+canvasBox.prepend(canvas);
 if(typeof G_vmlCanvasManager != 'undefined') {
   canvas = G_vmlCanvasManager.initElement(canvas);
 }
@@ -217,6 +250,11 @@ function categoryChooser(){
 
     //hide the next button again till the next predict is done
     document.getElementById("next").style.display = "none";
+
+    //check if its the last run
+    if(selectedRepeats == currentRun){
+        document.getElementById("next").innerHTML = "Übung abschließen";
+    }
     
     //display the currentRun and the selectedRepeat for the user
     document.getElementById("repeatsDisp").innerHTML = currentRun+"/"+selectedRepeats;
@@ -236,6 +274,8 @@ function categoryChooser(){
                     let weakValues = "<?php echo $convWeakValues;?>";
                     var data = weakValues.split(",");
                     var learningSelection = data[currentRun-1];
+                    console.log(data);
+                    console.log(learningSelection);
                 }
                 document.getElementById("task").innerHTML = learningSelection;
                 break;
@@ -248,6 +288,8 @@ function categoryChooser(){
         //alert("Übung abgeschlossen sehr gut !");
         document.getElementById("pieChartCanvas").style.display = "block";
         document.getElementById("endTraining").style.display = "block";
+        document.getElementById("redoTraining").style.display = "block";
+        document.getElementById("pieChartWrapper").style.display = "block";
         drawPieChart();
         //window.location.href = "settings.php"
         
@@ -448,8 +490,9 @@ function drawPieChart(){
     },
     options: {
         title: {
-        display: true,
-        text: "Übersicht Ihrer Ergebnisse"
+            display: true,
+            text: "Übersicht Ihrer Ergebnisse",
+            fontSize: 18
         }
     }
     });
