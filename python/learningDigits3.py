@@ -54,7 +54,7 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 training_history = model.fit(
     train_img, # input
     train_label, # output
-    batch_size=16,
+    batch_size=8,
     verbose=1, # Suppress chatty output; use Tensorboard instead
     epochs=num_epochs,
     validation_data=(test_img,test_label)

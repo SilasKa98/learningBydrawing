@@ -152,6 +152,10 @@ background: #91a4ad;
   cursor: pointer;
 }
 
+#pieChart{
+  width: 200px;
+  height: 200px; 
+}
 
 
 /*slider (checkbox) settings*/
@@ -215,3 +219,4 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+

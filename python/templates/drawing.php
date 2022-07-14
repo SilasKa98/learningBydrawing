@@ -60,7 +60,9 @@ if(isset($_SESSION["idUser"])){
     <title>Document</title>
     <link rel="stylesheet" href="styles/styles.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="externScripts/tf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!--<script src="externScripts/tf.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
 </head>
 <body onload="categoryChooser()">
     <div>
@@ -80,16 +82,24 @@ if(isset($_SESSION["idUser"])){
     <button id="resetBtn">Reset</button>
     <button id="next" onclick="categoryChooser()" style="display:none;">next</button>
     <div id="result"></div>
+
+    <!--downscale attempt-->
+    <!--<canvas id="small" width="150px" height="150px" style="background-color:black; color: white;"></canvas> -->
+    <div id="pieChartWrapper">
+        <canvas id="pieChartCanvas" style="width:100%;max-width:600px;display:none;"></canvas>
+        <a href="settings.php" id="endTraining" style="display:none;">Übung Beenden</a>
+    </div>
 </body>
 </html>
 <script>
 
 var currentRun = 1;
-var canvasWidth = 150;
-var canvasHeight = 150;
+
+var canvasWidth = 600;
+var canvasHeight = 600;
 var canvasStrokeStyle = "white";
 var canvasLineJoin = "round";
-var canvasLineWidth = 10;
+var canvasLineWidth = 30;
 var canvasBackgroundColor = "black";
 var canvasId = "canvas";
 
@@ -197,6 +207,8 @@ $("#next").click(async function () {
 
 
 
+var totalRight = 0;
+var totalWrong = 0;
 
 function categoryChooser(){
     let selectedCategory = document.getElementById("selectedCategory").value;
@@ -233,8 +245,11 @@ function categoryChooser(){
         currentRun++;
     }else{
         //alert placeholder --> maybe add some stats showcase and call the setting page later with another button
-        alert("Übung abgeschlossen sehr gut !");
-        window.location.href = "settings.php"
+        //alert("Übung abgeschlossen sehr gut !");
+        document.getElementById("pieChartCanvas").style.display = "block";
+        document.getElementById("endTraining").style.display = "block";
+        drawPieChart();
+        //window.location.href = "settings.php"
         
     }
 }
@@ -256,27 +271,68 @@ function preprocessCanvas(image) {
         .expandDims(2)
         .expandDims()
         .toFloat();
+
+    console.log(tensor.shape);
+
     return tensor.div(255.0);
 }
 
 $("#doPredict").click(async function () {
     // get image data from canvas
+    /*
     const imageData = context.getImageData(
       0,
       0,
       canvas.width,
       canvas.height
     );
+    */
 
-    //alternativly parse the canvas direct to function preprocessCanvas (works a bit worse somehow)
+    //attemp to downscale the canvas context by using another canvas
+    /*
+    const smallCanvas = document.getElementById("small");
+    const smallContext = smallCanvas.getContext("2d");   
+    smallContext.scale(0.25, 0.25);
+    smallContext.drawImage(canvas, 0, 0); 
+    const smallImageData = smallContext.getImageData(0, 0, smallCanvas.width, smallCanvas.height);
+    */
+
+
+    //rescaling
+    //get only the drawn are and not the free space around
+    var minX = Math.min.apply(Math, clickX) - 200;
+    var maxX = Math.max.apply(Math, clickX) + 200;
+    
+    var minY = Math.min.apply(Math, clickY) - 200;
+    var maxY = Math.max.apply(Math, clickY) + 200;
+
+    var tempCanvas = document.createElement("canvas"),
+    tCtx = tempCanvas.getContext("2d");
+   // tempCanvas.style.backgroundColor = "black";
+    tempCanvas.width  = maxX - minX;
+    tempCanvas.height = maxY - minY;
+    console.log(tempCanvas.width);
+    console.log(tempCanvas.height);
+   // tCtx.strokeStyle = "white";
+    tCtx.drawImage(canvas, minX, minY, maxX - minX, maxY - minY, 0, 0, maxX - minX, maxY - minY);
+
+    const imageDataRescaled = tCtx.getImageData(
+      0,
+      0,
+      tempCanvas.width,
+      tempCanvas.height
+    );
+
+
+    //alternativly parse the canvas direct to function preprocessCanvas 
+    let tensor = preprocessCanvas(imageDataRescaled);
     // preprocess canvas
-    let tensor = preprocessCanvas(imageData);
+    //let tensor = preprocessCanvas(imageData);
     // make predictions on the preprocessed image tensor
     let predictions = await model.predict(tensor).data();
     let output = model.predict(tensor).data();
     // get the model's prediction results
     let results = Array.from(predictions);
- 
     //call the result method for the correct model (maybe can be done in one result function) 
     let choosenCategory = document.getElementById("selectedCategory").value;
     switch (choosenCategory){
@@ -321,10 +377,13 @@ function digitsProcessResult(r){
     if(drawnNumber == number){
         resultField.innerHTML = "Richtig ! Sehr gut, Sie haben eine "+number+" gezeichnet. <br> Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
         answerResult = 1;
+        totalRight++;
     }else{
         resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+number+" anstatt einer "+drawnNumber+" gezeichnet.";
         answerResult = 0;
+        totalWrong++;
     }
+    var foo = "Test";
     saveLearningResult(taskField.innerHTML, answerResult);
 }
 
@@ -368,6 +427,32 @@ function saveDrawnImage(cat){
             console.log(response);
 		}
 	});
+}
+
+function drawPieChart(){
+    var xValues = ["Richtige Antworten", "Falsche Antworten",];
+    var yValues = [totalRight, totalWrong];
+    var barColors = [
+    "#109d1b",
+    "#cb3c3c"
+    ];
+
+    new Chart("pieChartCanvas", {
+    type: "pie",
+    data: {
+        labels: xValues,
+        datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+        }]
+    },
+    options: {
+        title: {
+        display: true,
+        text: "Übersicht Ihrer Ergebnisse"
+        }
+    }
+    });
 }
 
 function textToSpeech(){
