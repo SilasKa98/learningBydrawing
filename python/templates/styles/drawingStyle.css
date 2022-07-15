@@ -94,6 +94,7 @@ body{
     letter-spacing: -1px;
     line-height: 1;
     text-align: center;
+    margin-bottom: 0;
 }
 
 #canvasWrapper{

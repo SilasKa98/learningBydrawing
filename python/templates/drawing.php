@@ -102,6 +102,7 @@ if(isset($_SESSION["idUser"])){
     <!--downscale attempt-->
     <!--<canvas id="small" width="150px" height="150px" style="background-color:black; color: white;"></canvas> -->
 
+    
     <ul class="circles">
         <li></li>
         <li></li>
@@ -122,11 +123,13 @@ if(isset($_SESSION["idUser"])){
         <li class="rndChar">u</li>
         <li class="rndChar">L</li>
     </ul>
+
 </body>
 </html>
 <script>
 
 var currentRun = 1;
+var selectedCategory = document.getElementById("selectedCategory").value;
 
 var canvasWidth = 600;
 var canvasHeight = 600;
@@ -224,8 +227,8 @@ function drawOnCanvas() {
 	}
 }
 
-// clear the canvas and the categorie selection
-$("#next").click(async function () {
+// clear the canvas 
+$("#next, #resetBtn").click(async function () {
     context.clearRect(0, 0, canvasWidth, canvasHeight);
     clickX = new Array();
     clickY = new Array();
@@ -244,12 +247,14 @@ var totalRight = 0;
 var totalWrong = 0;
 
 function categoryChooser(){
-    let selectedCategory = document.getElementById("selectedCategory").value;
     let selectedRepeats = parseInt(document.getElementById("selectedRepeats").value);
     let checkIntLearning = document.getElementById("intLearning").value;
 
     //hide the next button again till the next predict is done
     document.getElementById("next").style.display = "none";
+
+    //hide the result when next run is starting
+    document.getElementById("result").style.display = "none";
 
     //check if its the last run
     if(selectedRepeats == currentRun){
@@ -259,11 +264,21 @@ function categoryChooser(){
     //display the currentRun and the selectedRepeat for the user
     document.getElementById("repeatsDisp").innerHTML = currentRun+"/"+selectedRepeats;
     if(selectedRepeats>=currentRun){
-        console.log("true");
+        //this switch case can be removed and the logic of "zahlen" should be capeable for all cases
         switch (selectedCategory){
             case "Formen":
                 break;
             case "Buchstaben":
+                if(checkIntLearning == "off"){
+                    let allValues = "<?php echo $dataset;?>";
+                    var data = allValues.split(",");
+                    var learningSelection = data[Math.floor(Math.random() * data.length)];
+                }else{
+                    let weakValues = "<?php echo $convWeakValues;?>";
+                    var data = weakValues.split(",");
+                    var learningSelection = data[currentRun-1];
+                }
+                document.getElementById("task").innerHTML = learningSelection;
                 break;
             case "Zahlen":
                 if(checkIntLearning == "off"){
@@ -274,8 +289,6 @@ function categoryChooser(){
                     let weakValues = "<?php echo $convWeakValues;?>";
                     var data = weakValues.split(",");
                     var learningSelection = data[currentRun-1];
-                    console.log(data);
-                    console.log(learningSelection);
                 }
                 document.getElementById("task").innerHTML = learningSelection;
                 break;
@@ -291,6 +304,9 @@ function categoryChooser(){
         document.getElementById("redoTraining").style.display = "block";
         document.getElementById("pieChartWrapper").style.display = "block";
         drawPieChart();
+
+        document.getElementById("doPredict").style.display = "none";
+        document.getElementById("resetBtn").style.display = "none";
         //window.location.href = "settings.php"
         
     }
@@ -300,7 +316,14 @@ async function loadModel() {
     // clear the model variable
     model = undefined; 
     // load the model using a HTTPS request (where you have stored your model files)
-    model = await tf.loadLayersModel("../saved_models/model.json");
+    switch (selectedCategory){
+        case "Zahlen":
+            model = await tf.loadLayersModel("../saved_models/zahlen/model.json")
+            break;
+        case "Buchstaben":
+            model = await tf.loadLayersModel("../saved_models/buchstaben/model.json")
+            break;
+    }
 }
 
 loadModel();
@@ -376,11 +399,12 @@ $("#doPredict").click(async function () {
     // get the model's prediction results
     let results = Array.from(predictions);
     //call the result method for the correct model (maybe can be done in one result function) 
-    let choosenCategory = document.getElementById("selectedCategory").value;
-    switch (choosenCategory){
+   // let choosenCategory = document.getElementById("selectedCategory").value;
+    switch (selectedCategory){
     case "Formen":
         break;
     case "Buchstaben":
+        alphabetProcessResult(results);
         break;
     case "Zahlen":
         digitsProcessResult(results);
@@ -389,8 +413,11 @@ $("#doPredict").click(async function () {
         break;
     }
     //call function to save the drawn image
-    saveDrawnImage(choosenCategory);
+    saveDrawnImage(selectedCategory);
+
+    //show the next button and the results again
     document.getElementById("next").style.display = "inline";
+    document.getElementById("result").style.display = "block";
 });
 
 function digitsProcessResult(r){
@@ -425,12 +452,52 @@ function digitsProcessResult(r){
         answerResult = 0;
         totalWrong++;
     }
-    var foo = "Test";
+    saveLearningResult(taskField.innerHTML, answerResult);
+}
+
+
+function alphabetProcessResult(r){
+    console.log(r);
+    let odd = Math.max(...r);
+    let number = r.indexOf(odd);
+
+    //half of the array needs to be cut, so there are only 26 chars 
+    let alphabet = "<?php echo $dataset;?>";
+    alphabet = alphabet.split(",");
+
+    //-1 because the first one is a space
+    let drawnLetter = alphabet[number-1]
+    console.log(drawnLetter);
+
+    let resultField = document.getElementById("result");
+    let taskField = document.getElementById("task");
+    let answerResult = undefined;
+
+    let disiredResult;
+    let checkChar;
+    if(taskField.innerHTML == taskField.innerHTML.toUpperCase()){
+        console.log("rein");
+        disiredResult = taskField.innerHTML.toLowerCase();
+        checkChar = drawnLetter.toLowerCase();
+    }else{
+        disiredResult = taskField.innerHTML.toUpperCase();
+        checkChar = drawnLetter.toUpperCase();
+    }
+   
+    //lowercase and upper case cant be working with this solution, because the model is handling upper and lower in the same class...
+    if(checkChar == disiredResult){
+        resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+disiredResult+" gezeichnet. <br> Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+        answerResult = 1;
+        totalRight++;
+    }else{
+        resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+drawnLetter+" anstatt einer "+disiredResult+" gezeichnet.";
+        answerResult = 0;
+        totalWrong++;
+    }
     saveLearningResult(taskField.innerHTML, answerResult);
 }
 
 function saveLearningResult(data,result){
-    let category = document.getElementById("selectedCategory").value;
     let uuid = document.getElementById("uuid").value;
 
     $.ajax({
@@ -440,7 +507,7 @@ function saveLearningResult(data,result){
             data: data,
             method: "learningResults",
             result: result,
-            category: category,
+            category: selectedCategory,
             uuid: uuid
         },
         success: function(result, message, response) {
