@@ -65,6 +65,7 @@ if(isset($_SESSION["idUser"])){
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
 </head>
 <body class="area" onload="categoryChooser()">
+    <a href="settings.php" id="back_button">zurück</a>
     <h1 id="headline"><?= $_POST["category"]?> lernen</h1>
     <div id="contentWrapper">
         <div id="wrapper1">
