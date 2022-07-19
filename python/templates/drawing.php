@@ -94,8 +94,10 @@ if(isset($_SESSION["idUser"])){
         <div id="pieChartWrapper">
             <h2>Übung Abgeschlossen</h2>
             <canvas id="pieChartCanvas" style="width:400px;max-width:400px;display:none;"></canvas>
-            <a href="settings.php" id="endTraining" style="display:none;">Übung Beenden</a>
-            <a href="#" id="redoTraining" style="display:none;" onclick="location.reload()">Übung Wiederholen</a>
+            <div id="pieChartBtnWrapper">
+                <a href="settings.php" id="endTraining" style="display:none;">Übung Beenden</a>
+                <a href="#" id="redoTraining" style="display:none;" onclick="location.reload()">Übung Wiederholen</a>
+            </div>
         </div>
     </div>
     <div id="result"></div>
@@ -305,34 +307,7 @@ function categoryChooser(){
                     var data = weakValues.split(",");
                     var learningSelection = data[currentRun-1];
                 }
-                /*
-                let codepointCharDict= {
-                    "U+304A": "お",
-                    "U+304D": "き",
-                    "U+3059": "す",
-                    "U+3064": "つ",
-                    "U+306A": "な",
-                    "U+306F": "は",
-                    "U+307E": "ま",
-                    "U+3084": "や",
-                    "U+308C": "れ",
-                    "U+3092": "を"
-                }
-                */
-                let charDict= {
-                    "U+304A": "O",
-                    "U+304D": "Ki",
-                    "U+3059": "Su",
-                    "U+3064": "Tsu",
-                    "U+306A": "Na",
-                    "U+306F": "Ha",
-                    "U+307E": "Ma",
-                    "U+3084": "Ya",
-                    "U+308C": "Re",
-                    "U+3092": "Wo"
-                }
-                let choosenChar = charDict[learningSelection];
-                document.getElementById("task").innerHTML = choosenChar;
+                document.getElementById("task").innerHTML = learningSelection;
                 break;
         }
         currentRun++;
