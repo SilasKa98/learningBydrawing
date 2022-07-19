@@ -69,10 +69,10 @@ if(isset($_SESSION["idUser"])){
     <div id="contentWrapper">
         <div id="wrapper1">
             <div id="infoDisplay">
-                <p>Kategorie: <?= $_POST["category"]?></p>
-                <p>Anzahl der Übungen: <?= $_POST["repeats"]?></p>
-                <p>Intelligentes lernen: <?= $inteligentLearning?></p>
-                <p id="displayCurrentRepeat">Durchlauf:<span id="repeatsDisp"></span></p>
+                <p>Kategorie: <span class="infoCurrent"><?= $_POST["category"]?></span></p>
+                <p>Anzahl der Übungen: <span class="infoCurrent"><?= $_POST["repeats"]?></span></p>
+                <p>Intelligentes lernen: <span class="infoCurrent"><?= $inteligentLearning?></span></p>
+                <p id="displayCurrentRepeat">Durchlauf:<span class="infoCurrent"><span id="repeatsDisp"></span></span></p>
             </div>
             <input type="hidden" id="selectedCategory" value="<?= $_POST["category"]?>">
             <input type="hidden" id="selectedRepeats" value="<?= $_POST["repeats"]?>">
@@ -130,6 +130,8 @@ if(isset($_SESSION["idUser"])){
 
 var currentRun = 1;
 var selectedCategory = document.getElementById("selectedCategory").value;
+var taskField = document.getElementById("task");
+var resultField = document.getElementById("result");
 
 var canvasWidth = 600;
 var canvasHeight = 600;
@@ -292,7 +294,44 @@ function categoryChooser(){
                 }
                 document.getElementById("task").innerHTML = learningSelection;
                 break;
-            case "Japanisch":
+            case "Hiragana":
+                if(checkIntLearning == "off"){
+                    let allValues = "<?php echo $dataset;?>";
+                    var data = allValues.split(",");
+                    var learningSelection = data[Math.floor(Math.random() * data.length)];
+                }else{
+                    let weakValues = "<?php echo $convWeakValues;?>";
+                    var data = weakValues.split(",");
+                    var learningSelection = data[currentRun-1];
+                }
+                /*
+                let codepointCharDict= {
+                    "U+304A": "お",
+                    "U+304D": "き",
+                    "U+3059": "す",
+                    "U+3064": "つ",
+                    "U+306A": "な",
+                    "U+306F": "は",
+                    "U+307E": "ま",
+                    "U+3084": "や",
+                    "U+308C": "れ",
+                    "U+3092": "を"
+                }
+                */
+                let charDict= {
+                    "U+304A": "O",
+                    "U+304D": "Ki",
+                    "U+3059": "Su",
+                    "U+3064": "Tsu",
+                    "U+306A": "Na",
+                    "U+306F": "Ha",
+                    "U+307E": "Ma",
+                    "U+3084": "Ya",
+                    "U+308C": "Re",
+                    "U+3092": "Wo"
+                }
+                let choosenChar = charDict[learningSelection];
+                document.getElementById("task").innerHTML = choosenChar;
                 break;
         }
         currentRun++;
@@ -322,6 +361,9 @@ async function loadModel() {
             break;
         case "Buchstaben":
             model = await tf.loadLayersModel("../saved_models/buchstaben/model.json")
+            break;
+        case "Hiragana":
+            model = await tf.loadLayersModel("../saved_models/hiragana/model.json")
             break;
     }
 }
@@ -409,7 +451,8 @@ $("#doPredict").click(async function () {
     case "Zahlen":
         digitsProcessResult(results);
         break;
-    case "Japanisch":
+    case "Hiragana":
+        hiraganaProcessResult(results);
         break;
     }
     //call function to save the drawn image
@@ -425,8 +468,6 @@ function digitsProcessResult(r){
     let odd = Math.max(...r);
     let number = r.indexOf(odd);
 
-    let resultField = document.getElementById("result");
-    let taskField = document.getElementById("task");
 
     const numberDict = {
         "Null": 0,
@@ -469,8 +510,7 @@ function alphabetProcessResult(r){
     let drawnLetter = alphabet[number-1]
     console.log(drawnLetter);
 
-    let resultField = document.getElementById("result");
-    let taskField = document.getElementById("task");
+
     let answerResult = undefined;
 
     let disiredResult;
@@ -491,6 +531,70 @@ function alphabetProcessResult(r){
         totalRight++;
     }else{
         resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+drawnLetter+" anstatt einer "+disiredResult+" gezeichnet.";
+        answerResult = 0;
+        totalWrong++;
+    }
+    saveLearningResult(taskField.innerHTML, answerResult);
+}
+
+function hiraganaProcessResult(r){
+    console.log(r);
+
+    let odd = Math.max(...r);
+    let number = r.indexOf(odd);
+
+/*
+    let charDict= {
+        "O": "お",
+        "Ki": "き",
+        "Su": "す",
+        "Tsu": "つ",
+        "Na": "な",
+        "Ha": "は",
+        "Ma": "ま",
+        "Ya": "や",
+        "Re": "れ",
+        "Wo": "を"
+    }
+    */
+    let charDict= {
+        "O": 0,
+        "Ki": 1,
+        "Su": 2,
+        "Tsu": 3,
+        "Na": 4,
+        "Ha": 5,
+        "Ma": 6,
+        "Ya": 7,
+        "Re": 8,
+        "Wo": 9
+    }
+
+    let numberToJap= {
+        0: "お",
+        1: "き",
+        2: "す",
+        3: "つ",
+        4: "な",
+        5: "は",
+        6: "ま",
+        7: "や",
+        8: "れ",
+        9: "を"
+    }
+    let taskChar = charDict[taskField.innerHTML];
+    let drawnChar = Object.keys(charDict).find(k=>charDict[k]===number);
+    let key = Object.keys(charDict).find(k=>charDict[k]===taskChar);
+    let japChar = numberToJap[taskChar];
+    let drawnJapChar = numberToJap[number];
+
+    let answerResult = undefined;
+    if(taskChar == number){
+        resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+key+" ("+japChar+") gezeichnet. <br> Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+        answerResult = 1;
+        totalRight++;
+    }else{
+        resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% ein "+drawnChar+" ("+drawnJapChar+") anstatt des "+taskField.innerHTML+" ("+japChar+") gezeichnet.";
         answerResult = 0;
         totalWrong++;
     }

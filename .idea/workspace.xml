@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb016180-689d-41e9-9e1d-488cb80394ce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/python/learningAlphabet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/learningAlphabet2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/learningAlphabet3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/learningAlphabet4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/learningDigits4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python/learningKuzushiji.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python/learningQuickdraw.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/saved_models/group1-shard1of4.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/saved_models/group1-shard2of4.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/saved_models/group1-shard3of4.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/saved_models/group1-shard4of4.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/saved_models/model.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/python/templates/drawing.php" beforeDir="false" afterPath="$PROJECT_DIR$/python/templates/drawing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/styles/background.css" beforeDir="false" afterPath="$PROJECT_DIR$/python/templates/styles/background.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/styles/drawingStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/python/templates/styles/drawingStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/templates/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/python/templates/settings.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +47,7 @@
       <recent name="C:\xampp\htdocs\drawingML\python" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.learningAlphabet3">
+  <component name="RunManager" selected="Python.learningKuzushiji">
     <configuration name="learningAlphabet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="drawingML" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -71,28 +62,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learningAlphabet.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="learningAlphabet2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="drawingML" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learningAlphabet2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -167,13 +136,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="learningKuzushiji" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="drawingML" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learningKuzushiji.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.learningKuzushiji" />
         <item itemvalue="Python.learningAlphabet3" />
         <item itemvalue="Python.learningAlphabet4" />
         <item itemvalue="Python.learningDigits4" />
         <item itemvalue="Python.learningAlphabet" />
-        <item itemvalue="Python.learningAlphabet2" />
       </list>
     </recent_temporary>
   </component>
@@ -191,7 +182,9 @@
       <workItem from="1655893629242" duration="28000" />
       <workItem from="1657748986955" duration="3507000" />
       <workItem from="1657829827873" duration="10323000" />
-      <workItem from="1657841698744" duration="5650000" />
+      <workItem from="1657841698744" duration="5652000" />
+      <workItem from="1657907348045" duration="473000" />
+      <workItem from="1658243141697" duration="3042000" />
     </task>
     <servers />
   </component>
@@ -210,6 +203,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/drawingML$learningKuzushiji.coverage" NAME="learningKuzushiji Coverage Results" MODIFIED="1658245914422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/drawingML$learningAlphabet4.coverage" NAME="learningAlphabet4 Coverage Results" MODIFIED="1657846984408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/drawingML$learningAlphabet.coverage" NAME="learningAlphabet Coverage Results" MODIFIED="1657843226615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/drawingML$learningDigits3.coverage" NAME="learningDigits3 Coverage Results" MODIFIED="1654957428472" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />

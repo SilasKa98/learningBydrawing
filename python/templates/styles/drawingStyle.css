@@ -150,3 +150,7 @@ body{
     cursor: pointer;
     margin-bottom: -5px;
 }
+
+.infoCurrent{
+    font-weight: bold;
+}

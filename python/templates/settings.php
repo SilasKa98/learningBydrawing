@@ -1,6 +1,19 @@
 <?php
 session_start();
 if(isset($_SESSION["idUser"])){
+    include 'db_connector.php';
+    $allCategorys = [];
+    $sql = "select category as cat from datasets;";
+    $stmt = mysqli_stmt_init($connection);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+    echo "SQL Statement failed";
+    }else{
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        while ($row = $result->fetch_assoc()) {
+            array_push($allCategorys,$row["cat"]);
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +28,10 @@ if(isset($_SESSION["idUser"])){
     <script src="externScripts/tf.min.js"></script>
     <script>
         function highliteCategory(e){
+            console.log(e);
+            console.log(e.childNodes[0]);
             let clickedBox = e;
-            let clickedCategory = e.childNodes[1].innerHTML;
+            let clickedCategory = e.childNodes[0].innerHTML;
             let allBtns = document.querySelectorAll(".category");
             for(let i=0;i<allBtns.length;i++){
                 if(allBtns[i].style.backgroundColor == "green"){         
@@ -67,18 +82,13 @@ if(isset($_SESSION["idUser"])){
     <div class="content">
         <div id="categoryWrapper">
             <!--Later fetch the categorys from the database here: corresponding table is "datasets"-->
-            <div class="category" onclick="highliteCategory(this)">
-                <p>Formen</p>
-            </div>
-            <div class="category" onclick="highliteCategory(this)">
-                <p>Buchstaben</p>
-            </div>
-            <div class="category" onclick="highliteCategory(this)">
-                <p>Zahlen</p>
-            </div>
-            <div class="category" onclick="highliteCategory(this)">
-                <p>Japanisch</p>
-            </div>
+            <?php
+                for($i=0;$i<count($allCategorys);$i++){
+                    print '<div class="category" onclick="highliteCategory(this)">';
+                    print'<p>'.$allCategorys[$i].'</p>';
+                    print '</div>';
+                }
+            ?>
         </div>
     </div>
     <div class="content" id="content2">
