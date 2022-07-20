@@ -9,7 +9,7 @@ body{
 
 #learnCardWrapper{
     width: 96%;
-    margin: 3% auto;
+    margin: 1% auto;
     overflow: auto;
 }
 
@@ -39,7 +39,7 @@ body{
 }
 
 .ui-state-active{
-    background: #403b3b;
+    background: #403b3b !important;
 }
 
 .rightBar,.wrongBar,.testedValue{
@@ -123,3 +123,130 @@ body{
     box-shadow: 0 12px 16px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);
 }
 
+
+.dataCards{
+    margin-right: 10px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 1px 3px, rgb(0 0 0 / 24%) 0px 1px 2px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 8px;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    transition: all 0.6s ease-out;
+}
+
+.dataCards:hover{
+    background: #a2a3a5;
+}
+
+.createNewPlan{
+    display: none;
+    margin-top: 1%;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+    background-color: white;
+    padding: 30px;
+    font-size: 15pt;
+    border-radius: 10px;
+}
+
+.createNewBtn{
+    border: none;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+}
+
+.createNewBtn:hover{
+    color: white;
+    background-color: #56af46;
+}
+
+.createdPlan{
+    padding: 2%;
+    max-width: 99%;
+    width: fit-content;
+    overflow: auto;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+    background-color: white;
+    padding: 10px;
+    font-size: 15pt;
+    border-radius: 10px;
+}
+
+.innerPlanElem{
+    margin-right: 10px;
+}
+
+.existingPlans{
+    margin-top: 3%;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+    background-color: white;
+    border-radius: 10px;
+    padding: 8px;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.existingPlans p{
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1%;
+    margin: 10px;
+    overflow: auto;
+}
+
+.learnplanCards{
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.delBtn{
+    float: right;
+    color:  black;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.delBtn:hover{
+    color: #d61414;
+}
+
+.datasets{
+    margin-top: 1%;
+    height: 60px;
+}
+
+.saveBtn{
+    background-color: #414141;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    margin-top: 2%;
+}
+
+.saveBtn:hover{
+    box-shadow: 0 12px 16px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);
+}
+
+
+.ui-tabs{
+    background-image: linear-gradient( 135deg, #43CBFF 10%, #9708CC 100%);
+    border: 1px solid #2196F3 !important;
+}
+
+.ui-widget-header{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    background-color: white;
+    padding: 20px;
+}

@@ -62,4 +62,34 @@ if($_POST["method"] == "saveDrawing"){
     file_put_contents($fileName, $fileData);
 }
 
+
+if($_POST["method"] == "saveLearningPlan"){
+    $category = $_POST["category"];
+    $uuid = $_SESSION["uuid"];
+    $allValues = $_POST["allValues"];
+    $name = $_POST["name"];
+
+    $impAllValues = implode(",",$allValues);
+    $sql3 ="insert into learningplans (uuid,category,data,name) values (?,?,?,?);";
+    $stmt3 = mysqli_stmt_init($connection);
+    if(!mysqli_stmt_prepare($stmt3, $sql3)){
+        echo "SQL error";
+    }else{
+        mysqli_stmt_bind_param($stmt3, "ssss", $uuid, $category, $impAllValues,$name);
+        mysqli_stmt_execute($stmt3);
+    }
+}
+
+
+if($_POST["method"] == "deletePlan"){
+    $delId = $_POST["delid"];
+    $sql3 ="delete from learningplans where id=?;";
+    $stmt3 = mysqli_stmt_init($connection);
+    if(!mysqli_stmt_prepare($stmt3, $sql3)){
+        echo "SQL error";
+    }else{
+        mysqli_stmt_bind_param($stmt3, "s", $delId);
+        mysqli_stmt_execute($stmt3);
+    }
+}
 ?>
