@@ -1,0 +1,55 @@
+body{
+    font-family: sans-serif;
+}
+
+.rightBar,.wrongBar,.testedValue{
+    margin: 0;   
+    display: inline-block;
+    
+}
+
+.rightBar,.wrongBar{
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 17pt;
+    text-align: center;
+    min-width: 9%;
+    max-width: 71%;
+}
+
+.rightBar{
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+.wrongBar{
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+
+
+.testedValue{
+    width: 18%;
+    padding-right: 1%;
+    font-size: 12pt;
+}
+
+.resultWrapper{
+    margin-bottom: 6px;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.ui-accordion-content{
+    border: none !important;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset !important;
+    background-color: white !important;
+    border-radius: 30px;
+    margin: 15px;
+}
+
+

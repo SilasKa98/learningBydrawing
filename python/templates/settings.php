@@ -104,6 +104,7 @@ if(isset($_SESSION["idUser"])){
                 <input type="hidden" id="choosenCategory" name="category">
         </form>
     </div>
+    <a href="resultsAndPlans.php">Ergebnisse & Lernpläne</a>
     <button id="startBtn" onclick="submitForm()">Übung Starten</button>
 
     <!--for the Background animation-->
