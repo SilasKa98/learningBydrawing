@@ -163,7 +163,7 @@ for($i=0;$i<count($categorys);$i++){
     <a href="settings.php" id="back_button">zurück</a>
    <h1 id="headline">Ergebnisse und Lernpläne</h1>
     <div id="accordion">
-    <h2 class="secHeadline">Ihre Ergebnisse</h2>
+    <h2 class="secHeadline">Überprüfe deine bisherigen Lernergebnisse.</h2>
         <?php
          for($i=0;$i<count($categorys);$i++){
             print "<h3 class='accHeader' onclick='fillBars()'>".$categorys[$i]."</h3>";
@@ -200,7 +200,7 @@ for($i=0;$i<count($categorys);$i++){
         ?>
     </div>
     <div id="learnCardWrapper">
-        <h2 class="secHeadline">Ihre Lernpläne</h2>
+        <h2 class="secHeadline">Erstelle oder verwalte deine Lernpläne.</h2>
         <div id="tabs">
             <ul>
                 <?php
