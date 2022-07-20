@@ -211,6 +211,72 @@ function addUserGesture(x, y, dragging) {
     }
 }
 
+
+
+//--------------------------//
+//implementing touch support//
+//--------------------------//
+
+
+//track touch start
+canvas.addEventListener("touchstart", function (e) {
+	if (e.target == canvas) {
+    	e.preventDefault();
+  	}
+
+	var rect = canvas.getBoundingClientRect();
+	var touch = e.touches[0];
+
+	var mouseX = touch.clientX - rect.left;
+	var mouseY = touch.clientY - rect.top;
+
+	drawing = true;
+	addUserGesture(mouseX, mouseY);
+	drawOnCanvas();
+
+}, false);
+
+
+//track touch move
+canvas.addEventListener("touchmove", function (e) {
+	if (e.target == canvas) {
+    	e.preventDefault();
+  	}
+	if(drawing) {
+		var rect = canvas.getBoundingClientRect();
+		var touch = e.touches[0];
+
+		var mouseX = touch.clientX - rect.left;
+		var mouseY = touch.clientY - rect.top;
+
+		addUserGesture(mouseX, mouseY, true);
+		drawOnCanvas();
+	}
+}, false);
+
+
+
+//track touch end
+canvas.addEventListener("touchend", function (e) {
+	if (e.target == canvas) {
+    	e.preventDefault();
+  	}
+	drawing = false;
+}, false);
+
+
+
+//track touch leave
+canvas.addEventListener("touchleave", function (e) {
+	if (e.target == canvas) {
+    	e.preventDefault();
+  	}
+	drawing = false;
+}, false);
+
+
+
+
 // implementing the drawing in the canvas
 function drawOnCanvas() {
 	context.clearRect(0, 0, context.canvas.width, context.canvas.height);
@@ -232,6 +298,7 @@ function drawOnCanvas() {
 	}
 }
 
+
 // clear the canvas 
 $("#next, #resetBtn").click(async function () {
     context.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -241,6 +308,8 @@ $("#next, #resetBtn").click(async function () {
     //document.getElementById("result").innerHTML = "";
     //document.getElementById("task").innerHTML = "";
 });
+
+
 
 //---------------------------------------------------------//
 //               End of Canvas Drawing                     //
@@ -474,15 +543,15 @@ function digitsProcessResult(r){
 
 
 function alphabetProcessResult(r){
+    //PROBLEM: lowercase and upper case cant be checked, because the model is handling upper and lower in the same class...
     console.log(r);
     let odd = Math.max(...r);
     let number = r.indexOf(odd);
 
-    //half of the array needs to be cut, so there are only 26 chars 
     let alphabet = "<?php echo $dataset;?>";
     alphabet = alphabet.split(",");
 
-    //-1 because the first one is a space
+    //-1 because the first one is a space   
     let drawnLetter = alphabet[number-1]
     console.log(drawnLetter);
 
@@ -500,7 +569,6 @@ function alphabetProcessResult(r){
         checkChar = drawnLetter.toUpperCase();
     }
    
-    //lowercase and upper case cant be working with this solution, because the model is handling upper and lower in the same class...
     if(checkChar == disiredResult){
         resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+disiredResult+" gezeichnet. <br> Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
         answerResult = 1;
