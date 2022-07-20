@@ -720,7 +720,7 @@ function textToSpeech(){
     //let voices = window.speechSynthesis.getVoices();
     //msg.voice = voices[8]; 
     msg.volume = 1; // From 0 to 1
-    msg.rate = 0.5; // From 0.1 to 10
+    msg.rate = 0.7; // From 0.1 to 10
     msg.pitch = 1; // From 0 to 2
     msg.text = "Zeichnen Sie eine "+fetchedText;
     msg.lang = 'de';
