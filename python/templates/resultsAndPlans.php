@@ -68,11 +68,13 @@ for($i=0;$i<count($categorys);$i++){
     </style>
 </head>
 <body class="area">
-    <h1>Ihre Ergebnisse</h1>
+    <a href="settings.php" id="back_button">zurück</a>
+   <h1 id="headline">Ergebnisse und Lernpläne</h1>
     <div id="accordion">
+    <h2 class="secHeadline">Ihre Ergebnisse</h2>
         <?php
          for($i=0;$i<count($categorys);$i++){
-            print "<h3 class='accHeader'>".$categorys[$i]."</h3>";
+            print "<h3 class='accHeader' onclick='fillBars()'>".$categorys[$i]."</h3>";
             print "<div>";
                 if(count($testedCategoryValues[$i]) == 0){
                     print "Für diese Kategorie wurden noch keine Lernerfolge aufgezeichnet!";
@@ -86,12 +88,29 @@ for($i=0;$i<count($categorys);$i++){
                             
                             $wrongRatioStyle = (round($wrongRatio)-10);
                             $rightRatioStyle = (round($rightRatio)-10);
-                            print "<div class='resultWrapper'><p class='testedValue'>Getesteter Wert (Anzahl/Prozent): <b>".$testedCategoryValues[$i][$a]."</b></p><p class='rightBar' style='width:".$rightRatioStyle."%;background-color:green;'>".$valueRights[$i][$a]." Richtig (".round($rightRatio,0)."%) </p><p class='wrongBar' style='width:".$wrongRatioStyle."%;background-color:red;'>".$valueWrongs[$i][$a]." Falsch (".round($wrongRatio,0)."%) </p></div>";
+                            $showWrong = "inline-block";
+                            $showRight = "inline-block";
+                            $wrongDelay = "1.4s";
+                            $borderRadiusWrong = "";
+                            $borderRadiusRight = "";
+                            if($rightRatio == 0){
+                                $showRight = "none";
+                                $borderRadiusWrong = "7px";
+                                $wrongDelay = "0s";
+                            }
+                            if($wrongRatio == 0){
+                                $showWrong = "none";
+                                $borderRadiusRight = "7px";
+                            }
+                            print "<div class='resultWrapper'><p class='testedValue'>Getesteter Wert (Anzahl/Prozent): <b>".$testedCategoryValues[$i][$a]."</b></p><p class='rightBar' style='width:".$rightRatioStyle."%;display:".$showRight.";border-radius:".$borderRadiusRight.";'>".$valueRights[$i][$a]." Richtig (".round($rightRatio,0)."%) </p><p class='wrongBar' style='width:".$wrongRatioStyle."%;display:".$showWrong.";border-radius:".$borderRadiusWrong.";transition-delay:".$wrongDelay.";'>".$valueWrongs[$i][$a]." Falsch (".round($wrongRatio,0)."%) </p></div>";
                         }
                 }
             print "</div>";
         }
         ?>
+    </div>
+    <div id="learnCardWrapper">
+        <h2 class="secHeadline">Ihre Lernpläne</h2>
     </div>
     <ul class="circles">
         <li></li>
@@ -113,5 +132,28 @@ for($i=0;$i<count($categorys);$i++){
         <li class="rndChar">u</li>
         <li class="rndChar">L</li>
     </ul>
+    <script>
+        
+        function fillBars(){
+            var allRightBars = document.querySelectorAll(".rightBar");
+            var allWrongBars = document.querySelectorAll(".wrongBar");
+            for(let i=0;i<allRightBars.length;i++){
+                allRightBars[i].style.backgroundPosition = "right bottom";
+            }
+            for(let i=0;i<allWrongBars.length;i++){
+                allWrongBars[i].style.backgroundPosition = "right bottom";
+            }
+            setTimeout(function() {
+                for(let i=0;i<allRightBars.length;i++){
+                    allRightBars[i].style.backgroundPosition = "left bottom";
+                }
+                for(let i=0;i<allWrongBars.length;i++){
+                    allWrongBars[i].style.backgroundPosition = "left bottom";
+                }
+            }, 200);
+        }
+        
+
+    </script>
 </body>
 </html>

@@ -75,8 +75,12 @@ if(isset($_SESSION["idUser"])){
 </head>
 <body class="area" onload="backgroundRandomizer()">
     <form action="login_system/logout_script.php" method='post' id='logoutForm'>
+        <div id="userWrapper" onclick="location.href='resultsAndPlans.php'">
+            <img src="media/circle-user.svg" id="userCircle">
+            <p id='loginUserHello'><?=$_SESSION["idUser"] ?></p>
+        </div>
         <input type="submit" id="logout" value="Logout"></button>
-        <p id='loginUserHello'>Hallo <?=$_SESSION["idUser"] ?></p>
+        
     </form>
     <h1 id="headline">Einstellungen</h1>
     <div class="content">
@@ -104,7 +108,6 @@ if(isset($_SESSION["idUser"])){
                 <input type="hidden" id="choosenCategory" name="category">
         </form>
     </div>
-    <a href="resultsAndPlans.php">Ergebnisse & Lernpläne</a>
     <button id="startBtn" onclick="submitForm()">Übung Starten</button>
 
     <!--for the Background animation-->

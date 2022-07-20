@@ -17,6 +17,16 @@ background: #91a4ad;
     margin: 0 auto;
  }
 
+ #userCircle{
+  width: 40px;
+  height: 40px;
+}
+
+#userWrapper{
+  float: left;
+  cursor: pointer;
+}
+
  #headline{
   margin-bottom: 4%;
   color: white;
@@ -32,6 +42,7 @@ background: #91a4ad;
   position: fixed;
   top: 20px;
   right: 20px;
+  width: 10%;
   color: white;
  }
 
@@ -47,6 +58,7 @@ background: #91a4ad;
   cursor: pointer;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
+  float: right;
  }
 
  #logoutForm input:hover {
@@ -55,6 +67,7 @@ background: #91a4ad;
 
 #logoutForm p{
   text-align: center;
+  margin-top: 5px;
 }
  
  .content{
