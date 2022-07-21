@@ -27,6 +27,11 @@ background: #91a4ad;
   cursor: pointer;
 }
 
+
+#learningPlanSelection{
+  display: none;
+}
+
  #headline{
   margin-bottom: 4%;
   color: white;

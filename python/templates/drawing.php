@@ -3,52 +3,92 @@ include 'db_connector.php';
 session_start();
 if(isset($_SESSION["idUser"])){
 
-    //get dataset of the choosen category
-    $sql = "select * from datasets where category=?;";
-    $stmt = mysqli_stmt_init($connection);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-    echo "SQL Statement failed";
-    }else{
-        mysqli_stmt_bind_param($stmt, "s",$_POST["category"]);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        while ($row = $result->fetch_assoc()) {
-            $dataset = $row["data"];
-        }
-    }
-
+    //check the parameters intlearning and learnplans if its on or off, later needed on a few points to change the used data
     if(isset($_POST["intLearning"])){
         $inteligentLearning = "on";
     }else{
         $inteligentLearning = "off";
     }
 
-    $weakValues = [];
-    $sql = "select right_answers,wrong_answers,tested_value from learningresults where uuid=? and category=?;";
-    $stmt = mysqli_stmt_init($connection);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-    echo "SQL Statement failed";
+    if(isset($_POST["enableLearningplan"])){
+        $enableLearningplan = "on";
     }else{
-        mysqli_stmt_bind_param($stmt, "ss", $_SESSION["uuid"], $_POST["category"]);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        while ($row = $result->fetch_assoc()) {
-            if($row["wrong_answers"] > 0 && (($row["right_answers"] + $row["wrong_answers"]) / $row["wrong_answers"])<= 2){
-                array_push($weakValues,$row["tested_value"]);
-            }
-        }
-        //Random take numbers from the dataset if the total number of values for intelligent learning is too less
-        $datasetArr = explode(",",$dataset);
-        if(count($weakValues) < $_POST["repeats"]){
-            $diff = $_POST["repeats"] - count($weakValues);
-            while($diff > 0){
-                $diff--;
-                $rndChoosenKey = array_rand($datasetArr, 1);
-                array_push($weakValues,$datasetArr[$rndChoosenKey]);
-            }
-        }
-        $convWeakValues = implode(",",$weakValues);
+        $enableLearningplan = "off";
     }
+
+    //when learningplan not selected just load all values possible
+    if($enableLearningplan == "off"){
+        //get dataset of the choosen category
+        $sql = "select * from datasets where category=?;";
+        $stmt = mysqli_stmt_init($connection);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+        echo "SQL Statement failed";
+        }else{
+            mysqli_stmt_bind_param($stmt, "s",$_POST["category"]);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            while ($row = $result->fetch_assoc()) {
+                $dataset = $row["data"];
+            }
+        }
+    }
+
+    //when learningplan selected only load learning plan values
+    if($enableLearningplan == "on"){
+        //select learning plan from database
+        $sql = "select * from learningplans where ID=? and uuid=?;";
+        $stmt = mysqli_stmt_init($connection);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+        echo "SQL Statement failed";
+        }else{
+            mysqli_stmt_bind_param($stmt, "is",$_POST["selectedLearningplan"],$_SESSION["uuid"]);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            while ($row = $result->fetch_assoc()) {
+                $dataset = $row["data"];
+            }
+        }
+    }
+
+    //when int learning is on choos values inteligent - frontend only allows this when learningplan is off, so here the learning plan off dataset is used all the time
+    $convWeakValues=null;
+    if($inteligentLearning == "on"){
+        $weakValues = [];
+        $sql = "select right_answers,wrong_answers,tested_value from learningresults where uuid=? and category=?;";
+        $stmt = mysqli_stmt_init($connection);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+        echo "SQL Statement failed";
+        }else{
+            mysqli_stmt_bind_param($stmt, "ss", $_SESSION["uuid"], $_POST["category"]);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            while ($row = $result->fetch_assoc()) {
+                if($row["wrong_answers"] > 0 && (($row["right_answers"] + $row["wrong_answers"]) / $row["wrong_answers"])<= 2){
+                    array_push($weakValues,$row["tested_value"]);
+                }
+            }
+            //Random take numbers from the dataset if the total number of values for intelligent learning is too less
+            $datasetArr = explode(",",$dataset);
+            if(count($weakValues) < $_POST["repeats"]){
+                $diff = $_POST["repeats"] - count($weakValues);
+                while($diff > 0){
+                    $diff--;
+                    $rndChoosenKey = array_rand($datasetArr, 1);
+                    array_push($weakValues,$datasetArr[$rndChoosenKey]);
+                }
+            }
+            $convWeakValues = implode(",",$weakValues);
+        }
+    }
+
+    //adjust the repeats--> if a learningplan is selected in the settings just take the length of the this plan ($_POST["repeats"] is always 1 if learnplan is choosen)
+    //however $_POST["repeats"] wont be used because of the following logic when learnplan is active
+    if($enableLearningplan == "on"){
+        $repeats = count(explode(",",$dataset));
+    }else{
+        $repeats = $_POST["repeats"];
+    }
+    
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,14 +111,15 @@ if(isset($_SESSION["idUser"])){
         <div id="wrapper1">
             <div id="infoDisplay">
                 <p>Kategorie: <span class="infoCurrent"><?= $_POST["category"]?></span></p>
-                <p>Anzahl der Übungen: <span class="infoCurrent"><?= $_POST["repeats"]?></span></p>
+                <p>Anzahl der Übungen: <span class="infoCurrent"><?= $repeats?></span></p>
                 <p>Intelligentes lernen: <span class="infoCurrent"><?= $inteligentLearning?></span></p>
                 <p id="displayCurrentRepeat">Durchlauf:<span class="infoCurrent"><span id="repeatsDisp"></span></span></p>
             </div>
             <input type="hidden" id="selectedCategory" value="<?= $_POST["category"]?>">
-            <input type="hidden" id="selectedRepeats" value="<?= $_POST["repeats"]?>">
+            <input type="hidden" id="selectedRepeats" value="<?= $repeats?>">
             <input type="hidden" id="uuid" value="<?= $_SESSION["uuid"]?>">
             <input type="hidden" id="intLearning" value="<?= $inteligentLearning ?>">
+            <input type="hidden" id="hasLearningplan" value="<?= $enableLearningplan ?>">
             <div id="taskWrapper">
                 <p>Zeichnen Sie eine: <img src="media/speaker.svg" width="20px" height="20px" id="playAudio" onclick="textToSpeech()"></p> 
                 <div id="task"></div>
@@ -217,7 +258,6 @@ function addUserGesture(x, y, dragging) {
 //implementing touch support//
 //--------------------------//
 
-
 //track touch start
 canvas.addEventListener("touchstart", function (e) {
 	if (e.target == canvas) {
@@ -323,6 +363,7 @@ var totalWrong = 0;
 function categoryChooser(){
     let selectedRepeats = parseInt(document.getElementById("selectedRepeats").value);
     let checkIntLearning = document.getElementById("intLearning").value;
+    let checkLearningplan = document.getElementById("hasLearningplan").value;
 
     //hide the next button again till the next predict is done
     document.getElementById("next").style.display = "none";
@@ -339,46 +380,25 @@ function categoryChooser(){
     document.getElementById("repeatsDisp").innerHTML = currentRun+"/"+selectedRepeats;
     if(selectedRepeats>=currentRun){
         //this switch case can be removed and the logic of "zahlen" should be capeable for all cases
-        switch (selectedCategory){
-            case "Formen":
-                break;
-            case "Buchstaben":
-                if(checkIntLearning == "off"){
-                    let allValues = "<?php echo $dataset;?>";
-                    var data = allValues.split(",");
-                    var learningSelection = data[Math.floor(Math.random() * data.length)];
-                }else{
-                    let weakValues = "<?php echo $convWeakValues;?>";
-                    var data = weakValues.split(",");
-                    var learningSelection = data[currentRun-1];
-                }
-                document.getElementById("task").innerHTML = learningSelection;
-                break;
-            case "Zahlen":
-                if(checkIntLearning == "off"){
-                    let allValues = "<?php echo $dataset;?>";
-                    var data = allValues.split(",");
-                    var learningSelection = data[Math.floor(Math.random() * data.length)];
-                }else{
-                    let weakValues = "<?php echo $convWeakValues;?>";
-                    var data = weakValues.split(",");
-                    var learningSelection = data[currentRun-1];
-                }
-                document.getElementById("task").innerHTML = learningSelection;
-                break;
-            case "Hiragana":
-                if(checkIntLearning == "off"){
-                    let allValues = "<?php echo $dataset;?>";
-                    var data = allValues.split(",");
-                    var learningSelection = data[Math.floor(Math.random() * data.length)];
-                }else{
-                    let weakValues = "<?php echo $convWeakValues;?>";
-                    var data = weakValues.split(",");
-                    var learningSelection = data[currentRun-1];
-                }
-                document.getElementById("task").innerHTML = learningSelection;
-                break;
+        if(checkLearningplan == "on"){
+            console.log("learningplan !");
+            let allValues = "<?php echo $dataset;?>";
+            var data = allValues.split(",");
+            var learningSelection = data[currentRun-1];
+        }else{
+            if(checkIntLearning == "off"){
+                console.log("default learning !");
+                let allValues = "<?php echo $dataset;?>";
+                var data = allValues.split(",");
+                var learningSelection = data[Math.floor(Math.random() * data.length)];
+            }else{
+                console.log("Int learning !");
+                let weakValues = "<?php echo $convWeakValues;?>";
+                var data = weakValues.split(",");
+                var learningSelection = data[currentRun-1];
+            }
         }
+        document.getElementById("task").innerHTML = learningSelection;
         currentRun++;
     }else{
         //alert placeholder --> maybe add some stats showcase and call the setting page later with another button
