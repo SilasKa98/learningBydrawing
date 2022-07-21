@@ -666,7 +666,6 @@ function hiraganaProcessResult(r){
 }
 
 function saveLearningResult(data,result){
-    let uuid = document.getElementById("uuid").value;
 
     $.ajax({
         type: "POST",
@@ -675,8 +674,7 @@ function saveLearningResult(data,result){
             data: data,
             method: "learningResults",
             result: result,
-            category: selectedCategory,
-            uuid: uuid
+            category: selectedCategory
         },
         success: function(result, message, response) {
 			console.log(result);

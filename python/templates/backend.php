@@ -5,13 +5,8 @@ if($_POST["method"] == "learningResults"){
     $tested_value = $_POST["data"];
     $result = $_POST["result"];
     $category = $_POST["category"];
-    $uuid = $_POST["uuid"];
-    //secure, that the data is saved to the acutally logged in user (prevent some kind of abuse/hacking)
-    if($uuid != $_SESSION["uuid"]){
-        echo "user missmatch!";
-        exit();
-    }
-    
+    $uuid = $_SESSION["uuid"];
+   
     if($result == 0){
         $right_answer = 0;
         $wrong_answer = 1;
