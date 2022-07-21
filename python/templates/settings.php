@@ -123,9 +123,9 @@ if(isset($_SESSION["idUser"])){
                 //maybe replace with nice error message
                 alert("Wählen Sie zuerst eine Kategorie!");
                 $("#learningPlanSwitch").prop("checked", false);
-                die();
+                return;
             }
-            $("#learningPlanSelection").fadeToggle();
+            $("#lpSelectionWrapper").fadeToggle();
             $("#repeatLabelWrap").fadeToggle();
         }
 
@@ -134,7 +134,7 @@ if(isset($_SESSION["idUser"])){
             $("#learningplanWrapper").fadeToggle();
             $("#repeatLabelWrap").show();
             $("#learningPlanSwitch").prop("checked", false);
-            $("#learningPlanSelection").hide();
+            $("#lpSelectionWrapper").hide();
             
         }
     </script>
@@ -171,25 +171,33 @@ if(isset($_SESSION["idUser"])){
     </div>
     <div class="content" id="content2">
         <form action="drawing.php" method="post" id="startForm">
-                <label id='repeatLabelWrap'>Anzahl der Übungen: 
-                    <input type="number" id="repeats" name="repeats" min="1" value="1" style="width: 6%;">
-                </label><br><br>
-                Intelligentes Lernen: 
-                <label class="switch">
-                    <input type="checkbox" name="intLearning" id='intLearningSwitch' onclick="hideLearningPlans()">
-                    <span class="slider round"></span>
-                </label><br><br>
-                <div id='learningplanWrapper'>
-                    Lernplan verwenden: 
-                    <label class="switch">
-                        <input type="checkbox" name="enableLearningplan" id='learningPlanSwitch' onclick="toggleLearningPlans()">
-                        <span class="slider round"></span>
-                    </label><br><br>
-                    <label id="learningPlanSelection">
-                        Lernplan auswählen: 
-                        <select id='lpSelectionField' name='selectedLearningplan'>
-                        </select>
+                <div id='repeatsWrapper'>
+                    <label id='repeatLabelWrap'>Anzahl der Übungen: 
+                        <input type="number" id="repeats" name="repeats" min="1" value="1" style="width: 6%;">
                     </label>
+                </div>
+                <div id='intLearningWrapper'>
+                    Intelligentes Lernen: 
+                    <label class="switch">
+                        <input type="checkbox" name="intLearning" id='intLearningSwitch' onclick="hideLearningPlans()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div id='learningplanWrapper'>
+                    <div id="useLearnplanWrapper">
+                        Lernplan verwenden: 
+                        <label class="switch">
+                            <input type="checkbox" name="enableLearningplan" id='learningPlanSwitch' onclick="toggleLearningPlans()">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div id="lpSelectionWrapper">
+                        <label id="learningPlanSelection">
+                            Lernplan auswählen: 
+                            <select id='lpSelectionField' name='selectedLearningplan'>
+                            </select>
+                        </label>
+                    </div>
                 </div>
                 <input type="hidden" id="choosenCategory" name="category">
         </form>

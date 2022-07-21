@@ -27,9 +27,12 @@ background: #91a4ad;
   cursor: pointer;
 }
 
+#learningplanWrapper{
+    margin-top: 5%;
+}
 
 #learningPlanSelection{
-  display: none;
+  margin-top: 5%;
 }
 
  #headline{
@@ -85,9 +88,10 @@ background: #91a4ad;
   box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
   background-color: white;
   border-radius: 25px;
-  padding: 50px;
+  padding-top: 1%;
+  padding-bottom: 1%;
   color: black;
-  width: 60%;
+  width: 65%;
   margin: 0 auto;
   font-size: 19pt;
   margin-top: 2%;
@@ -164,6 +168,15 @@ background: #91a4ad;
  #startForm{
    width:50%;
    text-align: center;
+ }
+
+ #repeatsWrapper{
+   margin-bottom: 5%;
+ }
+
+ #lpSelectionWrapper{
+  margin-top: 5%;
+  display: none;
  }
 
 #playAudio{
