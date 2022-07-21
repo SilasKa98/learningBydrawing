@@ -117,7 +117,6 @@ if(isset($_SESSION["idUser"])){
             </div>
             <input type="hidden" id="selectedCategory" value="<?= $_POST["category"]?>">
             <input type="hidden" id="selectedRepeats" value="<?= $repeats?>">
-            <input type="hidden" id="uuid" value="<?= $_SESSION["uuid"]?>">
             <input type="hidden" id="intLearning" value="<?= $inteligentLearning ?>">
             <input type="hidden" id="hasLearningplan" value="<?= $enableLearningplan ?>">
             <div id="taskWrapper">
