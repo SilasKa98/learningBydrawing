@@ -121,7 +121,7 @@ if(isset($_SESSION["idUser"])){
             }
             if(greenCount == 0){
                 //maybe replace with nice error message
-                alert("Wählen Sie zuerst eine Kategorie!");
+                alert("Du musst zuerst oben eine der Kategorien auswählen!");
                 $("#learningPlanSwitch").prop("checked", false);
                 return;
             }
