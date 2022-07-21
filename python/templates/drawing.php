@@ -46,6 +46,7 @@ if(isset($_SESSION["idUser"])){
             $result = mysqli_stmt_get_result($stmt);
             while ($row = $result->fetch_assoc()) {
                 $dataset = $row["data"];
+                $selLearnplan = $row["name"];
             }
         }
     }
@@ -113,6 +114,7 @@ if(isset($_SESSION["idUser"])){
                 <p>Kategorie: <span class="infoCurrent"><?= $_POST["category"]?></span></p>
                 <p>Anzahl der Übungen: <span class="infoCurrent"><?= $repeats?></span></p>
                 <p>Intelligentes lernen: <span class="infoCurrent"><?= $inteligentLearning?></span></p>
+                <?php if($enableLearningplan == "on"){ ?> <p>Lernplan: <span class="infoCurrent"><?= $selLearnplan?></span></p> <?php } ?>
                 <p id="displayCurrentRepeat">Durchlauf:<span class="infoCurrent"><span id="repeatsDisp"></span></span></p>
             </div>
             <input type="hidden" id="selectedCategory" value="<?= $_POST["category"]?>">

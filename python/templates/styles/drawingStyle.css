@@ -1,43 +1,4 @@
 
-/*
-#canvasWrapper{
-    width: fit-content;
-    position: absolute;
-    top: 24%;
-    left: 37%;
-}
-
-#infoDisplay{
-    width: fit-content;
-    position: absolute;
-    top: 30%;
-    left: 8%;
-}
-
-#taskWrapper{
-    width: fit-content;
-    position: absolute;
-    top: 53%;
-    left: 8%;
-}
-
-#playAudio{
-    margin-bottom: -5px;
-}
-
-#task{
-    font-weight: bold;
-}
-
-#canvas{
-    width: 90%;
-}
-
-#doPredict{
-
-}
-*/
-
 body{
     font-family: sans-serif;
 }

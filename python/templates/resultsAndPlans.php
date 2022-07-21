@@ -217,7 +217,7 @@ for($i=0;$i<count($categorys);$i++){
                 print "<div id='tabs-".$tab."'>";
                     print"<button class='createNewBtn' onclick='showCreateArea(this)'>+</button>";
                     print "<div class='createNewPlan'>";
-                        print "Name: <input type='text' id='catName'>";
+                        print "Lernplan Name: <input type='text' id='catName'>";
                         print"<div class='datasets'>Mögliche Werte: ";
                         for($a=0;$a<count($expDataset);$a++){
                         print "<button class='dataCards' onclick='createNewPlan(this)'>".$expDataset[$a]."</button>"; 
