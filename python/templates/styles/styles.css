@@ -37,7 +37,7 @@ background: #91a4ad;
 
  #headline{
   margin-bottom: 2%;
-  margin-top: 1%;
+  margin-top: 3%;
   color: white;
   font-family: 'Helvetica Neue', sans-serif;
   font-size: 50px;
@@ -270,8 +270,8 @@ input:checked + .slider:before {
 #savingImagesSwitch{
   position: relative;
   display: inline-block;
-  width: 51px;
-  height: 24px;
+  width: 56px;
+  height: 28px;
 }
 
 input:checked + #savingImagesSlider {
@@ -285,8 +285,8 @@ input:checked + #savingImagesSlider {
   content: "";
   height: 22px;
   width: 24px;
-  left: 0px;
-  bottom: 1px;
+  left: 3px;
+  bottom: 3px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
