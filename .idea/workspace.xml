@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fb016180-689d-41e9-9e1d-488cb80394ce" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/learningKuzushiji.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/learningKuzushiji.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/templates/backend.php" beforeDir="false" afterPath="$PROJECT_DIR$/python/templates/backend.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/templates/drawing.php" beforeDir="false" afterPath="$PROJECT_DIR$/python/templates/drawing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/templates/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/python/templates/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/templates/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/python/templates/styles/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,6 +185,8 @@
       <workItem from="1657841698744" duration="5652000" />
       <workItem from="1657907348045" duration="473000" />
       <workItem from="1658243141697" duration="4119000" />
+      <workItem from="1658494636402" duration="972000" />
+      <workItem from="1658586078729" duration="1191000" />
     </task>
     <servers />
   </component>

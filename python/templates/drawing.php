@@ -522,7 +522,7 @@ $("#doPredict").click(async function () {
         break;
     }
     //call function to save the drawn image
-    saveDrawnImage(selectedCategory);
+    saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
 
     //show the next button and the results again
     document.getElementById("next").style.display = "inline";
@@ -686,13 +686,14 @@ function saveLearningResult(data,result){
 }   
 
 
-function saveDrawnImage(cat){
+function saveDrawnImage(cat, label){
     var dataURL = canvas.toDataURL();
     $.ajax({
         type: "POST",
         url: "backend.php",
         data: {
             category: cat,
+            label: label,
             method: "saveDrawing",
             imgBase64: dataURL,
             date: new Date().toDateString()
