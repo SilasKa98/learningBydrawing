@@ -193,6 +193,11 @@ if(isset($_SESSION["idUser"])){
         <input type="submit" id="logout" value="Logout"></button>
     </form>
     <div id='allowSavingWrapper'>Meine Bilder speichern
+        <div class="tooltip">&#x1F6C8;
+            <span class="tooltiptext">Durch das aktivieren dieser Funktion stimmst du zu, dass deine gezeichneten Übungen gespeichert und verarbeitet werden dürfen. 
+                Dies trägt zur Verbesserung der App bei.
+            </span>
+        </div>
         <label class="switch" id="savingImagesSwitch">
             <input type="checkbox" id="allowSaving" onclick="allowSavingImages(this)" <?php if($allowImageSave == 1){print "checked";} ?>>
             <span class="slider round" id="savingImagesSlider"></span>
