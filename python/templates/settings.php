@@ -70,7 +70,8 @@ if(isset($_SESSION["idUser"])){
             if(allLearnPlans.length > 0){
                 document.getElementById("learningPlanSwitch").disabled= false;   
                 document.getElementById("useLearnplanWrapper").style.opacity ="1";
-                
+                document.getElementById("learnplanSlider").style.cursor ="pointer";
+
                 //clear the currentLearn plans
                 document.getElementById("lpSelectionField").innerHTML = "";
 
@@ -86,6 +87,7 @@ if(isset($_SESSION["idUser"])){
                 }
                 document.getElementById("learningPlanSwitch").disabled= true;
                 document.getElementById("useLearnplanWrapper").style.opacity ="0.4";
+                document.getElementById("learnplanSlider").style.cursor ="not-allowed";
             }
         }
 
@@ -194,7 +196,7 @@ if(isset($_SESSION["idUser"])){
                         Lernplan verwenden: 
                         <label class="switch">
                             <input type="checkbox" name="enableLearningplan" id='learningPlanSwitch' onclick="toggleLearningPlans()">
-                            <span class="slider round"></span>
+                            <span class="slider round" id="learnplanSlider"></span>
                         </label>
                     </div>
                     <div id="lpSelectionWrapper">
