@@ -764,6 +764,6 @@ if(isset($_SESSION["idUser"])){
 
 <?php
 }else{
-    echo "Access denied";
+    header("LOCATION: index.html");
 }
 ?>
