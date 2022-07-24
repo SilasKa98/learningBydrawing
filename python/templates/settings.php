@@ -35,20 +35,6 @@ if(isset($_SESSION["idUser"])){
             array_push($allLearningplanIds[$row["category"]],$row["ID"]);
         }
     }
-
-    //check if user allows to save his images 
-    $sql = "select allowImageSave from loginsystem where uuid=?;";
-    $stmt = mysqli_stmt_init($connection);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-    echo "SQL Statement failed";
-    }else{
-        mysqli_stmt_bind_param($stmt, "s", $uuid);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        while ($row = $result->fetch_assoc()) {
-        $allowImageSave = $row["allowImageSave"];
-        }
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -151,29 +137,6 @@ if(isset($_SESSION["idUser"])){
             $("#lpSelectionWrapper").hide();
             
         }
-
-        function allowSavingImages(e){
-            console.log(e.checked);
-            let checkboxStatus;
-            if(e.checked == true){
-                checkboxStatus = 1;
-            }else{
-                checkboxStatus = 0;
-            }
-            $.ajax({
-                type: "POST",
-                url: "backend.php",
-                data: {
-                    checkboxStatus: checkboxStatus,
-                    method: "checkImageSavePermission",
-                },
-                success: function(result, message, response) {
-                    console.log(result);
-                    console.log(message);
-                    console.log(response);
-                }
-            });
-        }
     </script>
 </head>
 <body class="area" onload="backgroundRandomizer()">
@@ -192,17 +155,6 @@ if(isset($_SESSION["idUser"])){
         </div>
         <input type="submit" id="logout" value="Logout"></button>
     </form>
-    <div id='allowSavingWrapper'>Meine Bilder speichern
-        <div class="tooltip">&#x1F6C8;
-            <span class="tooltiptext">Durch das aktivieren dieser Funktion stimmst du zu, dass deine gezeichneten Übungen gespeichert und verarbeitet werden dürfen. 
-                Dies trägt zur Verbesserung der App bei.
-            </span>
-        </div>
-        <label class="switch" id="savingImagesSwitch">
-            <input type="checkbox" id="allowSaving" onclick="allowSavingImages(this)" <?php if($allowImageSave == 1){print "checked";} ?>>
-            <span class="slider round" id="savingImagesSlider"></span>
-        </label>
-    </div>
     <h1 id="headline">Einstellungen</h1>
     <div class="content">
         <div id="categoryWrapper">

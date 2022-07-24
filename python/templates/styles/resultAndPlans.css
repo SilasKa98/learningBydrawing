@@ -15,7 +15,7 @@ body{
 
 #headline{
     margin-bottom: 3%;
-    margin-top: 0%;
+    margin-top: 2%;
     color: white;
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 50px;
@@ -251,3 +251,151 @@ body{
     background-color: white;
     padding: 20px;
 }
+
+
+#allowSavingWrapper{
+    width: fit-content;
+    font-size: 16pt;
+    float: right;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+
+
+
+
+/*slider (checkbox) settings*/
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #17770f;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #17770f;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
+  
+  
+  /*imageSaveSlider*/ 
+  #savingImagesSwitch{
+    position: relative;
+    display: inline-block;
+    width: 56px;
+    height: 28px;
+  }
+  
+  input:checked + #savingImagesSlider {
+    background-color: #383838;
+  }
+  
+  #savingImagesSlider:before{
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 24px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  
+  
+  
+  
+  /* Tooltip container */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 400px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s;
+    top: 148%;
+    right: 0%;
+  }
+  
+  /* Tooltip arrow */
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border: 1px solid black;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  
