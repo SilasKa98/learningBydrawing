@@ -50,8 +50,6 @@ if(isset($_SESSION["idUser"])){
     <script>
 
         function highliteCategory(e){
-            console.log(e);
-            console.log(e.childNodes[0]);
             let clickedBox = e;
             let clickedCategory = e.childNodes[0].innerHTML;
             let allBtns = document.querySelectorAll(".category");
@@ -66,17 +64,28 @@ if(isset($_SESSION["idUser"])){
 
             document.getElementById("choosenCategory").value = clickedCategory;
 
-            //clear the currentLearn plans
-            document.getElementById("lpSelectionField").innerHTML = "";
-
             //create option elements for each learnplan
             let allLearnPlans = document.querySelectorAll("."+clickedCategory);
-            for(let i=0;i<allLearnPlans.length;i++){
-                let opt = document.createElement('option');
-                opt.value = allLearnPlans[i].id;
-                opt.innerHTML = allLearnPlans[i].value;
-                console.log(opt);
-                document.getElementById("lpSelectionField").appendChild(opt);
+            //checking if there are learnplans for the category and if not disabling the checkbox + changning opacity
+            if(allLearnPlans.length > 0){
+                document.getElementById("learningPlanSwitch").disabled= false;   
+                document.getElementById("useLearnplanWrapper").style.opacity ="1";
+                
+                //clear the currentLearn plans
+                document.getElementById("lpSelectionField").innerHTML = "";
+
+                for(let i=0;i<allLearnPlans.length;i++){
+                    let opt = document.createElement('option');
+                    opt.value = allLearnPlans[i].id;
+                    opt.innerHTML = allLearnPlans[i].value;
+                    document.getElementById("lpSelectionField").appendChild(opt);
+                }
+            }else{
+                if(document.getElementById("learningPlanSwitch").checked){
+                    document.getElementById("learningPlanSwitch").click();
+                }
+                document.getElementById("learningPlanSwitch").disabled= true;
+                document.getElementById("useLearnplanWrapper").style.opacity ="0.4";
             }
         }
 
