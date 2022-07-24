@@ -10,7 +10,7 @@ body{
 
 #learnCardWrapper{
     width: 96%;
-    margin: 1% auto;
+    margin: 1% auto 0% auto;
     overflow: auto;
 }
 

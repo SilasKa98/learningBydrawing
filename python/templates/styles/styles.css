@@ -214,6 +214,14 @@ background: #91a4ad;
   padding: 10px;
 }
 
+#impressum{
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  text-decoration: none;
+  color: white;
+}
+
 
 /*slider (checkbox) settings*/
 

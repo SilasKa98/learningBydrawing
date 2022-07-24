@@ -233,6 +233,7 @@ if(isset($_SESSION["idUser"])){
         <li class="rndChar">u</li>
         <li class="rndChar">L</li>
     </ul>
+    <a href="#" id="impressum">Impressum</a>
 </body>
 
 </html>
