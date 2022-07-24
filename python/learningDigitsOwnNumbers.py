@@ -9,10 +9,14 @@ from PIL import Image
 # split the mnist data into train and test
 (train_img, train_label), (test_img, test_label) = keras.datasets.mnist.load_data()
 
+
+
 # reshape and scale the data
 train_img = train_img.reshape([train_img.shape[0], 28, 28, 1])
 test_img = test_img.reshape([test_img.shape[0], 28, 28, 1])
 
+print(len(train_img))
+print(len(test_img))
 
 # To load images to features and labels
 def load_images_to_data(image_directory, features_data, label_data):
@@ -35,6 +39,9 @@ def load_images_to_data(image_directory, features_data, label_data):
 # Load your own images to training and test data
 train_img, train_label = load_images_to_data('templates/savedImages/Zahlen', train_img, train_label)
 test_img, test_label = load_images_to_data('templates/savedImages/Zahlen', test_img, test_label)
+
+print(len(train_img))
+print(len(test_img))
 
 #normalize data
 train_img = train_img / 255.0

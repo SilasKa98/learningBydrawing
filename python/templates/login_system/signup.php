@@ -1,14 +1,13 @@
+<!DOCTYPE html>
 <html>
-
 	<head>
-	
+		<link rel="stylesheet" href="../styles/loginStyle.css">
+		<link rel="stylesheet" href="../styles/background.css">
 	</head>
-	
-	
-	<body>
-		
-		<div>
-			<h1>Signup</h1>
+	<body class="area">
+	<a href="../index.html" id="back_button">zurück</a>
+	<h1 id="headline">Account erstellen</h1>
+		<div id="signupWrapper">
 			<?php
 			  error_reporting(E_ERROR | E_PARSE);
 				if(isset($_GET["error"])){
@@ -43,11 +42,8 @@
 				<input type="text" name="mail" placeholder="E-mail..."><br><br>
 				<input type="password" name="pwd" placeholder="Passwort..."><br><br>
 				<input type="password" name="pwd_repeat" placeholder="Passewort wiederholen..."><br><br>
-				<input type="submit" name="signup_submit" value="Registrieren"><br><br>
+				<input type="submit" id="createUserSubmit" name="signup_submit" value="Registrieren"><br><br>
 			</form>
-			
 		</div>
-		
 	</body>
-
 </html>
