@@ -537,8 +537,6 @@ if(isset($_SESSION["idUser"])){
             hiraganaProcessResult(results);
             break;
         }
-        //call function to save the drawn image
-        saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
 
         //show the next button and the results again
         document.getElementById("next").style.display = "inline";
@@ -569,6 +567,8 @@ if(isset($_SESSION["idUser"])){
             resultField.innerHTML = "Richtig ! Sehr gut, Sie haben eine "+number+" gezeichnet. <br> Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
             answerResult = 1;
             totalRight++;
+            //call function to save the drawn image - only if drawing is correct
+            saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
         }else{
             resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+number+" anstatt einer "+drawnNumber+" gezeichnet.";
             answerResult = 0;
@@ -605,6 +605,8 @@ if(isset($_SESSION["idUser"])){
             resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+disiredResult+" gezeichnet. <br> Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
             answerResult = 1;
             totalRight++;
+            //call function to save the drawn image - only if drawing is correct
+            saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
         }else{
             resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+drawnLetter+" anstatt einer "+disiredResult+" gezeichnet.";
             answerResult = 0;
@@ -670,6 +672,8 @@ if(isset($_SESSION["idUser"])){
             resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+key+" ("+japChar+") gezeichnet. <br> Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
             answerResult = 1;
             totalRight++;
+            //call function to save the drawn image - only if drawing is correct
+            saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
         }else{
             resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% ein "+drawnChar+" ("+drawnJapChar+") anstatt des "+taskField.innerHTML+" ("+japChar+") gezeichnet.";
             answerResult = 0;
