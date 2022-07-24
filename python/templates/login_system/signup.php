@@ -3,8 +3,20 @@
 	<head>
 		<link rel="stylesheet" href="../styles/loginStyle.css">
 		<link rel="stylesheet" href="../styles/background.css">
+		<script>
+			function backgroundRandomizer(){
+				setInterval(function () {
+					var rndChars = "きすつなはまやれをきすつなはまやれをabcdefghijklmnopqrstuwvxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789";
+					let allRndChars = document.querySelectorAll(".rndChar");
+					for(let i=0;i<allRndChars.length;i++){
+						let rndChar= rndChars[Math.floor(Math.random() * rndChars.length)];
+						allRndChars[i].innerHTML = rndChar
+					}
+				}, 22000);
+        	}
+		</script>
 	</head>
-	<body class="area">
+	<body class="area" onload="backgroundRandomizer()">
 	<a href="../index.html" id="back_button">zurück</a>
 	<h1 id="headline">Account erstellen</h1>
 		<div id="signupWrapper">
@@ -45,5 +57,26 @@
 				<input type="submit" id="createUserSubmit" name="signup_submit" value="Registrieren"><br><br>
 			</form>
 		</div>
+
+		<ul class="circles">
+			<li></li>
+			<li></li>
+			<li class="rndChar">a</li>
+			<li class="rndChar">4</li>
+			<li class="rndChar">F</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li class="rndChar">K</li>
+			<li class="rndChar">8</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li class="rndChar">u</li>
+			<li class="rndChar">L</li>
+    	</ul>
 	</body>
 </html>

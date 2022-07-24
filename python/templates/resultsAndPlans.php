@@ -79,6 +79,7 @@ echo "SQL Statement failed";
             );
         });
 
+
         function fillBars(){
             var allRightBars = document.querySelectorAll(".rightBar");
             var allWrongBars = document.querySelectorAll(".wrongBar");
@@ -98,11 +99,13 @@ echo "SQL Statement failed";
             }, 200);
         }
 
+
         $( function() {
             $( "#tabs").tabs({
                 show: { effect: "fade", duration: 700, }
             });
         } );
+
 
         function showCreateArea(e){
             if(e.nextElementSibling.style.display == "block"){
@@ -119,6 +122,7 @@ echo "SQL Statement failed";
             targetArea.innerHTML += "<span class='innerPlanElem'>"+clickedElement+"</span>";
         }
 
+
         function getCategory(){
             let allTabs = document.querySelectorAll(".ui-tabs-tab");
             for(let i=0;i<allTabs.length;i++){    
@@ -128,6 +132,7 @@ echo "SQL Statement failed";
             }
             return category;
         }
+
 
         function savePlan(e){
             let allValues = [];
@@ -155,6 +160,7 @@ echo "SQL Statement failed";
                 }
             });
         }
+
 
         function deletePlan(id){
             $.ajax({
@@ -193,11 +199,23 @@ echo "SQL Statement failed";
                 }
             });
         }
+
+
+        function backgroundRandomizer(){
+            setInterval(function () {
+                var rndChars = "きすつなはまやれをきすつなはまやれをabcdefghijklmnopqrstuwvxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789";
+                let allRndChars = document.querySelectorAll(".rndChar");
+                for(let i=0;i<allRndChars.length;i++){
+                    let rndChar= rndChars[Math.floor(Math.random() * rndChars.length)];
+                    allRndChars[i].innerHTML = rndChar
+                }
+            }, 22000);
+        }
     </script>
     <style>
     </style>
 </head>
-<body class="area">
+<body class="area" onload="backgroundRandomizer()">
     <a href="settings.php" id="back_button">zurück</a>
     <div id='allowSavingWrapper'>Meine Bilder speichern
         <div class="tooltip">&#x1F6C8;
@@ -212,9 +230,9 @@ echo "SQL Statement failed";
     </div>
    <h1 id="headline">Ergebnisse und Lernpläne</h1>
     <div id="accordion">
-    <h2 class="secHeadline">Überprüfe deine bisherigen Lernergebnisse.</h2>
+        <h2 class="secHeadline">Überprüfe deine bisherigen Lernergebnisse.</h2>
         <?php
-         for($i=0;$i<count($categorys);$i++){
+        for($i=0;$i<count($categorys);$i++){
             print "<h3 class='accHeader' onclick='fillBars()'>".$categorys[$i]."</h3>";
             print "<div>";
                 if(count($testedCategoryValues[$i]) == 0){
@@ -224,7 +242,7 @@ echo "SQL Statement failed";
                         $totalSum = $valueRights[$i][$a]+$valueWrongs[$i][$a];
                         $rightRatio = ($valueRights[$i][$a]/$totalSum)*100;
                         $wrongRatio = ($valueWrongs[$i][$a]/$totalSum)*100;
-           
+        
                         //scale down the width to 80%, so it gets displayed correctly and this number can be assigned as a style
                         $wrongRatioStyle = (round($wrongRatio)*0.8);
                         $rightRatioStyle = (round($rightRatio)*0.8);

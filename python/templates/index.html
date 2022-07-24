@@ -9,10 +9,8 @@
             }
             function backgroundRandomizer(){
                 setInterval(function () {
-                    var rndChars = "abcdefghijklmnopqrstuwvxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
+                    var rndChars = "きすつなはまやれをきすつなはまやれをabcdefghijklmnopqrstuwvxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789";
                     let allRndChars = document.querySelectorAll(".rndChar");
-                    console.log(allRndChars);
                     for(let i=0;i<allRndChars.length;i++){
                         let rndChar= rndChars[Math.floor(Math.random() * rndChars.length)];
                         allRndChars[i].innerHTML = rndChar
