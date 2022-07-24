@@ -225,8 +225,9 @@ echo "SQL Statement failed";
                         $rightRatio = ($valueRights[$i][$a]/$totalSum)*100;
                         $wrongRatio = ($valueWrongs[$i][$a]/$totalSum)*100;
            
-                        $wrongRatioStyle = (round($wrongRatio)-10);
-                        $rightRatioStyle = (round($rightRatio)-10);
+                        //scale down the width to 80%, so it gets displayed correctly and this number can be assigned as a style
+                        $wrongRatioStyle = (round($wrongRatio)*0.8);
+                        $rightRatioStyle = (round($rightRatio)*0.8);
                         $showWrong = "inline-block";
                         $showRight = "inline-block";
                         $wrongDelay = "1.4s";
