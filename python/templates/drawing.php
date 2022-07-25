@@ -2,7 +2,6 @@
 include 'db_connector.php';
 session_start();
 if(isset($_SESSION["idUser"])){
-
     //check the parameters intlearning and learnplans if its on or off, later needed on a few points to change the used data
     if(isset($_POST["intLearning"])){
         $inteligentLearning = "on";

@@ -2,6 +2,30 @@
 include 'db_connector.php';
 session_start();
 if(isset($_SESSION["idUser"])){
+
+    //check if all params match (category and tested values valid?) --> too avoid dom manipulations and resulting db inconsistencys
+    $sql = "select data from datasets where category=?;";
+    $stmt = mysqli_stmt_init($connection);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+    echo "SQL Statement failed";
+    }else{
+        mysqli_stmt_bind_param($stmt, "s", $_POST["category"]);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        while ($row = $result->fetch_assoc()) {
+            if(isset($_POST["data"])){
+                if(strpos($row["data"], $_POST["data"]) == false){
+                    exit("data and category missmatch! Please reload the page.");
+                }
+            }else{
+                if(strpos($row["data"], $_POST["label"]) == false){
+                    exit("data and category missmatch! Please reload the page.");
+                }
+            }
+        }
+    }
+
+
     if($_POST["method"] == "learningResults"){
         $tested_value = $_POST["data"];
         $result = $_POST["result"];
