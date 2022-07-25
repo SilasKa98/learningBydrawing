@@ -117,7 +117,7 @@ if(isset($_SESSION["idUser"])){
         }
     </script>
 </head>
-<body class="area" onload="categoryChooser();backgroundRandomizer()">
+<body class="area" onload="categoryChooser();backgroundRandomizer();loadVoices()">
     <a href="settings.php" id="back_button">zurück</a>
     <h1 id="headline"><?= $_POST["category"]?> lernen</h1>
     <div id="contentWrapper">
@@ -134,7 +134,14 @@ if(isset($_SESSION["idUser"])){
             <input type="hidden" id="intLearning" value="<?= $inteligentLearning ?>">
             <input type="hidden" id="hasLearningplan" value="<?= $enableLearningplan ?>">
             <div id="taskWrapper">
-                <p>Zeichnen Sie eine: <img src="media/speaker.svg" width="20px" height="20px" id="playAudio" onclick="textToSpeech()"></p> 
+                <?php
+                    if($_POST["category"] == "Zahlen"){
+                        print "<p>Zeichnen Sie eine: ";
+                    }else{
+                        print "<p>Zeichnen Sie ein: ";
+                    }
+                ?>        
+                <img src="media/speaker.svg" width="20px" height="20px" id="playAudio" onclick="textToSpeech()"></p> 
                 <div id="task"></div>
             </div>
         </div>
@@ -156,10 +163,7 @@ if(isset($_SESSION["idUser"])){
     </div>
     <div id="result"></div>
 
-    <!--downscale attempt-->
-    <!--<canvas id="small" width="150px" height="150px" style="background-color:black; color: white;"></canvas> -->
 
-    
     <ul class="circles">
         <li></li>
         <li></li>
@@ -750,17 +754,37 @@ if(isset($_SESSION["idUser"])){
         });
     }
 
+    function loadVoices(){
+        //voices needs to get loaded before the function textToSpeech is executed, otherwise its not loading fast enough
+        let voices = window.speechSynthesis.getVoices();
+        return voices;
+    }
 
     function textToSpeech(){
         let fetchedText = document.getElementById("task").innerHTML;
-        console.log(fetchedText);
+        let category = document.getElementById("selectedCategory").value;
         let msg = new SpeechSynthesisUtterance();
-        //let voices = window.speechSynthesis.getVoices();
-        //msg.voice = voices[8]; 
+        let voices = loadVoices();
+        let textVal;
+        switch (category){
+        case "Formen":
+
+            break;
+        case "Buchstaben":
+            textVal = "Zeichnen Sie den Buchstaben "+fetchedText;
+            break;
+        case "Zahlen":
+            textVal = "Zeichnen Sie die Zahl "+fetchedText;
+            break;
+        case "Hiragana":
+            textVal = "Zeichnen Sie das Hiragana Symbol für "+fetchedText;
+            break;
+        }
+        msg.voice = voices[2]; //0-3 possible for german
         msg.volume = 1; // From 0 to 1
         msg.rate = 0.7; // From 0.1 to 10
         msg.pitch = 1; // From 0 to 2
-        msg.text = "Zeichnen Sie eine "+fetchedText;
+        msg.text = textVal;
         msg.lang = 'de';
         speechSynthesis.speak(msg);
     }
