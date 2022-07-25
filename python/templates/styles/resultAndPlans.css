@@ -370,5 +370,126 @@ body{
     visibility: visible;
     opacity: 1;
   }
+
+
+  @media only screen and (max-width: 1050px) {
+    #headline{
+        font-size: 35px;
+    }
+    .secHeadline{
+        font-size: 23px;
+    }
+
+    .existingPlans{
+        font-size: 8pt;
+    }
+
+    .datasets{
+        margin-bottom: 1%;
+    }
+
+    .dataCards{
+        font-size: 10pt !important;
+        margin: 3px;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .datasets{
+        margin-bottom: 10%;
+    }
+    .createdPlan{
+        font-size: 13pt;
+    }
+
+    .saveBtn{
+        margin-top: 5%;
+    }
+    
+}
+
+@media only screen and (max-width: 750px) {
+    #headline{
+        margin-top: 7%;
+        margin-bottom: 7%;
+    }
+
+    #allowSavingWrapper{
+        font-size: 10pt;
+    }
+
+    .switch{
+        width: 43px;
+        height: 14px;
+      }
+    
+      .slider:before{
+        height: 9px;
+        width: 9px;
+        left: 3px;
+        bottom: 3px;
+      }
+}
+
+@media only screen and (max-width: 550px) {
+    .datasets{
+        margin-bottom: 23%;
+    }
+
+    .saveBtn{
+        margin-top: 9%;
+        font-size: 14px !important;
+    }
+
+    .rightBar{
+        width: 30% !important;
+        margin-left: 16%;
+    }
+
+    .wrongBar{
+        width: 30% !important;
+    }
+
+    .ui-accordion .ui-accordion-content{
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 13px;
+    }
+}
+
+@media only screen and (max-width: 455px) {
+    .ui-tabs .ui-tabs-nav{
+        font-size: 9pt;
+    }
+}
+
+
+@media only screen and (max-width: 400px) {
+    #headline{
+        margin-top: 23%;
+        margin-bottom: 12%;
+    }
+
+    #catName{
+        font-size: 13px !important;
+    }
+
+    .createdPlan{
+        font-size: 9pt;
+    }
+
+    .dataCards{
+        font-size: 8pt !important;
+        margin: 3px;
+    }
+}
+  
+
+@media only screen and (max-width: 400px) {
+    .datasets{
+        margin-bottom: 40%;
+    }
+}
   
   

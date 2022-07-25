@@ -15,6 +15,10 @@ background: #91a4ad;
  #categoryWrapper{
     width: 60%;
     margin: 0 auto;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+    background-color: white;
+    border-radius: 25px;
+    padding: 45px;
  }
 
  #userCircle{
@@ -30,7 +34,7 @@ background: #91a4ad;
 }
 
 #learningplanWrapper{
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
 #learningPlanSelection{
@@ -101,13 +105,6 @@ background: #91a4ad;
   font-weight: bold;
  }
 
- #categoryWrapper{
-  box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
-  background-color: white;
-  border-radius: 25px;
-  padding: 50px;
- }
-
  .category{
    border: 1px solid black;
    font-size: 17pt;
@@ -169,17 +166,18 @@ background: #91a4ad;
  }
 
  #startForm{
-   width:50%;
+   width: 100%;
    text-align: center;
  }
 
  #repeatsWrapper{
-   margin-bottom: 5%;
+   margin-bottom: 3%;
  }
 
  #repeats{
   font-size: 15pt;
   border: 1px solid #9d9d9d;
+  width: 3%;
  }
 
 
@@ -190,7 +188,7 @@ background: #91a4ad;
 }
 
  #lpSelectionWrapper{
-  margin-top: 5%;
+  margin-top: 3%;
   display: none;
  }
 
@@ -215,11 +213,12 @@ background: #91a4ad;
 }
 
 #impressum{
-  position: absolute;
-  bottom: 5px;
-  left: 5px;
-  text-decoration: none;
   color: white;
+}
+
+#impressumWrapper{
+  margin-top: 3%;
+  float: left;
 }
 
 
@@ -361,3 +360,132 @@ input:checked + #savingImagesSlider {
   opacity: 1;
 }
 
+
+@media only screen and (max-width: 1350px) {
+  #startBtn{
+    margin-right: 0px;
+    margin-top: 58px;
+  }
+
+  #impressumWrapper {
+    margin-top: 6%;
+  }
+}
+
+
+@media only screen and (max-width: 1115px) {
+  #startForm{
+    font-size: 15pt;
+  }
+
+  #content2{
+    padding: 5%;
+  }
+  
+  #repeats{
+    width: 6%;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+ 
+  #impressumWrapper {
+    margin-top: 8%;
+  }
+}
+
+@media only screen and (max-width: 1015px) {
+  #startBtn{
+    margin-right: 0px;
+    margin-top: 85px;
+  }
+
+  #impressumWrapper {
+    margin-top: 10%;
+  }
+
+}
+
+@media only screen and (max-width: 900px) {
+  .content {
+    margin-bottom: 6%;
+  }
+
+  .switch{
+    width: 43px;
+    height: 20px;
+  }
+
+  .slider:before{
+    height: 13px;
+    width: 12px;
+    left: 2px;
+    bottom: 4px;
+  }
+
+}
+
+
+@media only screen and (max-width: 850px) {
+  #headline{
+    margin-bottom: 8%;
+    font-size: 40px;
+    padding-top: 100px;
+  }
+
+  #logoutForm{
+   position: inherit;
+   top: inherit;
+   right: inherit;
+   width: inherit;
+  }
+
+  #userWrapper{
+    margin-left: 18px;
+  }
+
+  #impressumWrapper {
+    margin-top: 16%;
+  }
+
+}
+
+
+@media only screen and (max-width: 600px) {
+  #repeats{
+    width: 10%;
+    font-size: 9pt;
+  }
+
+  #lpSelectionField{
+    font-size: 9pt;
+  }
+
+  #categoryWrapper {
+    padding: 30px;
+    margin-top: 5%;
+  }
+
+  .category{
+    width: 100%;
+  }
+
+  #impressumWrapper {
+    margin-top: 18%;
+  }
+
+}
+
+@media only screen and (max-width: 450px) {
+  #startForm{
+    font-size: 10pt;
+  }
+
+  #impressumWrapper {
+    margin-top: 24%;
+  }
+
+  #categoryWrapper {
+    width: 80%;
+  }
+}

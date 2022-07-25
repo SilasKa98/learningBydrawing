@@ -150,3 +150,196 @@ body{
     padding-top: 20%;
 }
 
+
+@media only screen and (max-width: 1700px) {
+    #pieChartWrapper{
+        margin-right: 2%;
+        padding-left: 0%;
+    }
+
+    #wrapper1{
+        margin-right: 7%;
+    }
+
+    #pieChartWrapper {
+        margin-right: 1%;
+        padding-left: 0%;
+    }
+}
+@media only screen and (max-width: 1550px) {
+    #wrapper1 {
+        margin-right: 5%;
+    }
+}
+
+@media only screen and (max-width: 1520px) {
+    #wrapper1 {
+        margin-right: 4%;
+    }
+}
+
+@media only screen and (max-width: 1470px) {
+    #wrapper1 {
+        margin-right: 2%;
+    }
+
+    #canvasWrapper{
+        margin-right: 1%;
+    }
+}
+
+@media only screen and (max-width: 1432px) {
+    #wrapper1 {
+        margin-left: 9%;
+    }
+
+    #canvasWrapper{
+        margin-left: 10%;
+    }
+
+    #pieChartWrapper{
+        margin-right: auto;
+        margin-left: auto;
+        width: fit-content;
+        margin-top: 58%;
+        padding: 2%;
+        float: inherit;
+    }
+}
+
+
+@media only screen and (max-width: 1370px) {
+    #pieChartWrapper{
+        margin-top: 62%;
+    }
+}
+
+
+@media only screen and (max-width: 1140px) {
+    #wrapper1{
+        margin-left: 26%;
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+    #pieChartWrapper{
+        margin-top: 115%;
+    }
+
+    #canvas{
+        width: 100%;
+    }
+
+    #infoDisplay {
+        margin-bottom: 9%;
+    }
+
+    #canvasWrapper{
+        margin-left: 24%;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    #pieChartWrapper{
+        margin-top: 123%;
+    }
+}
+
+
+@media only screen and (max-width: 900px) {
+    #pieChartWrapper{
+        margin-top: 130%;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    #wrapper1{
+        margin-left: 23%;
+    }
+
+    #pieChartWrapper{
+        margin-top: 140%;
+    }
+
+    #canvasWrapper{
+        margin-left: 15%;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    #wrapper1{
+        margin-left: 21%;
+    }
+
+    #pieChartWrapper{
+        margin-top: 150%;
+    }
+
+    #canvasWrapper{
+        margin-left: 9%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    #wrapper1{
+        margin-left: 19%;
+    }
+
+    #pieChartWrapper{
+        margin-top: 160%;
+    }
+
+    #canvasWrapper{
+        margin-left: 4%;
+    }
+
+    #pieChartBtnWrapper a {
+        margin-right: 2%;
+        padding: 5px 2px;
+        margin-left: 6%;
+    }
+
+    #pieChartCanvas{
+        width: 330px !important;
+        max-width: 330px !important;
+    }
+
+}
+
+@media only screen and (max-width: 650px) {
+    #pieChartWrapper{
+        margin-top: 170%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #pieChartWrapper{
+        margin-top: 180%;
+    }
+}
+
+
+@media only screen and (max-width: 530px) {
+    #wrapper1{
+        margin-left: 13%;
+    }
+
+    #pieChartWrapper{
+        margin-top: 190%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #pieChartWrapper{
+        margin-top: 200%;
+    }
+    #wrapper1{
+        margin-left: 9%;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    #pieChartWrapper{
+        margin-top: 210%;
+    }
+}

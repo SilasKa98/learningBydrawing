@@ -187,9 +187,97 @@ input[type=text], input[type=password] {
   }
 
   #impressum{
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-    text-decoration: none;
     color: white;
   }
+
+  #impressumWrapper{
+    overflow: auto;
+    width: 90%;
+    margin-top: 2%;
+    margin-left: 1%;
+
+  }
+
+
+
+
+  @media only screen and (max-width: 1310px) {
+    #infoText {
+      font-size: 20px;
+      left: 4%;
+    }
+  }
+
+  @media only screen and (max-width: 1250px) {
+    #smallerInfo {
+      font-size: 13px;
+    }
+  }
+
+
+  @media only screen and (max-width: 980px) {
+    #infoText {
+      font-size: 14px;
+    }
+    #smallerInfo {
+      font-size: 12px;
+    }
+    .container{
+      width: 100%;
+      float: inherit;
+    }
+  
+
+    #containerWrapper {
+      padding-left: 15px;
+      padding-right: 15px;
+      margin-bottom: 45px;
+    }
+
+    .container form {
+      width: 100%;
+    }
+
+    #welcomeContainer{
+      margin-top: 4%;
+    }
+  }
+
+  @media only screen and (max-width: 760px) {
+    #infoText {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 570px) {
+    #welcomeContainer{
+      margin-top: 6%;
+      padding-top: 1%;
+      padding-bottom: 3%;
+      padding-right: 0px;
+    }
+
+    .container h2 {
+      font-size: 16pt;
+    }
+
+    .container h1 {
+      font-size: 18pt;
+    }
+
+    .container h4 {
+      font-size: 11pt;
+    }
+
+    #headline{
+      font-size: 30px;
+    }
+
+    button{
+      padding: 3px 0px;
+    }
+
+  }
+
+
+  
