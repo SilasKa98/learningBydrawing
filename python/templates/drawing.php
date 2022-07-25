@@ -383,11 +383,13 @@ if(isset($_SESSION["idUser"])){
         let checkIntLearning = document.getElementById("intLearning").value;
         let checkLearningplan = document.getElementById("hasLearningplan").value;
 
-        //hide the next button again till the next predict is done
+        //hide the next button and show the predictBtn and resetBtn again till the next predict is done
         document.getElementById("next").style.display = "none";
+        document.getElementById("doPredict").style.display = "inline";
+        document.getElementById("resetBtn").style.display = "inline";
 
-        //hide the result when next run is starting
-        document.getElementById("result").style.display = "none";
+        //hide the result when next run is starting --> delete show class from result div
+        document.getElementById("result").className = document.getElementById("result").className.replace("show", "");
 
         //check if its the last run
         if(selectedRepeats == currentRun){
@@ -417,10 +419,9 @@ if(isset($_SESSION["idUser"])){
                 }
             }
             document.getElementById("task").innerHTML = learningSelection;
-            currentRun++;
+            currentRun++;                    
         }else{
-            //alert placeholder --> maybe add some stats showcase and call the setting page later with another button
-            //alert("Übung abgeschlossen sehr gut !");
+            //show results and hide buttons for checks
             document.getElementById("pieChartCanvas").style.display = "block";
             document.getElementById("endTraining").style.display = "block";
             document.getElementById("redoTraining").style.display = "block";
@@ -428,9 +429,10 @@ if(isset($_SESSION["idUser"])){
             drawPieChart();
 
             document.getElementById("doPredict").style.display = "none";
-            document.getElementById("resetBtn").style.display = "none";
-            //window.location.href = "settings.php"
-            
+            document.getElementById("resetBtn").style.display = "none";     
+               
+            //scroll to bottom if results are shown --> gets only used if the result is shown under the drawing element due to display width
+            $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
         }
     }
 
@@ -542,9 +544,12 @@ if(isset($_SESSION["idUser"])){
             break;
         }
 
-        //show the next button and the results again
+        //show the next button again and hide the predict and reset btn till next is clicked (see categoryChooser())
         document.getElementById("next").style.display = "inline";
-        document.getElementById("result").style.display = "block";
+        document.getElementById("doPredict").style.display = "none";
+        document.getElementById("resetBtn").style.display = "none";
+        //document.getElementById("result").style.display = "block";
+        showResultSnackbar();
     });
 
 
@@ -568,7 +573,7 @@ if(isset($_SESSION["idUser"])){
         let drawnNumber = numberDict[taskField.innerHTML];
         let answerResult = undefined;
         if(drawnNumber == number){
-            resultField.innerHTML = "Richtig ! Sehr gut, Sie haben eine "+number+" gezeichnet. <br> Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+            resultField.innerHTML = "Richtig ! Sehr gut, Sie haben eine "+number+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
             answerResult = 1;
             totalRight++;
             //call function to save the drawn image - only if drawing is correct
@@ -606,7 +611,7 @@ if(isset($_SESSION["idUser"])){
         }
     
         if(checkChar == disiredResult){
-            resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+disiredResult+" gezeichnet. <br> Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+            resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+disiredResult+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
             answerResult = 1;
             totalRight++;
             //call function to save the drawn image - only if drawing is correct
@@ -673,7 +678,7 @@ if(isset($_SESSION["idUser"])){
 
         let answerResult = undefined;
         if(taskChar == number){
-            resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+key+" ("+japChar+") gezeichnet. <br> Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+            resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+key+" ("+japChar+") gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
             answerResult = 1;
             totalRight++;
             //call function to save the drawn image - only if drawing is correct
@@ -787,6 +792,17 @@ if(isset($_SESSION["idUser"])){
         msg.text = textVal;
         msg.lang = 'de';
         speechSynthesis.speak(msg);
+    }
+
+    function showResultSnackbar() {
+        var resultDiv = document.getElementById("result");
+        if(resultDiv.innerHTML.includes("Richtig")){
+            resultDiv.style.backgroundColor ="#49873a";
+        }else{
+            resultDiv.style.backgroundColor ="#e36565";
+        }
+        resultDiv.className = "show";
+        setTimeout(function(){ resultDiv.className = resultDiv.className.replace("show", ""); }, 10000);
     }
 </script>
 
