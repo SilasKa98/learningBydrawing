@@ -51,7 +51,7 @@ test_img = test_img / 255.0
 train_label = keras.utils.to_categorical(train_label)
 test_label = keras.utils.to_categorical(test_label)
 
-early_stopping = EarlyStopping(monitor='val_loss', patience=6)
+#early_stopping = EarlyStopping(monitor='val_loss', patience=10)
 
 model = keras.Sequential([
     keras.layers.Conv2D(32, (5, 5), padding="same", input_shape=[28, 28, 1]),
@@ -73,7 +73,7 @@ model.fit(
     verbose=1, # Suppress chatty output; use Tensorboard instead
     validation_data=(test_img, test_label),
     epochs=40,
-    callbacks=[early_stopping]
+    #callbacks=[early_stopping]
 )
 test_loss,test_acc = model.evaluate(test_img, test_label)
 print('Test accuracy:', test_acc)

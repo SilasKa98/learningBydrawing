@@ -234,7 +234,7 @@ if(isset($_SESSION["idUser"])){
         <li class="rndChar">L</li>
     </ul>
     <div id="impressumWrapper">
-        <a href="#" id="impressum">Impressum</a>
+        <a href="impressum.html" id="impressum">Impressum</a>
     </div>
     
 </body>
