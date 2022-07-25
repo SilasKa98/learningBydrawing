@@ -244,8 +244,9 @@ if(isset($_SESSION["idUser"])){
                             $wrongRatio = ($valueWrongs[$i][$a]/$totalSum)*100;
             
                             //scale down the width to 80%, so it gets displayed correctly and this number can be assigned as a style
+                            $rightRatioStyle = (round($rightRatio)*0.8); 
                             $wrongRatioStyle = (round($wrongRatio)*0.8);
-                            $rightRatioStyle = (round($rightRatio)*0.8);
+
                             $showWrong = "inline-block";
                             $showRight = "inline-block";
                             $wrongDelay = "1.4s";
@@ -260,7 +261,7 @@ if(isset($_SESSION["idUser"])){
                                 $showWrong = "none";
                                 $borderRadiusRight = "7px";
                             }
-                            print "<div class='resultWrapper'><p class='testedValue'>Getesteter Wert (Anzahl/Prozent): <b>".$testedCategoryValues[$i][$a]."</b></p><p class='rightBar' style='width:".$rightRatioStyle."%;display:".$showRight.";border-radius:".$borderRadiusRight.";'>".$valueRights[$i][$a]." Richtig (".round($rightRatio,0)."%) </p><p class='wrongBar' style='width:".$wrongRatioStyle."%;display:".$showWrong.";border-radius:".$borderRadiusWrong.";transition-delay:".$wrongDelay.";'>".$valueWrongs[$i][$a]." Falsch (".round($wrongRatio,0)."%) </p></div>";
+                            print "<div class='resultWrapper'><p class='testedValue'>Getesteter Wert: <b>".$testedCategoryValues[$i][$a]."</b></p><p class='rightBar' style='width:".$rightRatioStyle."%;display:".$showRight.";border-radius:".$borderRadiusRight.";'>".$valueRights[$i][$a]." Richtig (".round($rightRatio,0)."%) </p><p class='wrongBar' style='width:".$wrongRatioStyle."%;display:".$showWrong.";border-radius:".$borderRadiusWrong.";transition-delay:".$wrongDelay.";'>".$valueWrongs[$i][$a]." Falsch (".round($wrongRatio,0)."%) </p></div>";
                         }
                     }
                 print "</div>";
