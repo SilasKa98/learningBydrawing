@@ -3,6 +3,8 @@
 	<head>
 		<link rel="stylesheet" href="../styles/loginStyle.css">
 		<link rel="stylesheet" href="../styles/background.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Registrieren</title>
 		<script>
 			function backgroundRandomizer(){
 				setInterval(function () {

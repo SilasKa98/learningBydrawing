@@ -456,6 +456,9 @@ body{
         margin-right: 0;
         padding: 13px;
     }
+    .tooltip .tooltiptext {
+        width: 200px;
+    }
 }
 
 @media only screen and (max-width: 455px) {

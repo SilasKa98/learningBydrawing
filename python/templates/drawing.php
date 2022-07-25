@@ -97,7 +97,7 @@ if(isset($_SESSION["idUser"])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Zeichnen</title>
     <link rel="stylesheet" href="styles/drawingStyle.css">
     <link rel="stylesheet" href="styles/background.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -430,7 +430,7 @@ if(isset($_SESSION["idUser"])){
 
             document.getElementById("doPredict").style.display = "none";
             document.getElementById("resetBtn").style.display = "none";     
-               
+
             //scroll to bottom if results are shown --> gets only used if the result is shown under the drawing element due to display width
             $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
         }

@@ -62,7 +62,7 @@ if(isset($_SESSION["idUser"])){
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Ergebnisse und Lernpläne</title>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="styles/resultAndPlans.css">
         <link rel="stylesheet" href="styles/background.css">
