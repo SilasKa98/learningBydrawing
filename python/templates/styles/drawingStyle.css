@@ -321,6 +321,30 @@ body{
     #canvasWrapper{
         margin-left: 9%;
     }
+
+    #result {
+        top: 5%;
+    }
+
+    @-webkit-keyframes fadein {
+        from {top: 0; opacity: 0;} 
+        to {top: 5%; opacity: 1;}
+      }
+      
+      @keyframes fadein {
+        from {top: 0; opacity: 0;}
+        to {top: 5%; opacity: 1;}
+      }
+    
+      @-webkit-keyframes fadeout {
+        from {top: 5%; opacity: 1;} 
+        to {top: 0; opacity: 0;}
+      }
+      
+      @keyframes fadeout {
+        from {top: 5%; opacity: 1;}
+        to {top: 0; opacity: 0;}
+      }
 }
 
 @media only screen and (max-width: 700px) {
@@ -353,30 +377,6 @@ body{
     #pieChartWrapper{
         margin-top: 170%;
     }
-
-    #result {
-        top: 5%;
-    }
-
-    @-webkit-keyframes fadein {
-        from {top: 0; opacity: 0;} 
-        to {top: 5%; opacity: 1;}
-      }
-      
-      @keyframes fadein {
-        from {top: 0; opacity: 0;}
-        to {top: 5%; opacity: 1;}
-      }
-    
-      @-webkit-keyframes fadeout {
-        from {top: 5%; opacity: 1;} 
-        to {top: 0; opacity: 0;}
-      }
-      
-      @keyframes fadeout {
-        from {top: 5%; opacity: 1;}
-        to {top: 0; opacity: 0;}
-      }
 }
 
 @media only screen and (max-width: 600px) {
@@ -394,6 +394,30 @@ body{
     #pieChartWrapper{
         margin-top: 190%;
     }
+
+    #result {
+        top: 6%;
+    }
+
+    @-webkit-keyframes fadein {
+        from {top: 0; opacity: 0;} 
+        to {top: 6%; opacity: 1;}
+      }
+      
+      @keyframes fadein {
+        from {top: 0; opacity: 0;}
+        to {top: 6%; opacity: 1;}
+      }
+    
+      @-webkit-keyframes fadeout {
+        from {top: 6%; opacity: 1;} 
+        to {top: 0; opacity: 0;}
+      }
+      
+      @keyframes fadeout {
+        from {top: 6%; opacity: 1;}
+        to {top: 0; opacity: 0;}
+      }
 }
 
 @media only screen and (max-width: 400px) {

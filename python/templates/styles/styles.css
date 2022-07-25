@@ -361,6 +361,17 @@ input:checked + #savingImagesSlider {
 }
 
 
+
+
+
+
+@media only screen and (max-width: 1390px) {
+  #userWrapper{
+    float: inherit;
+    margin-left: 27px;
+  }
+}
+
 @media only screen and (max-width: 1350px) {
   #startBtn{
     margin-right: 0px;
@@ -388,9 +399,12 @@ input:checked + #savingImagesSlider {
 }
 
 @media only screen and (max-width: 1050px) {
- 
   #impressumWrapper {
     margin-top: 8%;
+  }
+
+  #userWrapper{
+    margin-left: 12px;
   }
 }
 
@@ -442,6 +456,7 @@ input:checked + #savingImagesSlider {
 
   #userWrapper{
     margin-left: 18px;
+    float: left;
   }
 
   #impressumWrapper {
