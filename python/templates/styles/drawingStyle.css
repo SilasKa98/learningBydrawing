@@ -79,6 +79,11 @@ body{
 }
 
 
+#btnWrapper{
+    overflow: auto;
+    margin-top: 2%;
+}
+
 #btnWrapper button{
     float: right;
     margin-left: 3%;
