@@ -2,229 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb016180-689d-41e9-9e1d-488cb80394ce" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/python/learningDigitsOwnNumbers2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python/learningDigitsOwnNumbers.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/learningDigitsOwnNumbers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python/saved_models/zahlen/group1-shard1of4.bin" beforeDir="false" afterPath="$PROJECT_DIR$/python/saved_models/zahlen/group1-shard1of4.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python/saved_models/zahlen/group1-shard2of4.bin" beforeDir="false" afterPath="$PROJECT_DIR$/python/saved_models/zahlen/group1-shard2of4.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python/saved_models/zahlen/group1-shard3of4.bin" beforeDir="false" afterPath="$PROJECT_DIR$/python/saved_models/zahlen/group1-shard3of4.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python/saved_models/zahlen/group1-shard4of4.bin" beforeDir="false" afterPath="$PROJECT_DIR$/python/saved_models/zahlen/group1-shard4of4.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc3ed42ae66_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc3f2a70293_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc4c8589b7e_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc4c9df3866_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc4ca4d0840_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc4ca9ef6e0_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc4ccb52d07_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc4fe5d7262_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc6215c30ad_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc622492567_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc6227b0a74_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc62307eb76_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc62c22e8b1_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc62ce1366e_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dc62d84c8fb_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dca4eedeba3_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dca4f685a9d_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dca50445b98_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dca507620d0_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dca50d36b77_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dca52f68b7f_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dca57ec4bba_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dca59a53ea9_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dca5c07b3f8_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dca5ce60139_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/0_62dca61164659_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dc3eda23403_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dc4cb99d265_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dc4ccf73b56_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dc61fe0203b_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dc6235caf10_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dc624800927_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dc625960f2c_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dca51f185c5_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dca54adefd9_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dca58120d23_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dca5d0e1f0d_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dca5d657066_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dca61c3af00_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dca8193c87d_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dca861513ff_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dca86b56ab0_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/1_62dca8750bc8e_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc3ed72bf27_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc3f15ec92b_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc3f1facf83_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc4c81dfdc0_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc4ca7354d5_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc4cd751a7b_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc4cde7ad77_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc4ce8a5516_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc4fe86046d_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc622d83abb_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc6238a2048_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc625456ab3_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc625e3e4fd_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc62c923ca5_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dc62d06cf1f_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dca4f3e4866_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dca527620ec_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dca52cae111_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dca54502da8_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dca5b560037_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dca5d952703_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dca5e1e3e3c_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dca5f29248a_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dca5f755859_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dca5fb22763_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dca609b23f5_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/2_62dca60ee98d7_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc3ed06502b_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc3f1925cbf_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc3f234ecab_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc4c8f3f271_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc4c959424b_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc4caf9a16d_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc4cb28955d_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc623342550_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc623ddae1b_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc6256c9d6e_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc62a45a8d7_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc62bc89fe8_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc62bf2333a_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc62c65d97a_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc62dad9691_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dc62f5c690a_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dca50fd93be_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dca521b75d6_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dca584117a3_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dca594c9e5c_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dca5a673878_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dca5a9dce21_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/3_62dca5af24ebe_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dc3ead30646_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dc3eb945ee2_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dc3f031d456_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dc4ca1886be_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dc4fdb1910d_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dc620f7a1ed_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dc621f18acd_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dc625be376c_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dc62a71b2f0_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dc62ad65724_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dc62b139121_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dc62b639b2e_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dca4e7bee2f_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dca4f178d3d_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dca5016d65f_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dca51279875_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dca51523b05_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dca5349bee7_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dca57c0f6aa_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dca58f4090d_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dca5b834309_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/4_62dca87b88f16_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dc3eb5dc494_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dc4cb61610f_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dc4cd3d937a_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dc620355738_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dc62a1c670f_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dc62aa5a57e_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dca4ff0e32f_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dca51ba4554_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dca53c40c32_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dca58941d75_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dca58cb2d22_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dca597c0698_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dca5bdafda6_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dca61770db6_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dca81d2d1e9_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/5_62dca8684d4de_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dc3eccf2644_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dc3ef4950b2_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dc3ef871f78_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dc3efef2c17_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dc3f0f857ac_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dc4cbd40fb8_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dc4cc0aca59_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dc4cc7be61c_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dc4ce51e695_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dc62068f358_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dc6209b1616_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dc6251b586d_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dc62f0bb583_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dca5c602ab5_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dca5df2ada7_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dca5e76b042_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dca5efbd529_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/6_62dca81fe2ba9_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc10a3a1d94_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc3ec76a979_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc3f0899ad6_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc3f1cacf87_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc3f26aa799_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc4c8bd9f7a_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc4c922aee4_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc4cacbbab3_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc4cdb9669c_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc4feb12415_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc4fefdece9_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc4ff4539be_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc620ca0d11_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc6212a6bca_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc6218e278c_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc6221cfaf2_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc624ee13a3_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc62d326e3b_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dc62f37941c_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dca4fbd4bd2_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dca5249c7cc_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dca5324d09f_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dca5395b589_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dca5b26d6a8_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dca5c32abbe_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dca60665fd1_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dca6140444d_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dca61a081f1_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dca815a7752_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/7_62dca864a2194_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dc3f12df2c6_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dc4c88e39b4_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dc4ce20b6ef_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dc61fa6df53_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dc62e4c2b5b_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dc62e9a08d7_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dc62ece3739_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dca4e28498d_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dca4e576a3d_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dca4ebba675_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dca52a3ce57_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dca53fc6949_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dca5429788f_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dca5923670c_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dca59fc0e61_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dca603766d4_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dca81280b20_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dca8258f762_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/8_62dca87885b8b_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dc3eb17eb16_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dc3f0c0eefb_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dc4cc426727_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dc4fe234a78_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dc622aac342_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dc624b790b6_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dc62b9b7008_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dc62deb8ea8_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dc62e1a55b7_Sat Jul 23 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dca4dacc6f9_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dca4df1266c_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dca50a51ce1_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dca5ea9c572_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dca60c585f9_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dca82e0acc4_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dca84a7a1bd_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dca85ad3349_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dca87257fb5_Sun Jul 24 2022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/savedImages/Zahlen/9_62dca87f0ab06_Sun Jul 24 2022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/saved_models/zahlen/model.json" beforeDir="false" afterPath="$PROJECT_DIR$/python/saved_models/zahlen/model.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,7 +50,7 @@
       <recent name="C:\xampp\htdocs\drawingML\python" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.learningDigitsOwnNumbers">
+  <component name="RunManager" selected="Python.learningDigitsOwnNumbers2">
     <configuration name="learningAlphabet3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="drawingML" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -310,28 +95,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="learningDigits4" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="drawingML" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learningDigits4.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="learningDigitsOwnNumbers" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="drawingML" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -346,6 +109,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learningDigitsOwnNumbers.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="learningDigitsOwnNumbers2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="drawingML" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learningDigitsOwnNumbers2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -378,11 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.learningDigitsOwnNumbers2" />
         <item itemvalue="Python.learningDigitsOwnNumbers" />
         <item itemvalue="Python.learningKuzushiji" />
         <item itemvalue="Python.learningAlphabet3" />
         <item itemvalue="Python.learningAlphabet4" />
-        <item itemvalue="Python.learningDigits4" />
       </list>
     </recent_temporary>
   </component>
@@ -407,6 +192,7 @@
       <workItem from="1658586078729" duration="2269000" />
       <workItem from="1658604589104" duration="2173000" />
       <workItem from="1658627685043" duration="2853000" />
+      <workItem from="1658766967191" duration="4105000" />
     </task>
     <servers />
   </component>
@@ -425,13 +211,14 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/drawingML$learningDigitsOwnNumbers.coverage" NAME="learningDigitsOwnNumbers Coverage Results" MODIFIED="1658631719755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
+    <SUITE FILE_PATH="coverage/drawingML$learningDigitsOwnNumbers.coverage" NAME="learningDigitsOwnNumbers Coverage Results" MODIFIED="1658768042411" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/drawingML$learningKuzushiji.coverage" NAME="learningKuzushiji Coverage Results" MODIFIED="1658246272105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/drawingML$learningAlphabet4.coverage" NAME="learningAlphabet4 Coverage Results" MODIFIED="1657846984408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/drawingML$learningAlphabet.coverage" NAME="learningAlphabet Coverage Results" MODIFIED="1657843226615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/drawingML$learningDigits3.coverage" NAME="learningDigits3 Coverage Results" MODIFIED="1654957428472" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/drawingML$learningAlphabet2.coverage" NAME="learningAlphabet2 Coverage Results" MODIFIED="1657839434581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/drawingML$learningDigits2.coverage" NAME="learningDigits2 Coverage Results" MODIFIED="1657756486818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
+    <SUITE FILE_PATH="coverage/drawingML$learningDigitsOwnNumbers2.coverage" NAME="learningDigitsOwnNumbers2 Coverage Results" MODIFIED="1658773192504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/drawingML$learning.coverage" NAME="learning Coverage Results" MODIFIED="1654945763616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/drawingML$learningAlphabet3.coverage" NAME="learningAlphabet3 Coverage Results" MODIFIED="1657847022074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/drawingML$learningDigits4.coverage" NAME="learningDigits4 Coverage Results" MODIFIED="1657846816085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />

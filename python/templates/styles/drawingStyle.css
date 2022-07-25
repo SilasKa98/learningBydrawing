@@ -163,8 +163,8 @@ body{
   
   #result.show {
     visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 9.8s;
-    animation: fadein 0.5s, fadeout 0.5s 9.8s;
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
   }
   
   @-webkit-keyframes fadein {
@@ -176,18 +176,6 @@ body{
     from {top: 0; opacity: 0;}
     to {top: 3%; opacity: 1;}
   }
-
-  @-webkit-keyframes fadeout {
-    from {top: 3%; opacity: 1;} 
-    to {top: 0; opacity: 0;}
-  }
-  
-  @keyframes fadeout {
-    from {top: 3%; opacity: 1;}
-    to {top: 0; opacity: 0;}
-  }
-
-
 
 
 
@@ -309,6 +297,23 @@ body{
     }
 }
 
+@media only screen and (max-width: 800px) {
+    #result {
+        top: 5%;
+    }
+
+    @-webkit-keyframes fadein {
+        from {top: 0; opacity: 0;} 
+        to {top: 5%; opacity: 1;}
+    }
+  
+    @keyframes fadein {
+        from {top: 0; opacity: 0;}
+        to {top: 5%; opacity: 1;}
+    }
+}
+
+
 @media only screen and (max-width: 760px) {
     #wrapper1{
         margin-left: 21%;
@@ -321,31 +326,8 @@ body{
     #canvasWrapper{
         margin-left: 9%;
     }
-
-    #result {
-        top: 5%;
-    }
-
-    @-webkit-keyframes fadein {
-        from {top: 0; opacity: 0;} 
-        to {top: 5%; opacity: 1;}
-      }
-      
-      @keyframes fadein {
-        from {top: 0; opacity: 0;}
-        to {top: 5%; opacity: 1;}
-      }
-    
-      @-webkit-keyframes fadeout {
-        from {top: 5%; opacity: 1;} 
-        to {top: 0; opacity: 0;}
-      }
-      
-      @keyframes fadeout {
-        from {top: 5%; opacity: 1;}
-        to {top: 0; opacity: 0;}
-      }
 }
+
 
 @media only screen and (max-width: 700px) {
     #wrapper1{
@@ -407,16 +389,6 @@ body{
       @keyframes fadein {
         from {top: 0; opacity: 0;}
         to {top: 6%; opacity: 1;}
-      }
-    
-      @-webkit-keyframes fadeout {
-        from {top: 6%; opacity: 1;} 
-        to {top: 0; opacity: 0;}
-      }
-      
-      @keyframes fadeout {
-        from {top: 6%; opacity: 1;}
-        to {top: 0; opacity: 0;}
       }
 }
 

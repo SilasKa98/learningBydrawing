@@ -802,7 +802,7 @@ if(isset($_SESSION["idUser"])){
             resultDiv.style.backgroundColor ="#e36565";
         }
         resultDiv.className = "show";
-        setTimeout(function(){ resultDiv.className = resultDiv.className.replace("show", ""); }, 10000);
+        //setTimeout(function(){ resultDiv.className = resultDiv.className.replace("show", ""); }, 10000);
     }
 </script>
 
