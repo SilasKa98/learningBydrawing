@@ -450,6 +450,9 @@ if(isset($_SESSION["idUser"])){
             case "Hiragana":
                 model = await tf.loadLayersModel("../saved_models/hiragana/model.json")
                 break;
+            case "Formen":
+                model = await tf.loadLayersModel("../saved_models/formen/model.json")
+                break;
         }
     }
 
@@ -530,17 +533,18 @@ if(isset($_SESSION["idUser"])){
         //call the result method for the correct model (maybe can be done in one result function) 
     // let choosenCategory = document.getElementById("selectedCategory").value;
         switch (selectedCategory){
-        case "Formen":
-            break;
-        case "Buchstaben":
-            alphabetProcessResult(results);
-            break;
-        case "Zahlen":
-            digitsProcessResult(results);
-            break;
-        case "Hiragana":
-            hiraganaProcessResult(results);
-            break;
+            case "Buchstaben":
+                alphabetProcessResult(results);
+                break;
+            case "Zahlen":
+                digitsProcessResult(results);
+                break;
+            case "Hiragana":
+                hiraganaProcessResult(results);
+                break;
+            case "Formen":
+                shapesProcessResult(results);
+                break;
         }
 
         //show the next button again and hide the predict and reset btn till next is clicked (see categoryChooser())
@@ -684,6 +688,30 @@ if(isset($_SESSION["idUser"])){
             saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
         }else{
             resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% ein "+drawnChar+" ("+drawnJapChar+") anstatt des "+taskField.innerHTML+" ("+japChar+") gezeichnet.";
+            answerResult = 0;
+            totalWrong++;
+        }
+        saveLearningResult(taskField.innerHTML, answerResult);
+    }
+
+
+    function shapesProcessResult(r){
+
+        let odd = Math.max(...r);
+        let number = r.indexOf(odd);
+
+        let shapes = "<?php echo $dataset;?>";
+        shapes = shapes.split(",");
+
+        let predictedShape = shapes[number];
+        if(taskField.innerHTML == predictedShape){
+            resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+predictedShape+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+            answerResult = 1;
+            totalRight++;
+            //call function to save the drawn image - only if drawing is correct
+            saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
+        }else{
+            resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% ein "+predictedShape+" anstatt eines "+taskField.innerHTML+" gezeichnet.";
             answerResult = 0;
             totalWrong++;
         }

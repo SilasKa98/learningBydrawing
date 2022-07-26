@@ -13,13 +13,15 @@ if(isset($_SESSION["idUser"])){
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         while ($row = $result->fetch_assoc()) {
-            if(isset($_POST["data"])){
-                if(strpos($row["data"], $_POST["data"]) == false){
-                    exit("data and category missmatch! Please reload the page.");
-                }
-            }else{
-                if(strpos($row["data"], $_POST["label"]) == false){
-                    exit("data and category missmatch! Please reload the page.");
+            if($_POST["method"] != "saveLearningPlan" && $_POST["method"] != "deletePlan" &&  $_POST["method"] != "checkImageSavePermission"){
+                if(isset($_POST["data"])){
+                    if(strpos($row["data"], $_POST["data"]) == false){
+                        exit("data and category missmatch! Please reload the page.");
+                    }
+                }else{
+                    if(strpos($row["data"], $_POST["label"]) == false && $_POST["method"] != "saveLearningPlan"){
+                        exit("data and category missmatch! Please reload the page.");
+                    }
                 }
             }
         }
