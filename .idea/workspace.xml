@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb016180-689d-41e9-9e1d-488cb80394ce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/python/learningShapes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/drawing.php" beforeDir="false" afterPath="$PROJECT_DIR$/python/templates/drawing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/templates/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/python/templates/styles/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +186,7 @@
       <workItem from="1658604589104" duration="2173000" />
       <workItem from="1658627685043" duration="2853000" />
       <workItem from="1658766967191" duration="5515000" />
-      <workItem from="1658858257068" duration="4744000" />
+      <workItem from="1658858257068" duration="5416000" />
     </task>
     <servers />
   </component>

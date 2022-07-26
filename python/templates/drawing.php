@@ -440,6 +440,8 @@ if(isset($_SESSION["idUser"])){
         // clear the model variable
         model = undefined; 
         // load the model using a HTTPS request (where you have stored your model files)
+        model = await tf.loadLayersModel("../saved_models/"+selectedCategory.toLowerCase()+"/model.json");
+        /*
         switch (selectedCategory){
             case "Zahlen":
                 model = await tf.loadLayersModel("../saved_models/zahlen/model.json")
@@ -454,6 +456,7 @@ if(isset($_SESSION["idUser"])){
                 model = await tf.loadLayersModel("../saved_models/formen/model.json")
                 break;
         }
+        */
     }
 
     loadModel();
