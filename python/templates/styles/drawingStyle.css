@@ -260,7 +260,7 @@ body{
     }
 
     #pieChartWrapper{
-        margin-top: 115%;
+        margin-top: 110%;
     }
 
     #canvas{
@@ -272,20 +272,42 @@ body{
     }
 
     #canvasWrapper{
-        margin-left: 24%;
+        margin-left: 23%;
     }
 }
 
+
+@media only screen and (max-width: 1090px) {
+    #pieChartWrapper{
+        margin-top: 120%;
+    }
+
+    #canvasWrapper{
+        margin-left: 22%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #pieChartWrapper{
+        margin-top: 125%;
+    }
+}
+
+
 @media only screen and (max-width: 950px) {
     #pieChartWrapper{
-        margin-top: 123%;
+        margin-top: 130%;
     }
 }
 
 
 @media only screen and (max-width: 900px) {
     #pieChartWrapper{
-        margin-top: 130%;
+        margin-top: 140%;
+    }
+
+    #canvasWrapper{
+        margin-left: 19%;
     }
 }
 
@@ -295,7 +317,7 @@ body{
     }
 
     #pieChartWrapper{
-        margin-top: 140%;
+        margin-top: 145%;
     }
 
     #canvasWrapper{
@@ -317,6 +339,10 @@ body{
         from {top: 0; opacity: 0;}
         to {top: 5%; opacity: 1;}
     }
+
+    #pieChartWrapper{
+        margin-top: 155%;
+    }
 }
 
 
@@ -326,7 +352,7 @@ body{
     }
 
     #pieChartWrapper{
-        margin-top: 150%;
+        margin-top: 160%;
     }
 
     #canvasWrapper{
@@ -341,7 +367,7 @@ body{
     }
 
     #pieChartWrapper{
-        margin-top: 160%;
+        margin-top: 172%;
     }
 
     #canvasWrapper{
@@ -363,13 +389,13 @@ body{
 
 @media only screen and (max-width: 650px) {
     #pieChartWrapper{
-        margin-top: 170%;
+        margin-top: 180%;
     }
 }
 
 @media only screen and (max-width: 600px) {
     #pieChartWrapper{
-        margin-top: 180%;
+        margin-top: 190%;
     }
 }
 
@@ -380,7 +406,7 @@ body{
     }
 
     #pieChartWrapper{
-        margin-top: 190%;
+        margin-top: 205%;
     }
 
     #result {
@@ -398,9 +424,15 @@ body{
       }
 }
 
+@media only screen and (max-width: 450px) {
+    #pieChartWrapper{
+        margin-top: 210%;
+    }
+}
+
 @media only screen and (max-width: 400px) {
     #pieChartWrapper{
-        margin-top: 200%;
+        margin-top: 220%;
     }
     #wrapper1{
         margin-left: 9%;
@@ -409,6 +441,6 @@ body{
 
 @media only screen and (max-width: 380px) {
     #pieChartWrapper{
-        margin-top: 210%;
+        margin-top: 230%;
     }
 }
