@@ -1,8 +1,9 @@
 <?php
 include 'db_connector.php';
 session_start();
-if(isset($_SESSION["idUser"])){
 
+//backend also only accessible if a user is logged in
+if(isset($_SESSION["idUser"])){
     //check if all params match (category and tested values valid?) --> too avoid dom manipulations and resulting db inconsistencys
     $sql = "select data from datasets where category=?;";
     $stmt = mysqli_stmt_init($connection);
@@ -29,7 +30,7 @@ if(isset($_SESSION["idUser"])){
         }
     }
 
-
+    //insert the result of the tested value (right/wrong)
     if($_POST["method"] == "learningResults"){
         $tested_value = $_POST["data"];
         $result = $_POST["result"];
@@ -74,6 +75,7 @@ if(isset($_SESSION["idUser"])){
         }
     }
 
+    //save the drawn image to the image save destination --> if permission is granted
     if($_POST["method"] == "saveDrawing"){
         $uuid = $_SESSION["uuid"];
         $sql = "select allowImageSave from loginsystem where uuid=?;";
@@ -95,6 +97,7 @@ if(isset($_SESSION["idUser"])){
             $date = $_POST['date'];
             $uniqid = uniqid();
 
+            //get label for the file name, to later process it with machine learning
             if($category == "Zahlen"){
                 $numberDict = [
                     "Null"=> 0,
@@ -123,6 +126,7 @@ if(isset($_SESSION["idUser"])){
     }
 
 
+    //save the created learningPlan
     if($_POST["method"] == "saveLearningPlan"){
         $category = $_POST["category"];
         $uuid = $_SESSION["uuid"];
@@ -141,6 +145,7 @@ if(isset($_SESSION["idUser"])){
     }
 
 
+    //delete the selected learning plan
     if($_POST["method"] == "deletePlan"){
         $delId = $_POST["delid"];
         $sql3 ="delete from learningplans where id=?;";
@@ -153,8 +158,9 @@ if(isset($_SESSION["idUser"])){
         }
     }
 
-    if($_POST["method"] == "checkImageSavePermission"){
 
+    //update the permission for image saving
+    if($_POST["method"] == "checkImageSavePermission"){
         $checkboxStatus = $_POST["checkboxStatus"];
         $uuid = $_SESSION["uuid"];
 
