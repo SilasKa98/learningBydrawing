@@ -15,7 +15,10 @@ if(isset($_SESSION["idUser"])){
         while ($row = $result->fetch_assoc()) {
             if($_POST["method"] != "saveLearningPlan" && $_POST["method"] != "deletePlan" &&  $_POST["method"] != "checkImageSavePermission"){
                 if(isset($_POST["data"])){
-                    if(strpos($row["data"], $_POST["data"]) == false){
+                    $searchString = $_POST["data"];
+                    echo $searchString."---";
+                    echo $row["data"];
+                    if(!preg_match("/{$searchString}/i", $row["data"])){
                         exit("data and category missmatch! Please reload the page.");
                     }
                 }else{
