@@ -22,7 +22,8 @@ if(isset($_SESSION["idUser"])){
                         exit("data and category missmatch! Please reload the page.");
                     }
                 }else{
-                    if(strpos($row["data"], $_POST["label"]) == false && $_POST["method"] != "saveLearningPlan"){
+                    $searchString = $_POST["label"];
+                    if(!preg_match("/{$searchString}/i", $row["data"])){
                         exit("data and category missmatch! Please reload the page.");
                     }
                 }
