@@ -13,7 +13,7 @@ if(isset($_SESSION["idUser"])){
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         while ($row = $result->fetch_assoc()) {
-            if($_POST["method"] != "saveLearningPlan" && $_POST["method"] != "deletePlan" &&  $_POST["method"] != "checkImageSavePermission" && $_POST["method"] != "saveDrawing"){
+            if($_POST["method"] == "learningResults"){
                 if(isset($_POST["data"])){
                     $searchString = $_POST["data"];
                     if(!preg_match("/{$searchString}/i", $row["data"])){
