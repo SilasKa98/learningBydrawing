@@ -13,11 +13,9 @@ if(isset($_SESSION["idUser"])){
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         while ($row = $result->fetch_assoc()) {
-            if($_POST["method"] != "saveLearningPlan" && $_POST["method"] != "deletePlan" &&  $_POST["method"] != "checkImageSavePermission"){
+            if($_POST["method"] != "saveLearningPlan" && $_POST["method"] != "deletePlan" &&  $_POST["method"] != "checkImageSavePermission" && $_POST["method"] != "saveDrawing"){
                 if(isset($_POST["data"])){
                     $searchString = $_POST["data"];
-                    echo $searchString."---";
-                    echo $row["data"];
                     if(!preg_match("/{$searchString}/i", $row["data"])){
                         exit("data and category missmatch! Please reload the page.");
                     }
