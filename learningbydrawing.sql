@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 24. Jul 2022 um 17:21
--- Server-Version: 10.4.24-MariaDB
--- PHP-Version: 7.4.28
+-- Erstellungszeit: 28. Jul 2022 um 01:44
+-- Server-Version: 10.4.22-MariaDB
+-- PHP-Version: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,7 +40,7 @@ CREATE TABLE `datasets` (
 INSERT INTO `datasets` (`ID`, `category`, `data`) VALUES
 (1, 'Zahlen', 'Null,Eins,Zwei,Drei,Vier,Fünf,Sechs,Sieben,Acht,Neun'),
 (2, 'Buchstaben', 'a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z'),
-(3, 'Formen', 'placeholder,placeholder'),
+(3, 'Formen', 'Dreieck,Kreis,Viereck,Trapez,Parallelogram,Drachenviereck'),
 (4, 'Hiragana', 'O,Ki,Su,Tsu,Na,Ha,Ma,Ya,Re,Wo');
 
 -- --------------------------------------------------------
@@ -162,7 +162,13 @@ INSERT INTO `learningresults` (`ID`, `uuid`, `category`, `tested_value`, `right_
 (81, '62cf3c5393c16', 'Buchstaben', 'i', 1, 0),
 (82, '62cf3c5393c16', 'Buchstaben', 'v', 1, 0),
 (83, '62cf3c5393c16', 'Zahlen', 'Sechs', 0, 1),
-(84, '62cd8d8180eea', 'Buchstaben', 'q', 1, 0);
+(84, '62cd8d8180eea', 'Buchstaben', 'q', 1, 0),
+(85, '62cd8d8180eea', 'Formen', 'Trapez', 0, 2),
+(86, '62cd8d8180eea', 'Formen', 'Kreis', 0, 2),
+(87, '62cd8d8180eea', 'Formen', 'Parallelogram', 0, 5),
+(88, '62cd8d8180eea', 'Formen', 'Drachenviereck', 3, 0),
+(89, '62cd8d8180eea', 'Formen', 'Viereck', 1, 1),
+(90, '62cd8d8180eea', 'Formen', 'Dreieck', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -237,7 +243,7 @@ ALTER TABLE `learningplans`
 -- AUTO_INCREMENT für Tabelle `learningresults`
 --
 ALTER TABLE `learningresults`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- Constraints der exportierten Tabellen
