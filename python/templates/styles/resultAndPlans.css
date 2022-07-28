@@ -84,7 +84,7 @@ body{
 
 
 .testedValue{
-    width: 14%;
+    width: 15%;
     font-size: 12pt;
 }
 
@@ -443,7 +443,9 @@ body{
 
     .rightBar{
         width: 30% !important;
-        margin-left: 16%;
+    }
+    .testedValue{
+        margin-right: 16%;
     }
 
     .wrongBar{
