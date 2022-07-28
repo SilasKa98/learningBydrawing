@@ -617,7 +617,7 @@ if(isset($_SESSION["idUser"])){
         let answerResult = undefined;
         let disiredResult = taskField.innerHTML;  
         if(odd > threshold){
-            if(drawnLetter == disiredResult){
+            if(drawnLetter.toLowerCase() == disiredResult.toLowerCase()){
                 resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+disiredResult+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
                 answerResult = 1;
                 totalRight++;
