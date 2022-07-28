@@ -361,8 +361,6 @@ if(isset($_SESSION["idUser"])){
         clickX = new Array();
         clickY = new Array();
         clickD = new Array();
-        //document.getElementById("result").innerHTML = "";
-        //document.getElementById("task").innerHTML = "";
     });
 
 
@@ -375,7 +373,8 @@ if(isset($_SESSION["idUser"])){
 
     var totalRight = 0;
     var totalWrong = 0;
-
+    var totalUnknown = 0;
+    var threshold = 0.7;
 
     function categoryChooser(){
         let selectedRepeats = parseInt(document.getElementById("selectedRepeats").value);
@@ -515,7 +514,12 @@ if(isset($_SESSION["idUser"])){
         console.log(tempCanvas.height);
     // tCtx.strokeStyle = "white";
         tCtx.drawImage(canvas, minX, minY, maxX - minX, maxY - minY, 0, 0, maxX - minX, maxY - minY);
-
+        if(tempCanvas.width == 0 && tempCanvas.height == 0){
+            console.log(resultField);
+            resultField.innerHTML = "Du hast noch nichts gezeichnet";
+            showResultSnackbar();
+            return;
+        }
         const imageDataRescaled = tCtx.getImageData(
         0,
         0,
@@ -556,6 +560,7 @@ if(isset($_SESSION["idUser"])){
         document.getElementById("resetBtn").style.display = "none";
         //document.getElementById("result").style.display = "block";
         showResultSnackbar();
+        console.log(context);
     });
 
 
@@ -579,16 +584,22 @@ if(isset($_SESSION["idUser"])){
         let disiredResult = numberDict[taskField.innerHTML];
         let answerResult = undefined;
 
-        if(disiredResult == number){
-            resultField.innerHTML = "Richtig ! Sehr gut, Sie haben eine "+number+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
-            answerResult = 1;
-            totalRight++;
-            //call function to save the drawn image - only if drawing is correct
-            saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
+        if(odd > threshold){
+            if(disiredResult == number){
+                resultField.innerHTML = "Richtig ! Sehr gut, Sie haben eine "+number+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+                answerResult = 1;
+                totalRight++;
+                //call function to save the drawn image - only if drawing is correct
+                saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
+            }else{
+                resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+number+" anstatt einer "+disiredResult+" gezeichnet.";
+                answerResult = 0;
+                totalWrong++;
+            }
         }else{
-            resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+number+" anstatt einer "+disiredResult+" gezeichnet.";
-            answerResult = 0;
-            totalWrong++;
+            resultField.innerHTML = "Entschuldigung, deine Antwort konnte nicht erkannt werden. Du hast wahrscheinlich eine "+number+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+            totalUnknown++;
+            return;
         }
         saveLearningResult(taskField.innerHTML, answerResult);
     }
@@ -606,27 +617,23 @@ if(isset($_SESSION["idUser"])){
         //-1 because the first one is a space   
         let drawnLetter = alphabet[number-1]
         let answerResult = undefined;
-        let disiredResult;
-        let checkChar;
-        if(taskField.innerHTML == taskField.innerHTML.toUpperCase()){
-            console.log("rein");
-            disiredResult = taskField.innerHTML.toLowerCase();
-            checkChar = drawnLetter.toLowerCase();
+        let disiredResult = taskField.innerHTML;  
+        if(odd > threshold){
+            if(drawnLetter == disiredResult){
+                resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+disiredResult+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+                answerResult = 1;
+                totalRight++;
+                //call function to save the drawn image - only if drawing is correct
+                saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
+            }else{
+                resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+drawnLetter+" anstatt einer "+disiredResult+" gezeichnet.";
+                answerResult = 0;
+                totalWrong++;
+            }
         }else{
-            disiredResult = taskField.innerHTML.toUpperCase();
-            checkChar = drawnLetter.toUpperCase();
-        }
-    
-        if(checkChar == disiredResult){
-            resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+disiredResult+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
-            answerResult = 1;
-            totalRight++;
-            //call function to save the drawn image - only if drawing is correct
-            saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
-        }else{
-            resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+drawnLetter+" anstatt einer "+disiredResult+" gezeichnet.";
-            answerResult = 0;
-            totalWrong++;
+            resultField.innerHTML = "Entschuldigung, deine Antwort konnte nicht erkannt werden. Du hast wahrscheinlich ein "+drawnLetter+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+            totalUnknown++;
+            return;
         }
         saveLearningResult(taskField.innerHTML, answerResult);
     }
@@ -670,16 +677,22 @@ if(isset($_SESSION["idUser"])){
         let drawnJapChar = numberToJap[number];
 
         let answerResult = undefined;
-        if(disiredResult == number){
-            resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+key+" ("+japChar+") gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
-            answerResult = 1;
-            totalRight++;
-            //call function to save the drawn image - only if drawing is correct
-            saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
+        if(odd > threshold){
+            if(disiredResult == number){
+                resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+key+" ("+japChar+") gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+                answerResult = 1;
+                totalRight++;
+                //call function to save the drawn image - only if drawing is correct
+                saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
+            }else{
+                resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% ein "+drawnChar+" ("+drawnJapChar+") anstatt des "+taskField.innerHTML+" ("+japChar+") gezeichnet.";
+                answerResult = 0;
+                totalWrong++;
+            }
         }else{
-            resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% ein "+drawnChar+" ("+drawnJapChar+") anstatt des "+taskField.innerHTML+" ("+japChar+") gezeichnet.";
-            answerResult = 0;
-            totalWrong++;
+            resultField.innerHTML = "Entschuldigung, deine Antwort konnte nicht erkannt werden. Du hast wahrscheinlich ein "+key+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+            totalUnknown++;
+            return;
         }
         saveLearningResult(taskField.innerHTML, answerResult);
     }
@@ -695,16 +708,22 @@ if(isset($_SESSION["idUser"])){
 
         let disiredResult = taskField.innerHTML;
         let predictedShape = shapes[number];
-        if(disiredResult == predictedShape){
-            resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+predictedShape+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
-            answerResult = 1;
-            totalRight++;
-            //call function to save the drawn image - only if drawing is correct
-            saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
+        if(odd > threshold){
+            if(disiredResult == predictedShape){
+                resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+predictedShape+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+                answerResult = 1;
+                totalRight++;
+                //call function to save the drawn image - only if drawing is correct
+                saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
+            }else{
+                resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% ein "+predictedShape+" anstatt eines "+disiredResult+" gezeichnet.";
+                answerResult = 0;
+                totalWrong++;
+            }
         }else{
-            resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% ein "+predictedShape+" anstatt eines "+disiredResult+" gezeichnet.";
-            answerResult = 0;
-            totalWrong++;
+            resultField.innerHTML = "Entschuldigung, deine Antwort konnte nicht erkannt werden. Du hast wahrscheinlich ein "+predictedShape+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+            totalUnknown++;
+            return;
         }
         saveLearningResult(taskField.innerHTML, answerResult);
     }
@@ -751,11 +770,12 @@ if(isset($_SESSION["idUser"])){
 
 
     function drawPieChart(){
-        var xValues = ["Richtige Antworten", "Falsche Antworten",];
-        var yValues = [totalRight, totalWrong];
+        var xValues = ["Richtige Antworten", "Falsche Antworten","Ungewertete Antworten"];
+        var yValues = [totalRight, totalWrong, totalUnknown];
         var barColors = [
         "#109d1b",
-        "#cb3c3c"
+        "#cb3c3c",
+        "#cda71f"
         ];
 
         new Chart("pieChartCanvas", {
@@ -816,8 +836,10 @@ if(isset($_SESSION["idUser"])){
         var resultDiv = document.getElementById("result");
         if(resultDiv.innerHTML.includes("Richtig")){
             resultDiv.style.backgroundColor ="#49873a";
-        }else{
+        }else if(resultDiv.innerHTML.includes("Falsch")){
             resultDiv.style.backgroundColor ="#e36565";
+        }else{
+            resultDiv.style.backgroundColor ="#cda71f";
         }
         resultDiv.className = "show";
         //setTimeout(function(){ resultDiv.className = resultDiv.className.replace("show", ""); }, 10000);
