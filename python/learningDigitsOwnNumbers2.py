@@ -25,7 +25,7 @@ def load_images_to_data(image_directory, features_data, label_data):
         image_file_name = os.path.join(image_directory, file)
         if ".jpg" in image_file_name:
             img = Image.open(image_file_name).convert("L")
-            img = np.resize(img, (28,28,1))
+            img = np.resize(img, (1,28,28,1))
             im2arr = np.array(img)
             im2arr = im2arr.reshape(1,28,28,1)
             features_data = np.append(features_data, im2arr, axis=0)
