@@ -576,16 +576,17 @@ if(isset($_SESSION["idUser"])){
             "Neun": 9
         }
 
-        let drawnNumber = numberDict[taskField.innerHTML];
+        let disiredResult = numberDict[taskField.innerHTML];
         let answerResult = undefined;
-        if(drawnNumber == number){
+
+        if(disiredResult == number){
             resultField.innerHTML = "Richtig ! Sehr gut, Sie haben eine "+number+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
             answerResult = 1;
             totalRight++;
             //call function to save the drawn image - only if drawing is correct
             saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
         }else{
-            resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+number+" anstatt einer "+drawnNumber+" gezeichnet.";
+            resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+number+" anstatt einer "+disiredResult+" gezeichnet.";
             answerResult = 0;
             totalWrong++;
         }
@@ -637,20 +638,6 @@ if(isset($_SESSION["idUser"])){
         let odd = Math.max(...r);
         let number = r.indexOf(odd);
 
-    /*
-        let charDict= {
-            "O": "お",
-            "Ki": "き",
-            "Su": "す",
-            "Tsu": "つ",
-            "Na": "な",
-            "Ha": "は",
-            "Ma": "ま",
-            "Ya": "や",
-            "Re": "れ",
-            "Wo": "を"
-        }
-        */
         let charDict= {
             "O": 0,
             "Ki": 1,
@@ -676,14 +663,14 @@ if(isset($_SESSION["idUser"])){
             8: "れ",
             9: "を"
         }
-        let taskChar = charDict[taskField.innerHTML];
+        let disiredResult = charDict[taskField.innerHTML];
         let drawnChar = Object.keys(charDict).find(k=>charDict[k]===number);
-        let key = Object.keys(charDict).find(k=>charDict[k]===taskChar);
-        let japChar = numberToJap[taskChar];
+        let key = Object.keys(charDict).find(k=>charDict[k]===disiredResult);
+        let japChar = numberToJap[disiredResult];
         let drawnJapChar = numberToJap[number];
 
         let answerResult = undefined;
-        if(taskChar == number){
+        if(disiredResult == number){
             resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+key+" ("+japChar+") gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
             answerResult = 1;
             totalRight++;
@@ -706,15 +693,16 @@ if(isset($_SESSION["idUser"])){
         let shapes = "<?php echo $dataset;?>";
         shapes = shapes.split(",");
 
+        let disiredResult = taskField.innerHTML;
         let predictedShape = shapes[number];
-        if(taskField.innerHTML == predictedShape){
+        if(disiredResult == predictedShape){
             resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+predictedShape+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
             answerResult = 1;
             totalRight++;
             //call function to save the drawn image - only if drawing is correct
             saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
         }else{
-            resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% ein "+predictedShape+" anstatt eines "+taskField.innerHTML+" gezeichnet.";
+            resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% ein "+predictedShape+" anstatt eines "+disiredResult+" gezeichnet.";
             answerResult = 0;
             totalWrong++;
         }
