@@ -1,11 +1,13 @@
 import tensorflow as tf
 import tensorflowjs as tfjs
+from keras.optimizer_v2.rmsprop import RMSprop
+
 from tensorflow import keras
 from keras.callbacks import EarlyStopping
 import os
 import numpy as np
 from PIL import Image
-from keras.optimizers import RMSprop
+
 from keras.callbacks import ReduceLROnPlateau
 from keras.preprocessing.image import ImageDataGenerator
 
