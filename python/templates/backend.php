@@ -4,6 +4,7 @@ session_start();
 
 //backend also only accessible if a user is logged in
 if(isset($_SESSION["idUser"])){
+
     //check if all params match (category and tested values valid?) --> too avoid dom manipulations and resulting db inconsistencys
     $sql = "select data from datasets where category=?;";
     $stmt = mysqli_stmt_init($connection);
@@ -15,16 +16,14 @@ if(isset($_SESSION["idUser"])){
         $result = mysqli_stmt_get_result($stmt);
         while ($row = $result->fetch_assoc()) {
             if($_POST["method"] == "learningResults"){
-                if(isset($_POST["data"])){
-                    $searchString = $_POST["data"];
-                    if(!preg_match("/{$searchString}/i", $row["data"])){
-                        exit("data and category missmatch! Please reload the page.");
-                    }
-                }else{
-                    $searchString = $_POST["label"];
-                    if(!preg_match("/{$searchString}/i", $row["data"])){
-                        exit("data and category missmatch! Please reload the page.");
-                    }
+                $searchString = $_POST["data"];
+                if(!preg_match("/{$searchString}/i", $row["data"])){
+                    exit("data and category missmatch! Please reload the page.");
+                }
+            }elseif($_POST["method"] == "saveDrawing"){
+                $searchString = $_POST["label"];
+                if(!preg_match("/{$searchString}/i", $row["data"])){
+                    exit("data and category missmatch! Please reload the page.");
                 }
             }
         }
