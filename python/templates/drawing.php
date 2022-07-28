@@ -507,15 +507,15 @@ if(isset($_SESSION["idUser"])){
 
         var tempCanvas = document.createElement("canvas"),
         tCtx = tempCanvas.getContext("2d");
-    // tempCanvas.style.backgroundColor = "black";
+
         tempCanvas.width  = maxX - minX;
         tempCanvas.height = maxY - minY;
-        console.log(tempCanvas.width);
-        console.log(tempCanvas.height);
-    // tCtx.strokeStyle = "white";
+
+        //tCtx.strokeStyle = "white";
         tCtx.drawImage(canvas, minX, minY, maxX - minX, maxY - minY, 0, 0, maxX - minX, maxY - minY);
+
+        //check if the user has drawn smth. --> if not just return and give a error message to prevent js error
         if(tempCanvas.width == 0 && tempCanvas.height == 0){
-            console.log(resultField);
             resultField.innerHTML = "Du hast noch nichts gezeichnet";
             showResultSnackbar();
             return;
@@ -560,7 +560,6 @@ if(isset($_SESSION["idUser"])){
         document.getElementById("resetBtn").style.display = "none";
         //document.getElementById("result").style.display = "block";
         showResultSnackbar();
-        console.log(context);
     });
 
 
@@ -607,7 +606,6 @@ if(isset($_SESSION["idUser"])){
 
     function alphabetProcessResult(r){
         //PROBLEM: lowercase and upper case cant be checked, because the model is handling upper and lower in the same class...
-        console.log(r);
         let odd = Math.max(...r);
         let number = r.indexOf(odd);
 
@@ -640,7 +638,6 @@ if(isset($_SESSION["idUser"])){
 
 
     function hiraganaProcessResult(r){
-        console.log(r);
 
         let odd = Math.max(...r);
         let number = r.indexOf(odd);
