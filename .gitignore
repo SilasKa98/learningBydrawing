@@ -4,4 +4,4 @@
 python/.idea
 
 ### Ingnoring savedImgages from Testing ###
-pyhton/templates/savedImages/
+project/templates/savedImages/
