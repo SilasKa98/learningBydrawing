@@ -164,7 +164,7 @@ if(isset($_SESSION["idUser"])){
         </div>
         <input type="submit" id="logout" value="Logout"></button>
     </form>
-    <h1 id="headline">Einstellungen</h1>
+    <h1 id="headline">Lernauswahl</h1>
     <div class="content">
         <div id="categoryWrapper">
             <!--Later fetch the categorys from the database here: corresponding table is "datasets"-->
