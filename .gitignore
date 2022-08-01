@@ -1,7 +1,7 @@
 ### Ignore Intellij idea Folder ###
 .idea
 .idea/
-python/.idea
+project/.idea
 
 ### Ingnoring savedImgages from Testing ###
 project/templates/savedImages/
