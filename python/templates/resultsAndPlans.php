@@ -62,7 +62,7 @@ if(isset($_SESSION["idUser"])){
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ergebnisse und Lernpläne</title>
+        <title>Ergebnisse und Einstellungen</title>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="styles/resultAndPlans.css">
         <link rel="stylesheet" href="styles/background.css">
@@ -228,7 +228,7 @@ if(isset($_SESSION["idUser"])){
                 <span class="slider round" id="savingImagesSlider"></span>
             </label>
         </div>
-    <h1 id="headline">Ergebnisse und Lernpläne</h1>
+    <h1 id="headline">Ergebnisse und Einstellungen</h1>
         <div id="accordion">
             <h2 class="secHeadline">Überprüfe deine bisherigen Lernergebnisse.</h2>
             <?php
