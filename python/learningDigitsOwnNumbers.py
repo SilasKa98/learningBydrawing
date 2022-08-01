@@ -1,6 +1,6 @@
 import tensorflow as tf
 import tensorflowjs as tfjs
-from keras.optimizer_v2.rmsprop import RMSprop
+from keras.optimizers import RMSprop
 
 from tensorflow import keras
 from keras.callbacks import EarlyStopping

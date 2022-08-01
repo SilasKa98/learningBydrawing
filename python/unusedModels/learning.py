@@ -115,4 +115,4 @@ model.summary()
 # look into the model
 
 
-tfjs.converters.save_keras_model(model, 'saved_models')
+tfjs.converters.save_keras_model(model, '../saved_models')
