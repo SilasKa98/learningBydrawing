@@ -6,6 +6,10 @@
 .idea/workspace.xml
 project/.idea
 
+
+###Ignore virtual Environment
+venv
+
 ### Ingnoring savedImgages from Testing ###
 project/templates/savedImages/*
 project/logs/scalars/*
