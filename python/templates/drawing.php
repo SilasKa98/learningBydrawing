@@ -440,22 +440,6 @@ if(isset($_SESSION["idUser"])){
         model = undefined; 
         // load the model using a HTTPS request (where you have stored your model files)
         model = await tf.loadLayersModel("../saved_models/"+selectedCategory.toLowerCase()+"/model.json");
-        /*
-        switch (selectedCategory){
-            case "Zahlen":
-                model = await tf.loadLayersModel("../saved_models/zahlen/model.json")
-                break;
-            case "Buchstaben":
-                model = await tf.loadLayersModel("../saved_models/buchstaben/model.json")
-                break;
-            case "Hiragana":
-                model = await tf.loadLayersModel("../saved_models/hiragana/model.json")
-                break;
-            case "Formen":
-                model = await tf.loadLayersModel("../saved_models/formen/model.json")
-                break;
-        }
-        */
     }
 
     loadModel();
@@ -478,24 +462,6 @@ if(isset($_SESSION["idUser"])){
 
     $("#doPredict").click(async function () {
         // get image data from canvas
-        /*
-        const imageData = context.getImageData(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-        );
-        */
-
-        //attemp to downscale the canvas context by using another canvas
-        /*
-        const smallCanvas = document.getElementById("small");
-        const smallContext = smallCanvas.getContext("2d");   
-        smallContext.scale(0.25, 0.25);
-        smallContext.drawImage(canvas, 0, 0); 
-        const smallImageData = smallContext.getImageData(0, 0, smallCanvas.width, smallCanvas.height);
-        */
-
 
         //rescaling
         //get only the drawn are and not the free space around
@@ -511,7 +477,6 @@ if(isset($_SESSION["idUser"])){
         tempCanvas.width  = maxX - minX;
         tempCanvas.height = maxY - minY;
 
-        //tCtx.strokeStyle = "white";
         tCtx.drawImage(canvas, minX, minY, maxX - minX, maxY - minY, 0, 0, maxX - minX, maxY - minY);
 
         //check if the user has drawn smth. --> if not just return and give a error message to prevent js error
@@ -528,17 +493,17 @@ if(isset($_SESSION["idUser"])){
         );
 
 
-        //alternativly parse the canvas direct to function preprocessCanvas 
+        //send the image Data aka the tensor to the process function
         let tensor = preprocessCanvas(imageDataRescaled);
-        // preprocess canvas
-        //let tensor = preprocessCanvas(imageData);
+
         // make predictions on the preprocessed image tensor
         let predictions = await model.predict(tensor).data();
         let output = model.predict(tensor).data();
+
         // get the model's prediction results
         let results = Array.from(predictions);
-        //call the result method for the correct model (maybe can be done in one result function) 
-    // let choosenCategory = document.getElementById("selectedCategory").value;
+
+        //call the result method for the correct model 
         switch (selectedCategory){
             case "Buchstaben":
                 alphabetProcessResult(results);
@@ -558,7 +523,6 @@ if(isset($_SESSION["idUser"])){
         document.getElementById("next").style.display = "inline";
         document.getElementById("doPredict").style.display = "none";
         document.getElementById("resetBtn").style.display = "none";
-        //document.getElementById("result").style.display = "block";
         showResultSnackbar();
     });
 
@@ -638,7 +602,6 @@ if(isset($_SESSION["idUser"])){
 
 
     function hiraganaProcessResult(r){
-
         let odd = Math.max(...r);
         let number = r.indexOf(odd);
 
@@ -696,7 +659,6 @@ if(isset($_SESSION["idUser"])){
 
 
     function shapesProcessResult(r){
-
         let odd = Math.max(...r);
         let number = r.indexOf(odd);
 
