@@ -7,4 +7,5 @@
 project/.idea
 
 ### Ingnoring savedImgages from Testing ###
-project/templates/savedImages/
+project/templates/savedImages/*
+project/logs/scalars/*
