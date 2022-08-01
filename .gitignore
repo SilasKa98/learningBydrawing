@@ -1,6 +1,9 @@
 ### Ignore Intellij idea Folder ###
 .idea
 .idea/
+.idea/drawingML.iml
+.idea/misc.xml
+.idea/workspace.xml
 project/.idea
 
 ### Ingnoring savedImgages from Testing ###
