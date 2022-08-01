@@ -1,7 +1,7 @@
 import tensorflow as tf
 import tensorflowjs as tfjs
 from tensorflow import keras
-from keras.callbacks import EarlyStopping
+from keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from datetime import datetime
 
 import numpy as np
@@ -11,6 +11,8 @@ import matplotlib.pyplot as plt
 from keras.preprocessing.image import load_img, img_to_array
 from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix
 from keras.preprocessing.image import ImageDataGenerator
+from keras.optimizer_v2.rmsprop import RMSprop
+
 
 
 # -------------------------------------------------------------------------------------------------------------------- #
@@ -113,19 +115,24 @@ def model_definition(num_classes,dropout_layer):
     model_def = tf.keras.Sequential()
 
     # Defining the Layers of the Neural Network
+
     model_def.add(tf.keras.layers.Conv2D(filters=128, kernel_size=(5, 5), padding='same', activation='relu',
                                          input_shape=(28, 28, 1)))
-    model_def.add(tf.keras.layers.Dropout(dropout_layer))
     model_def.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
-    model_def.add(tf.keras.layers.Conv2D(filters=64, kernel_size=(3, 3), padding='same', activation='relu'))
     model_def.add(tf.keras.layers.Dropout(dropout_layer))
+
+    model_def.add(tf.keras.layers.Conv2D(filters=64, kernel_size=(3, 3), padding='same', activation='relu'))
+    model_def.add(tf.keras.layers.Conv2D(filters=32, kernel_size=(3, 3), padding='same', activation='relu'))
     model_def.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2)))
+    model_def.add(tf.keras.layers.Dropout(dropout_layer))
+
     model_def.add(tf.keras.layers.Flatten())
-    model_def.add(tf.keras.layers.Dense(units=128, activation='relu'))
+    model_def.add(tf.keras.layers.Dense(units=200, activation='relu'))
     model_def.add(tf.keras.layers.Dropout(dropout_layer))
     model_def.add(tf.keras.layers.Dense(units=num_classes, activation='softmax'))
-    model_def.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
+    optimizer = RMSprop(learning_rate=0.001, rho=0.9, epsilon=1e-08, decay=0.0)
+    model_def.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
     model_def.summary()
 
     return model_def
@@ -135,15 +142,22 @@ def model_training(model, train_x, train_y, val_x, val_y, batch, epochs, patienc
     """
     Function to train the defined model with created train and val data
     """
-    # rotates / zooms the image to create more variety and training data
+    # rotates / zooms the image to create more variety
     datagen = ImageDataGenerator(horizontal_flip=True, vertical_flip=True, rotation_range=20, zoom_range=0.2,
                                  width_shift_range=0.2, height_shift_range=0.2, shear_range=0.1, fill_mode="nearest")
+
     # stopping mechanism to save the best model after x rounds with no improvement
     early_stopping = EarlyStopping(monitor='val_loss', patience=patience)
 
     # Save logs of the trained model to be able to evaluate the model with tensorboard
     logdir = "logs/scalars/" + datetime.now().strftime("%Y%m%d-%H%M%S")
     tensorboard_callback = keras.callbacks.TensorBoard(log_dir=logdir, write_graph=True)
+
+    learning_rate_reduction = ReduceLROnPlateau(monitor='val_accuracy',
+                                                patience=3,
+                                                verbose=1,
+                                                factor=0.5,
+                                                min_lr=0.00001)
 
     # checks if the rotations is enabled or not and uses the respective training method
     if rotation:
@@ -154,9 +168,9 @@ def model_training(model, train_x, train_y, val_x, val_y, batch, epochs, patienc
                 batch_size=batch
             ),
             verbose=1,  # Suppress chatty output; use Tensorboard instead
-            validation_data=(val_x, val_y),     # Data to be used as Validation for the training Process
+            validation_data=(val_x, val_y),  # Data to be used as Validation for the training Process
             epochs=epochs,
-            callbacks=[early_stopping,tensorboard_callback]
+            callbacks=[early_stopping, tensorboard_callback, learning_rate_reduction]
         )
     else:
         model.fit(
@@ -166,7 +180,7 @@ def model_training(model, train_x, train_y, val_x, val_y, batch, epochs, patienc
             verbose=1,  # Suppress chatty output; use Tensorboard instead
             validation_data=(val_x, val_y),  # Data to be used as Validation for the training Process
             epochs=epochs,
-            callbacks=[early_stopping]
+            callbacks=[early_stopping, tensorboard_callback, learning_rate_reduction]
         )
 
     return model
@@ -217,7 +231,7 @@ def model_save(trained_model, save_status):
     Function to save the Model for JavaScript Use if save_status True
     """
     if save_status:
-        tfjs.converters.save_keras_model(trained_model, 'saved_models/formen_test')
+        tfjs.converters.save_keras_model(trained_model, 'saved_models/formen')
     else:
         print("Model not Saved")
 
@@ -225,13 +239,13 @@ def model_save(trained_model, save_status):
 # -------------------------------------------------------------------------------------------------------------------- #
 #                                           Hyper-parameters & Variables                                               #
 # -------------------------------------------------------------------------------------------------------------------- #
-save = False
+save = True
 stopping_patience = 5
 use_rotation = True         # Rotates the images in a specified angle for training
 
 batch_size = 128
 epoch = 100
-dropout = 0.2
+dropout = 0.3
 
 
 # -------------------------------------------------------------------------------------------------------------------- #
