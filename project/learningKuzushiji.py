@@ -1,17 +1,15 @@
-import datetime
-
 import tensorflow as tf
 import tensorflowjs as tfjs
 import pandas as pd
 import os
 import numpy as np
 
-from keras.layers import Conv2D, BatchNormalization, Dropout, MaxPooling2D, Flatten, Dense
 from keras.models import Sequential
 from tensorflow import keras
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from sklearn.model_selection import train_test_split
 from keras.optimizer_v2.rmsprop import RMSprop
+from datetime import datetime
 
 # -------------------------------------------------------------------------------------------------------------------- #
 #                                             Variables / Data paths                                                   #
@@ -69,30 +67,23 @@ def model_definition(num_class, dropout_layer):
     """
     model = Sequential()
 
-    model.add(Conv2D(128, kernel_size=(5, 5), activation='relu', padding="same",
-                     kernel_initializer='he_normal', input_shape=(28, 28, 1)))
-    model.add(BatchNormalization())
+    model.add(tf.keras.layers.Conv2D(filters=128, kernel_size=(5, 5), padding='same', activation='relu',
+                                     input_shape=(28, 28, 1)))
+    model.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
+    model.add(tf.keras.layers.Dropout(dropout_layer))
 
-    model.add(Conv2D(64, kernel_size=(5, 5), activation='relu'))
-    model.add(BatchNormalization())
-    model.add(Conv2D(32, kernel_size=5, strides=2, padding='same', activation='relu'))
-    model.add(MaxPooling2D((2, 2)))
-    model.add(BatchNormalization())
-    model.add(Dropout(dropout_layer))
+    model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=(3, 3), padding='same', activation='relu'))
+    model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=(3, 3), padding='same', activation='relu'))
+    model.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2)))
+    model.add(tf.keras.layers.Dropout(dropout_layer))
 
-    model.add(Conv2D(64, kernel_size=(5, 5), strides=2, padding='same', activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(BatchNormalization())
-    model.add(Conv2D(32, kernel_size=(3, 3), strides=2, padding='same', activation='relu'))
-    model.add(Dropout(dropout_layer))
-
-    model.add(Flatten())
-    model.add(Dense(200, activation='relu'))
-    model.add(Dropout(dropout_layer))
-    model.add(Dense(num_class, activation='softmax'))
+    model.add(tf.keras.layers.Flatten())
+    model.add(tf.keras.layers.Dense(units=200, activation='relu'))
+    model.add(tf.keras.layers.Dropout(dropout_layer))
+    model.add(tf.keras.layers.Dense(units=num_class, activation='softmax'))
 
     optimizer = RMSprop(learning_rate=0.001, rho=0.9, epsilon=1e-08, decay=0.0)
-    model.compile(loss="categorical_crossentropy", optimizer=optimizer, metrics=["accuracy"])
+    model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
     model.summary()
 
     return model
@@ -120,11 +111,11 @@ def model_training(model, train_x, train_y, batch_size, epoch, val_x, val_y, pat
     model.fit(
         train_x,
         train_y,
-        batch_size=1024,
-        epochs=100,
+        batch_size=batch_size,
+        epochs=epoch,
         verbose=1,
         validation_data=(val_x, val_y),
-        callbacks=[early_stopping, learning_rate_reduction,tensorboard_callback]
+        callbacks=[early_stopping, learning_rate_reduction, tensorboard_callback]
         )
 
     return model
@@ -146,7 +137,7 @@ def model_save(model, save_status):
     Function to save the Model for JavaScript Use if save_status True
     """
     if save_status:
-        tfjs.converters.save_keras_model(model, 'saved_models/hiragana')
+        tfjs.converters.save_keras_model(model, 'saved_models/hiragana_test2')
         print("Model Saved")
     else:
         print("Model not Saved")
@@ -156,11 +147,11 @@ def model_save(model, save_status):
 #                                           Hyper-parameters & Variables                                               #
 # -------------------------------------------------------------------------------------------------------------------- #
 save = True
-stopping_patience = 8
+stopping_patience = 5
 
 batch_size = 1024
 epoch = 100
-dropout = 0.4
+dropout = 0.5
 
 # -------------------------------------------------------------------------------------------------------------------- #
 #                                                      Execution                                                       #
@@ -172,34 +163,31 @@ model_evaluation(trained_model, test_x, test_y)
 model_save(trained_model, save)
 
 
-"""
-model = tf.keras.Sequential()
+# -------------------------------------------------------------------------------------------------------------------- #
+#                                              Old Model Definition                                                    #
+# -------------------------------------------------------------------------------------------------------------------- #
+"""model.add(Conv2D(128, kernel_size=(5, 5), activation='relu', padding="same",
+                     kernel_initializer='he_normal', input_shape=(28, 28, 1)))
+    model.add(BatchNormalization())
 
-model.add(tf.keras.layers.Conv2D(32,(5,5),activation = 'relu', input_shape = (28,28,1), padding="same"))
-model.add(tf.keras.layers.MaxPooling2D(2,2))
-model.add(tf.keras.layers.BatchNormalization())
+    model.add(Conv2D(64, kernel_size=(5, 5), activation='relu'))
+    model.add(BatchNormalization())
+    model.add(Conv2D(32, kernel_size=5, strides=2, padding='same', activation='relu'))
+    model.add(MaxPooling2D((2, 2)))
+    model.add(BatchNormalization())
+    model.add(Dropout(dropout_layer))
 
-model.add(tf.keras.layers.Conv2D(64,(5,5),activation = 'relu'))
+    model.add(Conv2D(64, kernel_size=(5, 5), strides=2, padding='same', activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(BatchNormalization())
+    model.add(Conv2D(32, kernel_size=(3, 3), strides=2, padding='same', activation='relu'))
+    model.add(Dropout(dropout_layer))
 
-model.add(tf.keras.layers.Conv2D(64,(5,5),activation = 'relu'))
-model.add(tf.keras.layers.Flatten())
+    model.add(Flatten())
+    model.add(Dense(200, activation='relu'))
+    model.add(Dropout(dropout_layer))
+    model.add(Dense(num_class, activation='softmax'))
 
-model.add(tf.keras.layers.Dense(64,activation = 'relu'))
-model.add(tf.keras.layers.Dropout(0.4))
-
-model.add(tf.keras.layers.Dense(num_class,activation = 'softmax'))
-
-model.summary()
-model.compile(loss = 'categorical_crossentropy',
-              optimizer = 'adam',
-              metrics = ['accuracy'])
-
-
-history = model.fit(
-    train_set,train_labels,
-    epochs=40,
-    batch_size=batch_size,
-    verbose = 1,
-    validation_data = (validation_set,validation_labels),
-    callbacks=[early_stopping]
-)"""
+    optimizer = RMSprop(learning_rate=0.001, rho=0.9, epsilon=1e-08, decay=0.0)
+    model.compile(loss="categorical_crossentropy", optimizer=optimizer, metrics=["accuracy"])
+    model.summary()"""
