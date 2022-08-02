@@ -181,7 +181,7 @@ if(isset($_SESSION["idUser"])){
         <form action="drawing.php" method="post" id="startForm">
                 <div id='repeatsWrapper'>
                     <label id='repeatLabelWrap'>Anzahl der Übungen: 
-                        <input type="number" id="repeats" name="repeats" min="1" value="1">
+                        <input type="number" step="1" id="repeats" name="repeats" min="1" value="1">
                     </label>
                 </div>
                 <div id='intLearningWrapper'>
