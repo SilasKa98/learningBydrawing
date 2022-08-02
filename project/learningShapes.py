@@ -152,6 +152,7 @@ def model_training(model, train_x, train_y, val_x, val_y, batch, epochs, patienc
     logdir = "logs/scalars/" + datetime.now().strftime("%Y%m%d-%H%M%S")
     tensorboard_callback = keras.callbacks.TensorBoard(log_dir=logdir, write_graph=True)
 
+    # changes / reduces the Learning rate if no improvements are recognizable
     learning_rate_reduction = ReduceLROnPlateau(monitor='val_accuracy',
                                                 patience=3,
                                                 verbose=1,
@@ -160,6 +161,7 @@ def model_training(model, train_x, train_y, val_x, val_y, batch, epochs, patienc
 
     # checks if the rotations is enabled or not and uses the respective training method
     if rotation:
+        # trains the model with the given data and Hyper-parameters
         model.fit(
             datagen.flow(
                 train_x,
