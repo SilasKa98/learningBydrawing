@@ -14,7 +14,6 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.optimizer_v2.rmsprop import RMSprop
 
 
-
 # -------------------------------------------------------------------------------------------------------------------- #
 #                                             Variables / Data paths                                                   #
 # -------------------------------------------------------------------------------------------------------------------- #
@@ -232,6 +231,7 @@ def model_save(trained_model, save_status):
     """
     if save_status:
         tfjs.converters.save_keras_model(trained_model, 'saved_models/formen')
+        print("Model Saved")
     else:
         print("Model not Saved")
 
@@ -241,11 +241,11 @@ def model_save(trained_model, save_status):
 # -------------------------------------------------------------------------------------------------------------------- #
 save = True
 stopping_patience = 5
-use_rotation = True         # Rotates the images in a specified angle for training
+use_rotation = False         # Rotates the images in a specified angle for training
 
 batch_size = 128
-epoch = 100
-dropout = 0.3
+epoch = 20
+dropout = 0.4
 
 
 # -------------------------------------------------------------------------------------------------------------------- #
