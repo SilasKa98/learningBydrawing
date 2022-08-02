@@ -481,7 +481,7 @@ if(isset($_SESSION["idUser"])){
 
         //check if the user has drawn smth. --> if not just return and give a error message to prevent js error
         if(tempCanvas.width == 0 && tempCanvas.height == 0){
-            resultField.innerHTML = "Du hast noch nichts gezeichnet";
+            resultField.innerHTML = "Du hast noch nichts gezeichnet.";
             showResultSnackbar();
             return;
         }
@@ -664,6 +664,9 @@ if(isset($_SESSION["idUser"])){
 
         let shapes = "<?php echo $dataset;?>";
         shapes = shapes.split(",");
+
+        console.log(r);
+        console.log(shapes);
 
         let disiredResult = taskField.innerHTML;
         let predictedShape = shapes[number];
