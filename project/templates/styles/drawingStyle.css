@@ -91,22 +91,36 @@ body{
     background-color: #414141;
     border: none;
     color: white;
-    padding: 5px 10px;
-    border-radius: 2px;
+    padding: 15px 10px;
+    border-radius: 11px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 19px;
     cursor: pointer;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
 }
 
 #btnWrapper button:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-    padding: 7px 12px;
+    padding: 17px 12px;
 }
 
+#doPredict{
+    background-color: #103b10 !important;
+}
+
+#doPredict:hover{
+    background-color: #1d611d !important;  
+}
+
+#resetBtn{
+    background-color: #461919 !important;
+}
+
+#resetBtn:hover{
+    background-color: #6d1d1d !important;
+}
 
 #playAudio{
     cursor: pointer;
@@ -145,6 +159,7 @@ body{
     margin-right: 2%;
     padding: 10px 10px;
     margin-left: 8%;
+    border-radius: 9px;
 }
 
 #pieChartBtnWrapper{
