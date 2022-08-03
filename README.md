@@ -1,7 +1,7 @@
 # Learning By Drawing
 
 
-# Projekt Struktur
+## Projekt Struktur
 
 Die Anwendungsdateien liegen in dem Ordner "project".
 Im Ordner "learningData" sind verschiedene Daten zum Training der Modelle abgelegt. Einige Daten wurden auch aus online Bibliotheken bezogen und befinden sich nicht im Ordner. 
@@ -11,7 +11,7 @@ Der Ordner "templates" beinhaltet alle Inhalte der Weboberfläche.
 Die Python-Dateien der Modelle befinden sich im project Ordner. 
 
 
-# Installation 
+## Installation 
 
 1. Für die Verwendung der Anwendung wird ein Webserver (z.B. Apache) mit einer MySQL Datenbank benötigt.
 
