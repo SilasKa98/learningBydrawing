@@ -13,8 +13,6 @@ Der Ordner **"templates"** beinhaltet alle Inhalte der Weboberfläche.
 Die Python-Dateien der Modelle befinden sich im project Ordner. 
 In dem Ordner **"documentation"** können alle Dokumente die zu diesem Projekt erstellt wurden gefunden werden.
 
-***
-
 ## Installation 
 
 1. Für die Verwendung der Anwendung wird ein Webserver (z.B. Apache) mit einer MySQL Datenbank benötigt.
