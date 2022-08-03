@@ -124,7 +124,7 @@ if(isset($_SESSION["idUser"])){
             <div id="infoDisplay">
                 <p>Kategorie: <span class="infoCurrent"><?= $_POST["category"]?></span></p>
                 <p>Anzahl der Übungen: <span class="infoCurrent"><?= $repeats?></span></p>
-                <p>Intelligentes lernen: <span class="infoCurrent"><?= $inteligentLearning?></span></p>
+                <p>Intelligentes lernen: <span class="infoCurrent"><?php if($inteligentLearning == "on"){print "An";}else{print "Aus";}?></span></p>
                 <?php if($enableLearningplan == "on"){ ?> <p>Lernplan: <span class="infoCurrent"><?= $selLearnplan?></span></p> <?php } ?>
                 <p id="displayCurrentRepeat">Durchlauf:<span class="infoCurrent"><span id="repeatsDisp"></span></span></p>
             </div>
@@ -431,6 +431,7 @@ if(isset($_SESSION["idUser"])){
 
             //scroll to bottom if results are shown --> gets only used if the result is shown under the drawing element due to display width
             $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
+            document.getElementById("repeatsDisp").innerHTML = selectedRepeats+"/"+selectedRepeats;
         }
     }
 
@@ -582,13 +583,13 @@ if(isset($_SESSION["idUser"])){
         let disiredResult = taskField.innerHTML;  
         if(odd > threshold){
             if(drawnLetter.toLowerCase() == disiredResult.toLowerCase()){
-                resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+disiredResult+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
+                resultField.innerHTML = "Richtig ! Sehr gut, Sie haben ein "+disiredResult.toUpperCase()+" gezeichnet. Die Übereinstimmung liegt bei: "+(odd*100).toFixed(2)+"%";
                 answerResult = 1;
                 totalRight++;
                 //call function to save the drawn image - only if drawing is correct
                 saveDrawnImage(selectedCategory, document.getElementById("task").innerHTML);
             }else{
-                resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% eine "+drawnLetter+" anstatt einer "+disiredResult+" gezeichnet.";
+                resultField.innerHTML = "Falsch, Sie haben zu "+(odd*100).toFixed(2)+"% ein "+drawnLetter.toUpperCase()+" anstatt eines "+disiredResult.toUpperCase()+" gezeichnet.";
                 answerResult = 0;
                 totalWrong++;
             }
