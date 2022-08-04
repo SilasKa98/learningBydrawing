@@ -574,8 +574,7 @@ if(isset($_SESSION["idUser"])){
         let odd = Math.max(...r);
         let number = r.indexOf(odd);
 
-        let alphabet = "<?php echo $dataset;?>";
-        alphabet = alphabet.split(",");
+        let alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
         //-1 because the first one is a space   
         let drawnLetter = alphabet[number-1]
@@ -662,12 +661,12 @@ if(isset($_SESSION["idUser"])){
     function shapesProcessResult(r){
         let odd = Math.max(...r);
         let number = r.indexOf(odd);
-
-        let shapes = "<?php echo $dataset;?>";
-        shapes = shapes.split(",");
+        console.log(r);
+        let shapes= ["Kreis","Drachenviereck","Paralellogram","Viereck","Trapez","Dreieck"];
 
         console.log(r);
         console.log(shapes);
+        console.log(number);
 
         let disiredResult = taskField.innerHTML;
         let predictedShape = shapes[number];
