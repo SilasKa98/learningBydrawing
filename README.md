@@ -1,5 +1,5 @@
 # Learning By Drawing
-Das Learning-By-Drawing Programm ist eine Webanwendung die für das lernen verschiedener Kategorien verwendet werden kann. Dabei lernen die Nutzer die Inhalte indem sie diese Zeichenen. Der Fokus dieses Lernprogrammes liegt dabei auch Buchstaben, Zahlen, Formen und Zeichen. Zu überprüfung der Anntworten werden Neuronale Nezte verwendet die die geziechneten Bilder überprüfen.
+Das Learning-By-Drawing Programm ist eine Webanwendung die für das Lernen verschiedener Kategorien verwendet werden kann. Dabei lernen die Nutzer die Inhalte indem sie diese Zeichnen. Der Fokus dieses Lernprogrammes liegt dabei auf Buchstaben, Zahlen, Formen und Zeichen. Zur Überprüfung der Antworten werden Neuronale Netze verwendet.
 
 ***
 
