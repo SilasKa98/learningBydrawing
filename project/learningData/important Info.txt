@@ -1,0 +1,2 @@
+Die Trainingsdaten wurden aus Speicherplatzgründen für die Abgabe aus diesem Ordner entfernt.
+Alle Daten können aber unter den angegebenen Links der README Datei gefunden werden. 
