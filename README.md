@@ -26,8 +26,8 @@ In dem Ordner **"documentation"** können alle Dokumente die zu diesem Projekt e
 ## Datenquellen
 
 In diesem Teil werden die Quellen der Daten verlinkt die für das Training der neuronalen Netze verwendet wurden.
-- **"learningAlphabet4.py:"** https://www.tensorflow.org/datasets/catalog/emnist (last access: 07.08.2022)
-- **"learningDigitsOwnNumbers.py:"** https://www.tensorflow.org/datasets/catalog/mnist (last access: 07.08.2022)
-- **"learningDigitsOwnNumbers2.py:"** https://www.tensorflow.org/datasets/catalog/mnist (last access: 07.08.2022)
-- **"learningKuzushiji.py:"** https://www.tensorflow.org/datasets/catalog/kmnist (last access: 07.08.2022) und https://www.kaggle.com/datasets/anokas/kuzushiji?resource=download&select=k49_classmap.csv (last access: 07.08.2022)
-- **"learningShapes.py:"** https://www.kaggle.com/code/stpeteishii/geometric-shapes-classify-densenet201/data (last access: 07.08.2022)
+- **"learningAlphabet4.py:"** https://www.tensorflow.org/datasets/catalog/emnist (last access: 04.08.2022)
+- **"learningDigitsOwnNumbers.py:"** https://www.tensorflow.org/datasets/catalog/mnist (last access: 04.08.2022)
+- **"learningDigitsOwnNumbers2.py:"** https://www.tensorflow.org/datasets/catalog/mnist (last access: 04.08.2022)
+- **"learningKuzushiji.py:"** https://www.tensorflow.org/datasets/catalog/kmnist (last access: 04.08.2022) und https://www.kaggle.com/datasets/anokas/kuzushiji?resource=download&select=k49_classmap.csv (last access: 04.08.2022)
+- **"learningShapes.py:"** https://www.kaggle.com/code/stpeteishii/geometric-shapes-classify-densenet201/data (last access: 04.08.2022)
