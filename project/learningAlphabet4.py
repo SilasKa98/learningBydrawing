@@ -6,12 +6,10 @@ from keras_preprocessing.image import ImageDataGenerator
 from tensorflow import keras
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau
 
-#########################
-#this model is working !#
-#########################
-
 
 from emnist import extract_training_samples, extract_test_samples
+
+#get training and test data
 train_img, train_label = extract_training_samples('letters')
 test_img, test_label = extract_test_samples('letters')
 
@@ -35,36 +33,6 @@ test_label = keras.utils.to_categorical(test_label)
 early_stopping = EarlyStopping(monitor='val_loss', patience=3)
 
 number_of_classes = 27
-
-'''
-model = tf.keras.Sequential()
-
-model.add(tf.keras.layers.Conv2D(filters=128, kernel_size=(5,5), padding = 'same', activation='relu',input_shape=(28,28,1)))
-model.add(tf.keras.layers.MaxPooling2D(pool_size=(2,2), strides=(2,2)))
-model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=(3,3) , padding = 'same', activation='relu'))
-model.add(tf.keras.layers.MaxPooling2D(pool_size=(2,2)))
-model.add(tf.keras.layers.Flatten())
-model.add(tf.keras.layers.Dense(units=128, activation='relu'))
-model.add(tf.keras.layers.Dropout(.5))
-model.add(tf.keras.layers.Dense(units=number_of_classes, activation='softmax'))
-
-model.summary()
-
-model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-
-
-model.fit(
-    train_img,
-    train_label,
-    batch_size=128,
-    verbose=1, # Suppress chatty output; use Tensorboard instead
-    validation_data=(test_img, test_label),
-    epochs=40,
-    callbacks=[early_stopping]
-)
-'''
-
-
 
 model = keras.Sequential()
 
@@ -90,7 +58,7 @@ optimizer = RMSprop(learning_rate=0.001, rho=0.9, epsilon=1e-08, decay=0.0)
 
 model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
 
-
+#variable learning rate for better results
 learning_rate_reduction = ReduceLROnPlateau(monitor='val_accuracy',
                                             patience=3,
                                             verbose=1,
