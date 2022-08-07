@@ -59,6 +59,8 @@ test_label = keras.utils.to_categorical(test_label)
 early_stopping = EarlyStopping(monitor='val_loss', patience=10)
 variable_learning_rate = ReduceLROnPlateau(monitor='val_loss', factor = 0.2, patience = 4)
 
+
+#define a sequential model and add the layers to it
 model = keras.Sequential([
 keras.layers.Conv2D(filters = 32, kernel_size = 5, strides = 1, activation = "relu", input_shape=[28, 28, 1]),
 keras.layers.Conv2D(filters = 32, kernel_size = 5, strides = 1, use_bias=False),

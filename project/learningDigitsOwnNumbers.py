@@ -11,6 +11,12 @@ from PIL import Image
 from keras.callbacks import ReduceLROnPlateau
 from keras.preprocessing.image import ImageDataGenerator
 
+##                                                           ##
+#This model got superseded by the learningDigitsOwnNumbers2.py#
+##                                                           ##
+
+
+
 # split the mnist data into train and test
 (train_img, train_label), (test_img, test_label) = keras.datasets.mnist.load_data()
 
@@ -92,7 +98,7 @@ learning_rate_reduction = ReduceLROnPlateau(monitor='val_accuracy',
 
 
 
-
+#changing some parameters of the image to get a higher varity of datas
 datagen = ImageDataGenerator(
         featurewise_center=False,  # set input mean to 0 over the dataset
         samplewise_center=False,  # set each sample mean to 0

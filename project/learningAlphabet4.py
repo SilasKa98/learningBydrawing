@@ -30,10 +30,12 @@ test_img = test_img.reshape([test_img.shape[0], 28, 28, 1])
 train_label = keras.utils.to_categorical(train_label)
 test_label = keras.utils.to_categorical(test_label)
 
+#drop out of training if its not getting better for the defined amount of epochs (patience)
 early_stopping = EarlyStopping(monitor='val_loss', patience=3)
 
 number_of_classes = 27
 
+#define a sequential model and add the layers to it
 model = keras.Sequential()
 
 model.add(keras.layers.Conv2D(filters = 32, kernel_size = (5,5),padding = 'Same', activation ='relu', input_shape = (28,28,1)))
@@ -67,7 +69,7 @@ learning_rate_reduction = ReduceLROnPlateau(monitor='val_accuracy',
 
 
 
-
+#changing some parameters of the image to get a higher varity of datas
 datagen = ImageDataGenerator(
         featurewise_center=False,  # set input mean to 0 over the dataset
         samplewise_center=False,  # set each sample mean to 0
