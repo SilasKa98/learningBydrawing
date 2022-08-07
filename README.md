@@ -22,3 +22,12 @@ In dem Ordner **"documentation"** können alle Dokumente die zu diesem Projekt e
 3. Der Ordner "templates" und der Ordner "saved_models" müssen auf den Webserver geladen werden.
 
 4. Die Anwendung kann nun unter entsprechender Adresse aufgerufen und verwendet werden.
+
+## Datenquellen
+
+In diesem Teil werden die Quellen der Daten verlinkt die für das Training der neuronalen Netze verwendet wurden.
+**"learningAlphabet4.py:"** https://www.tensorflow.org/datasets/catalog/emnist
+**"learningDigitsOwnNumbers.py:"** https://www.tensorflow.org/datasets/catalog/mnist
+**"learningDigitsOwnNumbers2.py:"** https://www.tensorflow.org/datasets/catalog/mnist
+**"learningKuzushiji.py:"** https://www.tensorflow.org/datasets/catalog/kmnist und https://www.kaggle.com/datasets/anokas/kuzushiji?resource=download&select=k49_classmap.csv
+**"learningShapes.py:"** https://www.kaggle.com/code/stpeteishii/geometric-shapes-classify-densenet201/data
